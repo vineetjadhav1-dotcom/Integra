@@ -1,6 +1,11 @@
-<title>Integra Homes</title>
-<link rel="icon" type="image/svg+xml" href="integra-mark.svg">
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integra Homes | Luxury Turnkey Home Construction &amp; Engineering</title>
+  <link rel="icon" type="image/svg+xml" href="integra-mark.svg">
+  <style>
   :root{
     --paper:#eef0ee;
     --paper-2:#e1e5e1;
@@ -827,10 +832,11 @@
   .modal-close-btn:hover{ color:#fff; }
 
 </style>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
 <header class="site-nav">
   <div class="nav-inner">
@@ -1915,13 +1921,9 @@
 
 
   <section class="final-cta">
-    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <path d="M20 4 L36 17 V35 H24 V25 H16 V35 H4 V17 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
-      <rect x="17.5" y="10" width="2.6" height="2.6" fill="#f0b56a"/>
-      <rect x="21.3" y="10" width="2.6" height="2.6" fill="#f0b56a"/>
-      <rect x="17.5" y="13.8" width="2.6" height="2.6" fill="#f0b56a"/>
-      <rect x="21.3" y="13.8" width="2.6" height="2.6" fill="#f0b56a"/>
-    </svg>
+    <div style="display:flex;justify-content:center;margin-bottom:1.2rem;">
+      <img src="integra-logo.svg" alt="Integra Homes" style="height:48px;width:auto;filter:brightness(1.15);">
+    </div>
     <h2>Ready to build<br><span class="accent">with Integra?</span></h2>
     <p class="tagline">Professional design &middot; controlled construction &middot; 100% transparency &middot; total accountability</p>
     <div class="stat-strip">
@@ -1943,38 +1945,6 @@
   </section>
 
 </main>
-
-
-  
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
-        <div>
-          <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">ESTIMATED PLOT / BUILT-UP AREA (SQ.FT)</label>
-          <input type="number" id="modalArea" placeholder="e.g. 2000" value="2000" class="quote-form-input">
-        </div>
-        <div>
-          <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">DESIRED PACKAGE</label>
-          <select id="modalPkg" class="quote-form-input" style="background:#1e293b;">
-            <option value="Basic">Basic (₹1,750 / sq.ft)</option>
-            <option value="Premium" selected>Premium (₹2,150 / sq.ft)</option>
-            <option value="Royale">Royale Luxury (₹2,650 / sq.ft)</option>
-          </select>
-        </div>
-      </div>
-
-      <div style="margin-bottom:1.2rem;">
-        <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">PLOT LOCATION / CITY</label>
-        <input type="text" id="modalLocation" placeholder="e.g. Baner, Pune / PCMC" class="quote-form-input">
-      </div>
-
-      <button class="btn btn-primary" onclick="submitModalQuote()" style="width:100%;justify-content:center;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;padding:0.95rem;font-size:1rem;border-radius:4px;cursor:pointer;">
-        Send Me Itemized BOQ &amp; Schedule Site Visit
-      </button>
-      <div id="modalSuccessMsg" style="display:none;color:#22c55e;font-size:0.9rem;font-weight:600;text-align:center;margin-top:0.8rem;">
-        Request Received! Our engineering lead will contact you with the complete project estimate. Our engineering lead will contact you with the complete project estimate.
-      </div>
-    </div>
-  </div>
 
 <footer class="site-foot">
   <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;">
@@ -2057,14 +2027,20 @@
     var finish = Math.round(totalPrice * 0.35);
     var mep = Math.round(totalPrice * 0.15);
 
-    var formattedTotal = '₹' + totalPrice.toLocaleString('en-IN');
-    document.getElementById('totalEstimatePrice').textContent = formattedTotal;
-    document.getElementById('rccEstimate').textContent = '₹' + rcc.toLocaleString('en-IN');
-    document.getElementById('finishEstimate').textContent = '₹' + finish.toLocaleString('en-IN');
-    document.getElementById('mepEstimate').textContent = '₹' + mep.toLocaleString('en-IN');
+    document.getElementById('totalEstimatePrice').textContent = '₹ ' + totalPrice.toLocaleString('en-IN');
+    document.getElementById('rccEstimate').textContent = '₹ ' + rcc.toLocaleString('en-IN');
+    document.getElementById('finishEstimate').textContent = '₹ ' + finish.toLocaleString('en-IN');
+    document.getElementById('mepEstimate').textContent = '₹ ' + mep.toLocaleString('en-IN');
 
-    var months = area <= 1800 ? '5 - 6 Months' : area <= 3500 ? '6 - 8 Months' : '8 - 12 Months';
-    document.getElementById('estTimeline').textContent = months;
+    // Base timeline for Ground Floor (1 Floor)
+    var baseMin = area <= 1800 ? 4 : area <= 3500 ? 5 : 7;
+    var baseMax = baseMin + 2;
+    // Each additional floor adds +2 months to the delivery timeline
+    var floorAddedMonths = (currentFloors - 1) * 2;
+    var minTimeline = baseMin + floorAddedMonths;
+    var maxTimeline = baseMax + floorAddedMonths;
+
+    document.getElementById('estTimeline').textContent = minTimeline + ' - ' + maxTimeline + ' Months';
   }
 
   function submitDetailedQuote(){
@@ -2106,3 +2082,5 @@
   calculateEstimate();
 
 </script>
+</body>
+</html>
