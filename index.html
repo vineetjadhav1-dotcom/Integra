@@ -585,13 +585,68 @@
   .info-card p{ font-size:0.86rem; color:var(--ink-soft); }
   .info-card--top{ border-top:3px solid var(--accent); }
 
-  /* ---------- stage table ---------- */
+  /* ---------- stage table & mobile timeline ---------- */
   .stage-table{ width:100%; border-collapse:collapse; }
   .stage-table td, .stage-table th{ padding:1rem 1.1rem; border-bottom:1px solid var(--line); font-size:0.87rem; vertical-align:top; text-align:left; }
   .stage-table thead th{ background:var(--ink); color:var(--paper); font-family:"IBM Plex Mono",monospace; text-transform:uppercase; font-size:0.7rem; letter-spacing:0.06em; }
   .stage-table td.num{ font-family:"Big Shoulders Display",sans-serif; font-size:1.5rem; color:var(--accent); width:2.4rem; }
   .stage-table td.protocol{ font-family:"IBM Plex Mono",monospace; font-size:0.76rem; color:var(--accent-2); white-space:nowrap; }
   :root:not([data-theme="dark"]) .stage-table td.protocol{ color:var(--accent-2); }
+
+  .stage-timeline-mobile{ display:none; }
+  @media (max-width:860px){
+    .stage-table-wrap{ display:none !important; }
+    .stage-timeline-mobile{
+      display:flex;
+      flex-direction:column;
+      gap:0.85rem;
+    }
+    .stage-mobile-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-left:4px solid var(--accent);
+      border-radius:6px;
+      padding:1.1rem 1.1rem 1.2rem;
+      box-shadow:0 2px 8px rgba(0,0,0,0.04);
+    }
+    .stage-mobile-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:0.6rem;
+      margin-bottom:0.55rem;
+      flex-wrap:wrap;
+    }
+    .stage-mobile-num{
+      font-family:"Big Shoulders Display",sans-serif;
+      font-size:1.4rem;
+      color:var(--accent);
+      line-height:1;
+    }
+    .stage-mobile-title{
+      font-size:0.98rem;
+      font-weight:700;
+      color:var(--ink);
+      flex:1;
+      font-family:"IBM Plex Sans",sans-serif;
+    }
+    .stage-mobile-badge{
+      font-family:"IBM Plex Mono",monospace;
+      font-size:0.7rem;
+      font-weight:600;
+      color:var(--accent-2);
+      background:rgba(217,154,68,0.12);
+      border:1px solid rgba(217,154,68,0.3);
+      padding:0.25rem 0.6rem;
+      border-radius:14px;
+      white-space:nowrap;
+    }
+    .stage-mobile-desc{
+      font-size:0.86rem;
+      color:var(--ink-soft);
+      line-height:1.55;
+    }
+  }
 
   .callout{
     margin-top:2.2rem; border:1px solid var(--accent-soft); background:color-mix(in srgb, var(--accent-soft) 55%, var(--paper));
@@ -608,7 +663,16 @@
 
   /* ---------- materials ---------- */
   .material-row{ display:grid; grid-template-columns:12rem 1fr 14rem; gap:1.2rem; padding:1.3rem 0; border-bottom:1px solid var(--line); align-items:start; }
-  @media (max-width:760px){ .material-row{ grid-template-columns:1fr; gap:0.5rem; } }
+  @media (max-width:760px){
+    .material-row{ grid-template-columns:1fr; gap:0.6rem; padding:1rem 0; }
+    .material-chips{ display:grid !important; grid-template-columns:1fr 1fr; gap:0.5rem !important; }
+    .brand-chip-card{ padding:0.5rem 0.65rem !important; }
+    .brand-chip-card .brand-name{ font-size:0.76rem !important; }
+    .brand-chip-card .brand-sub{ font-size:0.62rem !important; }
+  }
+  @media (max-width:400px){
+    .material-chips{ grid-template-columns:1fr !important; }
+  }
   .material-row b{ font-size:0.92rem; }
   .material-chips{ display:flex; flex-wrap:wrap; gap:0.5rem; }
   .material-chip{
@@ -617,7 +681,7 @@
   }
   .material-row .assure{ font-size:0.8rem; color:var(--ink-faint); }
 
-  /* ---------- vs table ---------- */
+  /* ---------- vs table & mobile matrix ---------- */
   .vs-table{ width:100%; border-collapse:collapse; }
   .vs-table th, .vs-table td{ padding:1rem 1.1rem; border-bottom:1px solid var(--line); font-size:0.85rem; text-align:left; vertical-align:top; }
   .vs-table thead th{ font-family:"IBM Plex Mono",monospace; text-transform:uppercase; font-size:0.7rem; letter-spacing:0.05em; }
@@ -627,6 +691,96 @@
   .vs-table td:nth-child(2), .vs-table td:nth-child(3){ color:var(--ink-faint); }
   .vs-table td:nth-child(4){ color:var(--good); font-weight:600; background:color-mix(in srgb, var(--good-soft) 60%, transparent); }
   .vs-table th[scope="row"]{ font-weight:600; white-space:nowrap; }
+
+  .vs-mobile-container{ display:none; }
+  @media (max-width:860px){
+    .vs-table-wrap{ display:none !important; }
+    .vs-mobile-container{
+      display:block;
+    }
+    .vs-mobile-nav{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0.4rem;
+      margin-bottom:1.2rem;
+      background:var(--paper-2);
+      padding:0.3rem;
+      border-radius:6px;
+      border:1px solid var(--line);
+    }
+    .vs-mobile-btn{
+      background:transparent;
+      border:none;
+      color:var(--ink-soft);
+      padding:0.6rem 0.3rem;
+      font-size:0.75rem;
+      font-weight:700;
+      border-radius:4px;
+      cursor:pointer;
+      text-align:center;
+      font-family:"IBM Plex Sans",sans-serif;
+      transition:all 0.2s ease;
+    }
+    .vs-mobile-btn.active{
+      background:var(--card);
+      color:var(--ink);
+      box-shadow:0 2px 8px rgba(0,0,0,0.12);
+    }
+    .vs-card-list{
+      display:flex;
+      flex-direction:column;
+      gap:0.9rem;
+    }
+    .vs-card-item{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:8px;
+      padding:1.1rem;
+    }
+    .vs-card-title{
+      font-family:"IBM Plex Mono",monospace;
+      text-transform:uppercase;
+      font-size:0.76rem;
+      font-weight:700;
+      color:var(--accent);
+      margin-bottom:0.75rem;
+      letter-spacing:0.06em;
+      border-bottom:1px solid var(--line);
+      padding-bottom:0.4rem;
+    }
+    .vs-card-comparison{
+      display:flex;
+      flex-direction:column;
+      gap:0.65rem;
+    }
+    .vs-point-other{
+      background:color-mix(in srgb, var(--bad-soft) 40%, var(--card));
+      border:1px solid rgba(161,75,63,0.25);
+      border-radius:6px;
+      padding:0.65rem 0.8rem;
+      font-size:0.84rem;
+      color:var(--ink);
+    }
+    .vs-point-integra{
+      background:color-mix(in srgb, var(--good-soft) 45%, var(--card));
+      border:1px solid rgba(63,125,92,0.3);
+      border-radius:6px;
+      padding:0.65rem 0.8rem;
+      font-size:0.84rem;
+      color:var(--ink);
+      font-weight:600;
+    }
+    .vs-point-lbl{
+      display:block;
+      font-size:0.7rem;
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+      margin-bottom:0.2rem;
+      font-weight:700;
+    }
+    .vs-point-other .vs-point-lbl{ color:var(--bad); }
+    .vs-point-integra .vs-point-lbl{ color:var(--good); }
+  }
 
   /* ---------- handover ---------- */
   .handover-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; }
@@ -1596,7 +1750,7 @@
         <div class="eyebrow"><span class="tag">06</span>350+ rigorous stage-gate quality audits</div>
         <h2 class="section-title">Quality is never inspected at the end&nbsp;&mdash; it's built in at every milestone</h2>
       </div>
-      <div class="table-wrap reveal">
+      <div class="stage-table-wrap table-wrap reveal">
         <table class="stage-table">
           <thead><tr><th></th><th>Construction stage</th><th>Key inspection checkpoints &amp; engineering standards</th><th>Testing protocol</th></tr></thead>
           <tbody>
@@ -1612,6 +1766,99 @@
             <tr><td class="num">10</td><th>Pre-handover snagging</th><td>Doors/windows smooth operation, hardware tightness, drain slope drainage, sanitary leak checks, switchboard polarity.</td><td class="protocol">100% Comprehensive Snag List</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Mobile Luxury Milestone Cards -->
+      <div class="stage-timeline-mobile reveal">
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">01</span>
+            <span class="stage-mobile-title">Foundation &amp; Substructure</span>
+            <span class="stage-mobile-badge">🔬 SBC &middot; Compaction Test</span>
+          </div>
+          <p class="stage-mobile-desc">Soil excavation depth, PCC leveling, anti-termite chemical soil injection, footings reinforcement tying, column starter alignment, 2-course size stone masonry (SSM).</p>
+        </div>
+
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">02</span>
+            <span class="stage-mobile-title">RCC Structural Frame</span>
+            <span class="stage-mobile-badge">🧪 Cube Test (7/28 Days)</span>
+          </div>
+          <p class="stage-mobile-desc">TMT rebar grade &amp; bend tests, lap lengths, cover blocks placement, shuttering line/plumb/oil check, de-shuttering curing monitoring.</p>
+        </div>
+
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">03</span>
+            <span class="stage-mobile-title">Masonry &amp; Wall Joints</span>
+            <span class="stage-mobile-badge">📐 Plumb Bob &middot; Line Check</span>
+          </div>
+          <p class="stage-mobile-desc">High-density solid concrete blocks, 1:4 cement mortar ratio, joint racking, coping beams, holdfast anchoring for door frames.</p>
+        </div>
+
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">04</span>
+            <span class="stage-mobile-title">Multi-Layer Waterproofing</span>
+            <span class="stage-mobile-badge">💧 72-Hour Ponding Test</span>
+          </div>
+          <p class="stage-mobile-desc">Toilet sunken slabs, brick-bat coba terrace waterproofing with polymer chemicals, water-retaining RCC sump pressure plastering.</p>
+        </div>
+
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">05</span>
+            <span class="stage-mobile-title">Concealed Plumbing</span>
+            <span class="stage-mobile-badge">🚰 10-Bar Hydro Test</span>
+          </div>
+          <p class="stage-mobile-desc">CPVC/PVC pipe routing, solvent weld bonding, gradient slope verification, pressure valve testing before plaster concealment.</p>
+        </div>
+
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">06</span>
+            <span class="stage-mobile-title">Concealed Electricals</span>
+            <span class="stage-mobile-badge">⚡ Megger Insulation Test</span>
+          </div>
+          <p class="stage-mobile-desc">FR PVC conduits, copper wire gauge checks, separate earthing pits, circuit load distribution across MCB/RCCB boards.</p>
+        </div>
+
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">07</span>
+            <span class="stage-mobile-title">Plastering &amp; Screed</span>
+            <span class="stage-mobile-badge">🔨 Hollow Hammer Test</span>
+          </div>
+          <p class="stage-mobile-desc">Chicken-mesh at RCC-block joints, bull-mark alignment, ceiling plaster bonding, minimum 14-day continuous wet-curing regime.</p>
+        </div>
+
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">08</span>
+            <span class="stage-mobile-title">Tiling, Flooring &amp; Granite</span>
+            <span class="stage-mobile-badge">📏 Digital Level Check</span>
+          </div>
+          <p class="stage-mobile-desc">Sub-base bedding, zero hollow sound, laser leveling, 2mm spacer grouting, granite edge chamfering on staircase treads.</p>
+        </div>
+
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">09</span>
+            <span class="stage-mobile-title">Premium Finishes &amp; Paint</span>
+            <span class="stage-mobile-badge">🎨 Moisture Meter (&lt;12%)</span>
+          </div>
+          <p class="stage-mobile-desc">Moisture reading on walls (&lt;12%), 2-coat acrylic putty scraping, primer application, 2-coat branded emulsion roller finish.</p>
+        </div>
+
+        <div class="stage-mobile-card">
+          <div class="stage-mobile-header">
+            <span class="stage-mobile-num">10</span>
+            <span class="stage-mobile-title">Pre-Handover Snagging</span>
+            <span class="stage-mobile-badge">📋 100% Snag Sign-off</span>
+          </div>
+          <p class="stage-mobile-desc">Doors/windows smooth operation, hardware tightness, drain slope drainage, sanitary leak checks, switchboard polarity.</p>
+        </div>
       </div>
       <div class="card-grid-4 reveal" style="margin-top:1.8rem;">
         <div class="info-card"><div class="cap">Curing</div><h3>Standardized curing</h3><p>Mandatory 14-day wet ponding &amp; sprinkler curing on all cast elements.</p></div>
@@ -1896,7 +2143,7 @@
         <div class="eyebrow"><span class="tag">09</span>We are constructors, not a platform company</div>
         <h2 class="section-title">What sets Integra apart</h2>
       </div>
-      <div class="table-wrap reveal"><table class="vs-table">
+      <div class="vs-table-wrap table-wrap reveal"><table class="vs-table">
         <thead><tr><th>Parameter</th><th>Local unorganized contractors</th><th>Online middleman platforms</th><th>Integra turnkey model</th></tr></thead>
         <tbody>
           <tr><th scope="row">Business model</th><td>Informal labour contractor; sub-contracts work randomly.</td><td>Lead-generation aggregator; takes commission &amp; delegates the site.</td><td>Self-reliant constructor with associated engineers, consultants &amp; dedicated on-site staff.</td></tr>
@@ -1907,6 +2154,100 @@
           <tr><th scope="row">Post-handover warranty</th><td>Verbal promises; contractor vanishes after final payment.</td><td>Disclaimers shift warranty responsibility to the contractor.</td><td>Legal written 10-Yr structural &amp; 5-Yr waterproofing warranty.</td></tr>
         </tbody>
       </table></div>
+
+      <!-- Mobile Luxury Comparison Matrix -->
+      <div class="vs-mobile-container reveal">
+        <div class="vs-mobile-nav">
+          <button class="vs-mobile-btn active" onclick="switchVsMobile('contractors', this)">Vs. Local Contractors</button>
+          <button class="vs-mobile-btn" onclick="switchVsMobile('platforms', this)">Vs. Online Platforms</button>
+        </div>
+
+        <div class="vs-card-list">
+          <div class="vs-card-item">
+            <div class="vs-card-title">01 &middot; Business Model &amp; Direct Execution</div>
+            <div class="vs-card-comparison">
+              <div class="vs-point-other" id="vs-model-other">
+                <span class="vs-point-lbl">❌ Local Contractors</span>
+                Informal labour contractor; sub-contracts work randomly without engineering supervision.
+              </div>
+              <div class="vs-point-integra">
+                <span class="vs-point-lbl">🛡️ The Integra Turnkey Way</span>
+                Self-reliant constructor with associated architects, structural engineers &amp; dedicated on-site staff.
+              </div>
+            </div>
+          </div>
+
+          <div class="vs-card-item">
+            <div class="vs-card-title">02 &middot; Single-Point Accountability</div>
+            <div class="vs-card-comparison">
+              <div class="vs-point-other" id="vs-acc-other">
+                <span class="vs-point-lbl">❌ Local Contractors</span>
+                Multiple blame games between architect, contractor, and material vendors when issues occur.
+              </div>
+              <div class="vs-point-integra">
+                <span class="vs-point-lbl">🛡️ The Integra Turnkey Way</span>
+                100% single-point ownership from conceptual 3D drawings to final key handover. One team to call.
+              </div>
+            </div>
+          </div>
+
+          <div class="vs-card-item">
+            <div class="vs-card-title">03 &middot; Pricing &amp; Zero Cost Escalation</div>
+            <div class="vs-card-comparison">
+              <div class="vs-point-other" id="vs-cost-other">
+                <span class="vs-point-lbl">❌ Local Contractors</span>
+                Low initial quote followed by massive surprise price escalations during construction.
+              </div>
+              <div class="vs-point-integra">
+                <span class="vs-point-lbl">🛡️ The Integra Turnkey Way</span>
+                Firm fixed-price BOQ contract with guaranteed zero cost escalation on agreed scope.
+              </div>
+            </div>
+          </div>
+
+          <div class="vs-card-item">
+            <div class="vs-card-title">04 &middot; Quality Control &amp; Lab Audits</div>
+            <div class="vs-card-comparison">
+              <div class="vs-point-other" id="vs-qa-other">
+                <span class="vs-point-lbl">❌ Local Contractors</span>
+                Visual thumb-rule inspection with zero third-party lab testing or stage sign-offs.
+              </div>
+              <div class="vs-point-integra">
+                <span class="vs-point-lbl">🛡️ The Integra Turnkey Way</span>
+                350+ digital QA checklists, daily engineer supervision, cube strength &amp; steel tensile lab test dossiers.
+              </div>
+            </div>
+          </div>
+
+          <div class="vs-card-item">
+            <div class="vs-card-title">05 &middot; Timely Delivery &amp; Penalties</div>
+            <div class="vs-card-comparison">
+              <div class="vs-point-other" id="vs-time-other">
+                <span class="vs-point-lbl">❌ Local Contractors</span>
+                Frequent delays of 6 to 18 months with zero penalty or homeowner compensation.
+              </div>
+              <div class="vs-point-integra">
+                <span class="vs-point-lbl">🛡️ The Integra Turnkey Way</span>
+                Committed completion schedule backed by a contractual delay compensation penalty clause.
+              </div>
+            </div>
+          </div>
+
+          <div class="vs-card-item">
+            <div class="vs-card-title">06 &middot; Post-Handover Warranty</div>
+            <div class="vs-card-comparison">
+              <div class="vs-point-other" id="vs-war-other">
+                <span class="vs-point-lbl">❌ Local Contractors</span>
+                Verbal promises; contractor vanishes after final payment, leaving you with leakage repairs.
+              </div>
+              <div class="vs-point-integra">
+                <span class="vs-point-lbl">🛡️ The Integra Turnkey Way</span>
+                Legally written 10-Year structural warranty and 5-Year waterproofing warranty in your contract.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2351,6 +2692,7 @@
         if(ths[3]) ths[3].style.display = 'none';
         rows.forEach(function(row){
           var cells = row.querySelectorAll('td');
+          if(cells.length === 1 && cells[0].hasAttribute('colspan')) return;
           if(cells[0]) cells[0].style.display = '';
           if(cells[1]) cells[1].style.display = 'none';
           if(cells[2]) cells[2].style.display = 'none';
@@ -2362,6 +2704,7 @@
         if(ths[3]) ths[3].style.display = 'none';
         rows.forEach(function(row){
           var cells = row.querySelectorAll('td');
+          if(cells.length === 1 && cells[0].hasAttribute('colspan')) return;
           if(cells[0]) cells[0].style.display = 'none';
           if(cells[1]) cells[1].style.display = '';
           if(cells[2]) cells[2].style.display = 'none';
@@ -2373,12 +2716,48 @@
         if(ths[3]) ths[3].style.display = '';
         rows.forEach(function(row){
           var cells = row.querySelectorAll('td');
+          if(cells.length === 1 && cells[0].hasAttribute('colspan')) return;
           if(cells[0]) cells[0].style.display = 'none';
           if(cells[1]) cells[1].style.display = 'none';
           if(cells[2]) cells[2].style.display = '';
         });
       }
     });
+  }
+
+  // Mobile Vs Switcher (Section 09)
+  function switchVsMobile(target, btn){
+    document.querySelectorAll('.vs-mobile-btn').forEach(function(b){ b.classList.remove('active'); });
+    if(btn) btn.classList.add('active');
+
+    var isPlatforms = target === 'platforms';
+    var label = isPlatforms ? '⚠️ Middleman Platforms' : '❌ Local Contractors';
+
+    var data = {
+      'vs-model-other': isPlatforms 
+        ? '<span class="vs-point-lbl">' + label + '</span> Lead-generation aggregator; takes commission margins &amp; delegates site to unvetted 3rd-party labour.'
+        : '<span class="vs-point-lbl">' + label + '</span> Informal labour contractor; sub-contracts work randomly without engineering supervision.',
+      'vs-acc-other': isPlatforms
+        ? '<span class="vs-point-lbl">' + label + '</span> Platform support forwards complaints to contractor; no direct operational control on site.'
+        : '<span class="vs-point-lbl">' + label + '</span> Multiple blame games between architect, contractor, and material vendors when issues occur.',
+      'vs-cost-other': isPlatforms
+        ? '<span class="vs-point-lbl">' + label + '</span> Hidden platform commissions built-in; recurring variation costs during project execution.'
+        : '<span class="vs-point-lbl">' + label + '</span> Low initial quote followed by massive surprise price escalations during construction.',
+      'vs-qa-other': isPlatforms
+        ? '<span class="vs-point-lbl">' + label + '</span> Periodic checklist app check-in; zero daily dedicated engineer on site.'
+        : '<span class="vs-point-lbl">' + label + '</span> Visual thumb-rule inspection with zero third-party lab testing or stage sign-offs.',
+      'vs-time-other': isPlatforms
+        ? '<span class="vs-point-lbl">' + label + '</span> Disputes between platform and contractor cause frequent project stalls &amp; delays.'
+        : '<span class="vs-point-lbl">' + label + '</span> Frequent delays of 6 to 18 months with zero penalty or homeowner compensation.',
+      'vs-war-other': isPlatforms
+        ? '<span class="vs-point-lbl">' + label + '</span> Platform disclaimers shift legal warranty responsibility onto the third-party contractor.'
+        : '<span class="vs-point-lbl">' + label + '</span> Verbal promises; contractor vanishes after final payment, leaving you with leakage repairs.'
+    };
+
+    for(var id in data){
+      var el = document.getElementById(id);
+      if(el) el.innerHTML = data[id];
+    }
   }
 </script>
 </body>
