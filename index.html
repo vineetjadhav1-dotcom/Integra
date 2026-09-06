@@ -108,44 +108,76 @@
   ul{ margin:0; padding:0; list-style:none; }
   img,svg{ display:block; max-width:100%; }
 
-  .section{ padding:clamp(3.5rem,7vw,6.5rem) clamp(1.25rem,4vw,3rem); }
-  .section-inner{ max-width:1160px; margin:0 auto; }
+  .section{
+    padding:clamp(4rem,8vw,7rem) clamp(1.25rem,4vw,3rem);
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .section--paper{ background:var(--paper); }
+  .section--paper-2{ background:var(--paper-2); }
+  .section--paper-3{ background:var(--paper-3); }
+  .section--dark{ background:var(--navy); color:var(--on-navy); }
+  .section--dark-2{ background:var(--navy-2); color:var(--on-navy); }
+  .section-inner{ max-width:1160px; margin:0 auto; position:relative; }
   .section-inner--narrow{ max-width:880px; }
 
   .eyebrow{
     font-family:"IBM Plex Mono",monospace;
     text-transform:uppercase;
     letter-spacing:0.16em;
-    font-size:0.76rem;
+    font-size:0.75rem;
+    font-weight:700;
     color:var(--accent);
-    display:flex;
+    display:inline-flex;
     align-items:center;
     gap:0.6rem;
-    margin-bottom:0.9rem;
-  }
-  .eyebrow::before{
-    content:"";
-    width:1.6rem;
-    height:1px;
-    background:var(--accent);
-    display:inline-block;
+    margin-bottom:1.1rem;
+    background:rgba(217,154,68,0.08);
+    border:1px solid rgba(217,154,68,0.25);
+    padding:0.35rem 0.9rem 0.35rem 0.45rem;
+    border-radius:24px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
   }
   .eyebrow .tag{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width:1.5rem;
-    height:1.5rem;
-    border:1px solid var(--accent);
-    color:var(--accent);
-    font-weight:600;
-    border-radius:3px;
-    font-size:0.7rem;
+    width:1.55rem;
+    height:1.55rem;
+    background:linear-gradient(135deg, #d99a44, #b6772a);
+    color:#121820;
+    font-weight:800;
+    border-radius:50%;
+    font-size:0.68rem;
+    box-shadow:0 2px 6px rgba(217,154,68,0.4);
   }
 
-  .section-title{ font-size:clamp(1.7rem,3.4vw,2.6rem); line-height:1.05; margin-bottom:0.7rem; }
-  .section-sub{ color:var(--ink-soft); font-style:italic; font-family:"IBM Plex Sans",sans-serif; max-width:56ch; font-size:1rem; }
-  .section-head{ margin-bottom:2.6rem; }
+  .section-title{
+    font-size:clamp(1.9rem,3.8vw,2.9rem);
+    line-height:1.06;
+    margin-bottom:0.85rem;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .section-title .accent-gold{
+    color:var(--accent);
+    background:linear-gradient(135deg, #d99a44 0%, #f7c98b 50%, #b6772a 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    display:inline-block;
+  }
+  .section-sub{
+    color:var(--ink-soft);
+    font-family:"IBM Plex Sans",sans-serif;
+    max-width:60ch;
+    font-size:1.02rem;
+    line-height:1.65;
+  }
+  .section-head{
+    margin-bottom:2.8rem;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1.8rem;
+  }
 
   .rule{ height:1px; background:var(--line); border:0; margin:0; }
 
@@ -181,6 +213,25 @@
     transition:color .15s ease, border-color .15s ease;
   }
   nav.links a:hover{ color:#ffffff; border-color:var(--accent); }
+
+  .nav-consult-btn, .nav-quote-btn{
+    display:inline-flex; align-items:center; gap:0.45rem;
+    background:rgba(217,154,68,0.15);
+    border:1px solid rgba(217,154,68,0.45);
+    color:var(--accent);
+    padding:0.55rem 1rem;
+    border-radius:3px;
+    font-size:0.84rem; font-weight:700;
+    letter-spacing:0.03em;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .nav-consult-btn:hover, .nav-quote-btn:hover{
+    background:rgba(217,154,68,0.28);
+    border-color:var(--accent);
+    color:#fff;
+    box-shadow:0 0 12px rgba(217,154,68,0.3);
+  }
 
   .nav-cta{
     display:inline-flex; align-items:center; gap:0.5rem;
@@ -1032,129 +1083,13 @@
     box-shadow:0 1px 3px rgba(0,0,0,0.05);
   }
 
-  /* ---------- Interactive Quote Section & Calculator ---------- */
-  .quote-section{
-    background:linear-gradient(180deg, #0b131e 0%, #111d2e 100%);
-    color:#eef0ee;
-    padding:clamp(4rem,8vw,6.5rem) clamp(1.25rem,4vw,3rem);
-    position:relative;
-    overflow:hidden;
-  }
-  .quote-section::before{
-    content:"";
-    position:absolute; inset:0;
-    background-radial-gradient(circle at 80% 20%, rgba(217,154,68,0.12) 0%, transparent 60%);
-    pointer-events:none;
-  }
-  .quote-box{
-    display:grid;
-    grid-template-columns:1.2fr 0.8fr;
-    gap:2.5rem;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:12px;
-    padding:clamp(1.5rem,4vw,2.5rem);
-    box-shadow:0 25px 60px rgba(0,0,0,0.5);
-  }
-  @media(max-width:900px){
-    .quote-box{ grid-template-columns:1fr; }
-  }
-  .calc-field{ margin-bottom:1.5rem; }
-  .calc-field label{
-    display:flex; justify-content:space-between; align-items:center;
-    font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em;
-    color:var(--accent-2); margin-bottom:0.6rem;
-  }
-  .calc-slider{
-    width:100%;
-    accent-color:var(--accent-2);
-    height:6px;
-    background:rgba(255,255,255,0.15);
-    border-radius:3px;
-    cursor:pointer;
-  }
-  .calc-btn-group{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:0.6rem;
-  }
-  @media(max-width:550px){
-    .calc-btn-group{ grid-template-columns:1fr; }
-  }
-  .calc-pkg-btn{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.15);
-    color:#eef0ee;
-    padding:0.75rem 0.5rem;
-    border-radius:6px;
-    text-align:center;
-    cursor:pointer;
-    transition:all 0.2s ease;
-  }
-  .calc-pkg-btn.active{
-    background:rgba(217,154,68,0.15);
-    border-color:var(--accent-2);
-    color:#fff;
-    box-shadow:0 0 15px rgba(217,154,68,0.25);
-  }
-  .calc-pkg-btn b{ display:block; font-size:0.95rem; margin-bottom:0.2rem; }
-  .calc-pkg-btn span{ font-size:0.75rem; color:#94a3b8; }
-  .calc-pkg-btn.active span{ color:var(--accent-2); font-weight:600; }
-
-  .quote-summary-card{
-    background:linear-gradient(145deg, rgba(217,154,68,0.12), rgba(15,23,42,0.6));
-    border:1px solid rgba(217,154,68,0.3);
-    border-radius:10px;
-    padding:1.8rem;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-  }
-  .quote-price-tag{
-    font-size:clamp(2rem,4vw,2.8rem);
-    font-weight:700;
-    color:#ffffff;
-    font-family:"IBM Plex Mono",monospace;
-    margin:0.4rem 0 0.8rem;
-  }
-  .quote-breakdown{
-    border-top:1px dashed rgba(255,255,255,0.15);
-    padding-top:1rem;
-    margin-top:1rem;
-    font-size:0.82rem;
-    color:#cbd5e1;
-  }
-  .breakdown-row{
-    display:flex; justify-content:space-between; margin-bottom:0.5rem;
-  }
-  .breakdown-row.total{
-    font-weight:700; color:#fff; border-top:1px solid rgba(255,255,255,0.2); padding-top:0.5rem; font-size:0.9rem;
-  }
-  .quote-form-input{
-    width:100%;
-    padding:0.75rem 1rem;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:4px;
-    color:#fff;
-    font-size:0.9rem;
-    margin-bottom:0.75rem;
-    font-family:inherit;
-    box-sizing:border-box;
-  }
-  .quote-form-input:focus{
-    outline:none;
-    border-color:var(--accent-2);
-    background:rgba(255,255,255,0.1);
-  }
-
-  /* ---------- Quote Modal Popup ---------- */
+  /* ---------- Consultation Modal Popup ---------- */
   .modal-overlay{
     position:fixed;
     inset:0;
-    background:rgba(10,15,25,0.85);
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
+    background:rgba(8,14,23,0.88);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
     z-index:9999;
     display:none;
     align-items:center;
@@ -1165,37 +1100,37 @@
     display:flex;
   }
   .modal-card{
-    background:#111d2e;
+    background:linear-gradient(165deg, #131d2e 0%, #0c1421 100%);
     color:#eef0ee;
-    border:1px solid rgba(217,154,68,0.3);
+    border:1px solid rgba(217,154,68,0.35);
     border-radius:12px;
-    max-width:680px;
+    max-width:640px;
     width:100%;
     max-height:90vh;
     overflow-y:auto;
-    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    box-shadow:0 30px 80px rgba(0,0,0,0.85);
     position:relative;
-    padding:2rem;
+    padding:2.2rem clamp(1.2rem, 4vw, 2.5rem);
   }
   .modal-form-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:1rem;
-    margin-bottom:1rem;
+    gap:1.1rem;
+    margin-bottom:1.1rem;
   }
   @media(max-width:550px){
-    .modal-card{ padding:1.4rem 1rem; border-radius:8px; }
-    .modal-form-grid{ grid-template-columns:1fr; gap:0.75rem; margin-bottom:0.75rem; }
+    .modal-card{ padding:1.6rem 1.1rem; border-radius:10px; }
+    .modal-form-grid{ grid-template-columns:1fr; gap:0.85rem; margin-bottom:0.85rem; }
   }
   .modal-close-btn{
     position:absolute;
-    top:0.8rem;
-    right:0.8rem;
+    top:0.9rem;
+    right:0.9rem;
     background:rgba(255,255,255,0.06);
     border:1px solid rgba(255,255,255,0.15);
     border-radius:50%;
-    width:2rem;
-    height:2rem;
+    width:2.2rem;
+    height:2.2rem;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -1205,7 +1140,24 @@
     cursor:pointer;
     transition:all 0.2s ease;
   }
-  .modal-close-btn:hover{ color:#fff; background:rgba(255,255,255,0.15); }
+  .modal-close-btn:hover{ color:#fff; background:rgba(255,255,255,0.18); transform:scale(1.05); }
+  .modal-input{
+    width:100%;
+    padding:0.8rem 1rem;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:5px;
+    color:#fff;
+    font-size:0.92rem;
+    font-family:inherit;
+    box-sizing:border-box;
+    transition:border-color 0.2s ease, background 0.2s ease;
+  }
+  .modal-input:focus{
+    outline:none;
+    border-color:var(--accent);
+    background:rgba(255,255,255,0.1);
+  }
 </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1226,20 +1178,20 @@
       <a href="#quality">Quality</a>
       <a href="#warranty">Warranty</a>
     </nav>
-    <button class="nav-quote-btn" onclick="openQuoteModal()" aria-label="Get Instant Quote">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-        Get Quote
-      </button>
-      <a class="nav-cta" href="tel:+918668463204" aria-label="Call +91 8668463204">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 2.9a2 2 0 0 1-.4 2.1L8 10.1a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
-        +91 8668463204
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
+    <button class="nav-quote-btn" onclick="openConsultModal()" aria-label="Book Consultation">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      Book Consultation
+    </button>
+    <a class="nav-cta" href="tel:+918668463204" aria-label="Call +91 8668463204">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 2.9a2 2 0 0 1-.4 2.1L8 10.1a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+      +91 8668463204
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
   </div>
   <div class="mobile-panel" id="mobilePanel">
-    <a href="#quote" onclick="openQuoteModal()" style="background:var(--accent-2);color:#121820;font-weight:700;border-radius:4px;padding:0.7rem 1rem;margin:0.75rem 1.25rem 0.25rem;text-align:center;">Get Instant Quote</a>
+    <a href="#consultation" onclick="openConsultModal()" style="background:var(--accent-2);color:#121820;font-weight:700;border-radius:4px;padding:0.7rem 1rem;margin:0.75rem 1.25rem 0.25rem;text-align:center;">Book Free Consultation</a>
     <a href="#problem">Why Integra</a>
     <a href="#process">Process</a>
     <a href="#packages">Packages</a>
@@ -1261,12 +1213,12 @@
       <div>
         <div class="hero-eyebrow">Home Construction &amp; Engineering Catalogue</div>
         <h1>Build your home<br>with <span class="accent">confidence.</span></h1>
-        <p class="hero-lede">One accountable partner, from concept to possession. Integra replaces the fragmented architect&nbsp;&mdash; contractor&nbsp;&mdash; vendor chain with a single coordinated team, a single fixed-price contract, and a single phone number to call.</p>
+        <p class="hero-lede">One accountable partner, from concept to possession. Integra replaces the fragmented architect&nbsp;&mdash; contractor&nbsp;&mdash; vendor chain with a single coordinated team, guaranteed quality, and a single phone number to call.</p>
         <div class="hero-cta-row">
-          <button class="btn btn-primary" onclick="openQuoteModal()" style="cursor:pointer;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;">
-            Get Free Instant Quote
+          <button class="btn btn-primary" onclick="openConsultModal()" style="cursor:pointer;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;">
+            Consult Our Engineers
           </button>
-          <a class="btn btn-ghost" href="#packages">Compare packages</a>
+          <a class="btn btn-ghost" href="#packages">Explore Packages</a>
           <a class="btn btn-ghost" href="tel:+918668463204" style="border-color:rgba(255,255,255,0.25);display:inline-flex;align-items:center;gap:0.5rem;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 2.9a2 2 0 0 1-.4 2.1L8 10.1a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
             +91 8668463204
@@ -1288,11 +1240,11 @@
   </section>
 
   <!-- PROBLEM / SOLUTION -->
-  <section class="section" id="problem">
+  <section class="section section--paper" id="problem">
     <div class="section-inner">
       <div class="section-head reveal">
-        <div class="eyebrow"><span class="tag">02</span>The problem we solve</div>
-        <h2 class="section-title">One accountable partner,<br>from concept to possession.</h2>
+        <div class="eyebrow"><span class="tag">01</span>Why Integra</div>
+        <h2 class="section-title">One Accountable Partner,<br><span class="accent-gold">From Concept To Possession</span></h2>
         <p class="section-sub">Most self-build journeys involve an architect, a contractor, and a dozen material vendors &mdash; each blaming the other the moment something goes wrong.</p>
       </div>
       <div class="mobile-compare-nav">
@@ -1312,7 +1264,7 @@
           </div>
           <div class="compare-item">
             <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="color:var(--bad)"><path d="M6 6l12 12M18 6L6 18"/></svg>
-            <p><b>Unpredictable cost creep:</b> low initial quotes are followed by massive price escalations after work begins.</p>
+            <p><b>Unpredictable cost creep:</b> low initial estimates are followed by constant surprise escalations after work begins.</p>
           </div>
           <div class="compare-item">
             <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="color:var(--bad)"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -1331,7 +1283,7 @@
           </div>
           <div class="compare-item">
             <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="color:var(--good)"><path d="M5 13l4 4L19 7"/></svg>
-            <p><b>Firm price guarantee:</b> guaranteed scope with zero cost escalation for contracted specifications.</p>
+            <p><b>Firm scope guarantee:</b> guaranteed itemized BOQ with zero cost escalation on contracted specifications.</p>
           </div>
           <div class="compare-item">
             <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="color:var(--good)"><path d="M5 13l4 4L19 7"/></svg>
@@ -1343,11 +1295,12 @@
   </section>
 
   <!-- PROCESS -->
-  <section class="section" id="process" style="background:var(--paper-2);">
+  <section class="section section--paper-2" id="process">
     <div class="section-inner">
       <div class="section-head reveal">
-        <div class="eyebrow"><span class="tag">03</span>Our 4-step delivery process</div>
-        <h2 class="section-title">Design &middot; Build &middot; Monitor &middot; Deliver</h2>
+        <div class="eyebrow"><span class="tag">02</span>Our 4-step delivery process</div>
+        <h2 class="section-title">Design &middot; Build &middot; <span class="accent-gold">Monitor &middot; Deliver</span></h2>
+        <p class="section-sub">A structured, engineering-led workflow ensuring seamless coordination from initial 3D drawings to final key handover.</p>
       </div>
       <div class="process-row reveal">
         <div class="process-step">
@@ -1381,17 +1334,17 @@
   </section>
 
   <!-- PACKAGES -->
-  <section class="section" id="packages">
+  <section class="section section--paper" id="packages">
     <div class="section-inner">
       <div class="section-head reveal">
-        <div class="eyebrow"><span class="tag">04</span>Choose your package</div>
-        <h2 class="section-title">Three engineered tiers &mdash; one accountable process</h2>
-        <p class="section-sub">Every package is documented in full technical detail below, from structural steel grade to paint sheen, so you can compare exactly what you're paying for, brand by brand.</p>
+        <div class="eyebrow"><span class="tag">03</span>Choose your package</div>
+        <h2 class="section-title">Three Engineered Tiers &mdash; <span class="accent-gold">One Accountable Process</span></h2>
+        <p class="section-sub">Every package is documented in full technical detail below, from structural steel grade to paint sheen, so you can compare exact specifications, brand by brand.</p>
       </div>
       <div class="mobile-tier-nav">
-        <button class="mobile-tier-btn" onclick="showMobileTier(0, this)">Basic (₹1,750)</button>
-        <button class="mobile-tier-btn active" onclick="showMobileTier(1, this)">⭐ Premium (₹2,150)</button>
-        <button class="mobile-tier-btn" onclick="showMobileTier(2, this)">👑 Royale (₹2,650)</button>
+        <button class="mobile-tier-btn" onclick="showMobileTier(0, this)">Basic Package</button>
+        <button class="mobile-tier-btn active" onclick="showMobileTier(1, this)">⭐ Premium Package</button>
+        <button class="mobile-tier-btn" onclick="showMobileTier(2, this)">👑 Royale Luxury</button>
       </div>
       <div class="tier-grid reveal" id="tierGrid">
         <div class="tier-card" id="tierCard-0">
@@ -1403,10 +1356,10 @@
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>M20/M25 RMC (per structural design) &amp; 10 ft ceiling</p></li>
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Red brick masonry throughout</p></li>
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>2D plans &amp; 3D front elevation</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Vitrified flooring up to &#8377;45/sq.ft</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Teak main door up to &#8377;25k</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>3-track UPVC / aluminium windows (10% area)</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Parryware / Cera / Hindware sanitary</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Vitrified flooring throughout living, bed &amp; dining</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Solid teak wood main entrance door</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>3-track UPVC / aluminium glazed windows</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Parryware / Cera / Hindware sanitary fittings</p></li>
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>10-year structural warranty</p></li>
           </ul>
           <div class="tier-foot">Sheet A&#8211;H &middot; Basic column</div>
@@ -1418,10 +1371,10 @@
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Steel: Fe500/550 JSW Neo / Jindal Panther</p></li>
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Red brick masonry, stone masonry substructure</p></li>
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>2D, 3D elevation, MEP &amp; furniture drawings</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Premium tiles &#8377;70/sq.ft, granite &#8377;120</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Teak main (&#8377;25k) + pooja door (&#8377;15k)</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>3-track UPVC / aluminium (&#8377;580/sq.ft, 15% area)</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Jaquar / Hindware / Cera fixtures</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Premium vitrified tiles &amp; polished granite flooring</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Grand teak main door + dedicated pooja room door</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>3-track UPVC / aluminium glazed windows with MS grill</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Jaquar / Hindware / Cera luxury fixtures</p></li>
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>EV point, RWH included, soil testing &amp; architect visits</p></li>
           </ul>
           <div class="tier-foot">Sheet A&#8211;H &middot; Premium column</div>
@@ -1432,11 +1385,11 @@
           <ul class="tier-list">
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Steel: Fe500/550 Tata Tiscon / JSW Steel</p></li>
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>M20/M25 RMC (per structural design), 10 ft ceiling</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>360&deg; all-side 3D &amp; comprehensive MEP</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Luxury tiles &#8377;120/sq.ft, granite &#8377;160</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Grand teak (&#8377;25k) + carved teak pooja (&#8377;22k)</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>3-track UPVC / aluminium (&#8377;700/sq.ft, 15% area)</p></li>
-            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Grohe / Toto / Jaquar fixtures + Carysil sink</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>360&deg; all-side 3D &amp; comprehensive MEP engineering</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Imported luxury tiles &amp; high-grade polished granite</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Grand carved teak main door + ornamental pooja door</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Luxury 3-track acoustic UPVC / aluminium windows</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Grohe / Toto / Jaquar fixtures + Carysil quartz sink</p></li>
             <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Asian Royale, Apex exterior, SS railing, designer gate</p></li>
           </ul>
           <div class="tier-foot">Sheet A&#8211;H &middot; Royale column</div>
@@ -1451,11 +1404,11 @@
   </section>
 
   <!-- SPEC SHEETS -->
-  <section class="section" id="specs" style="background:var(--paper-2);">
+  <section class="section section--paper-2" id="specs">
     <div class="section-inner">
       <div class="section-head reveal">
-        <div class="eyebrow"><span class="tag">A&#8211;H</span>Engineering specification sheets</div>
-        <h2 class="section-title">Compare exactly what you're paying for</h2>
+        <div class="eyebrow"><span class="tag">04</span>Engineering specification sheets</div>
+        <h2 class="section-title">Compare What Goes Into <span class="accent-gold">Your Home</span></h2>
         <p class="section-sub">Every package documented in full technical detail &mdash; from structural steel grade to paint sheen, brand by brand.</p>
       </div>
 
@@ -1561,13 +1514,13 @@
           <div class="table-wrap"><table class="spec">
             <thead><tr><th>Area / application</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
             <tbody>
-              <tr><th>Living, dining, kitchen &amp; bed</th><td>Up to &#8377;45/sq.ft (vitrified tiles)</td><td>Up to &#8377;70/sq.ft (premium vitrified)</td><td>Up to &#8377;120/sq.ft (luxury vitrified / stone)</td></tr>
-              <tr><th>Staircase flooring</th><td>Granite up to &#8377;70/sq.ft</td><td>Granite up to &#8377;100/sq.ft</td><td>Granite up to &#8377;120/sq.ft</td></tr>
-              <tr><th>Balconies &amp; sit-out areas</th><td>Anti-skid tiles up to &#8377;35/sq.ft</td><td>Anti-skid tiles up to &#8377;50/sq.ft</td><td>Anti-skid tiles up to &#8377;65/sq.ft</td></tr>
-              <tr><th>Bathroom wall &amp; floor tiling</th><td>Tiles up to &#8377;35/sq.ft; dado to 7 ft</td><td>Tiles up to &#8377;50/sq.ft; dado to 7 ft</td><td>Tiles up to &#8377;70/sq.ft; dado to full ceiling height</td></tr>
-              <tr><th>Kitchen granite countertop</th><td>Slab up to &#8377;120/sq.ft</td><td>Slab up to &#8377;120/sq.ft</td><td>Slab up to &#8377;160/sq.ft</td></tr>
-              <tr><th>Kitchen wall dadoing</th><td>Up to 2 ft height @ &#8377;40/sq.ft</td><td>Up to 2 ft height @ &#8377;50/sq.ft</td><td>Up to 2 ft height @ &#8377;60/sq.ft</td></tr>
-              <tr><th>Parking area flooring</th><td>Heavy-duty tiles up to &#8377;35/sq.ft</td><td>Heavy-duty tiles up to &#8377;40/sq.ft</td><td>Heavy-duty tiles up to &#8377;50/sq.ft</td></tr>
+              <tr><th>Living, dining, kitchen &amp; bed</th><td>Premium vitrified tiles</td><td>High-grade premium vitrified tiles</td><td>Imported luxury vitrified / designer stone</td></tr>
+              <tr><th>Staircase flooring</th><td>Polished granite steps</td><td>Fine-edge polished granite</td><td>Premium flame-treated / polished granite</td></tr>
+              <tr><th>Balconies &amp; sit-out areas</th><td>Anti-skid designer tiles</td><td>Heavy-duty anti-skid vitrified tiles</td><td>Luxury textured anti-skid tiles</td></tr>
+              <tr><th>Bathroom wall &amp; floor tiling</th><td>Anti-skid tiles; wall dado to 7 ft</td><td>Premium vitrified tiles; dado to 7 ft</td><td>Luxury full-height ceiling wall dadoing</td></tr>
+              <tr><th>Kitchen granite countertop</th><td>Polished black granite counter</td><td>Premium bevelled granite slab</td><td>Exotic high-thickness polished granite</td></tr>
+              <tr><th>Kitchen wall dadoing</th><td>Glazed wall tiles up to 2 ft</td><td>Premium digital wall tiles up to 2 ft</td><td>Designer vitrified wall dado up to 2 ft</td></tr>
+              <tr><th>Parking area flooring</th><td>Heavy-duty paver tiles</td><td>Anti-skid parking vitrified tiles</td><td>Heavy-load textured vitrified stone finish</td></tr>
               <tr><th>Terrace flooring &amp; water-seal</th><td>Brick-bat waterproofing, Dr. Fixit / screed / LW+</td><td>Brick-bat waterproofing, Dr. Fixit / screed / LW+</td><td>Brick-bat waterproofing, Dr. Fixit / screed / LW+</td></tr>
             </tbody>
           </table></div>
@@ -1579,34 +1532,34 @@
             <thead><tr><th>Element</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
             <tbody>
               <tr><th>Main entrance door (1/unit)</th>
-                <td>Teak frame (5&Prime;x3&Prime;) + teak shutter, up to &#8377;25,000</td>
-                <td>Teak frame (6&Prime;x4&Prime;) + teak shutter, up to &#8377;25,000</td>
-                <td>Grand teak frame (6&Prime;x4&Prime;) + teak shutter, up to &#8377;25,000</td>
+                <td>Teak wood frame (5&Prime;x3&Prime;) + solid teak shutter</td>
+                <td>Teak wood frame (6&Prime;x4&Prime;) + premium teak shutter</td>
+                <td>Grand carved teak frame (6&Prime;x4&Prime;) + luxury teak shutter</td>
               </tr>
               <tr><th>Internal bedroom doors</th>
-                <td>WPC/Sal frame (4&Prime;x3&Prime;) + membrane, up to &#8377;10,000/door</td>
-                <td>WPC/Sal frame (4&Prime;x3&Prime;) + membrane, up to &#8377;10,000/door</td>
-                <td>WPC/Sal frame (5&Prime;x3&Prime;) + laminate, up to &#8377;10,000/door</td>
+                <td>WPC/Sal frame (4&Prime;x3&Prime;) + flush membrane shutter</td>
+                <td>WPC/Sal frame (4&Prime;x3&Prime;) + membrane shutter</td>
+                <td>WPC/Sal frame (5&Prime;x3&Prime;) + designer laminate shutter</td>
               </tr>
               <tr><th>Pooja room door (1/unit)</th>
-                <td>Standard provision</td>
-                <td>Frame (5&Prime;x3&Prime;) + readymade shutter, up to &#8377;15,000</td>
-                <td>Teak frame (5&Prime;x3&Prime;) + carved teak shutter, up to &#8377;22,000</td>
+                <td>Standard hardwood frame &amp; panel</td>
+                <td>Frame (5&Prime;x3&Prime;) + readymade decorative shutter</td>
+                <td>Teak frame (5&Prime;x3&Prime;) + intricately carved teak shutter</td>
               </tr>
               <tr><th>Bathroom doors</th>
-                <td>Granite frame + waterproof PVC shutter, up to &#8377;7,000</td>
-                <td>Granite frame + WPC waterproof shutter, up to &#8377;7,000</td>
-                <td>Granite frame + premium WPC waterproof shutter, up to &#8377;7,000</td>
+                <td>Granite frame + waterproof PVC shutter</td>
+                <td>Granite frame + WPC waterproof shutter</td>
+                <td>Granite frame + premium WPC waterproof shutter</td>
               </tr>
               <tr><th>Windows &amp; glazing</th>
-                <td>3-track UPVC/aluminium, 5mm plain glass, max 10% floor area</td>
-                <td>3-track UPVC/aluminium, 5mm glass + MS grill, &#8377;580/sq.ft, max 15% area</td>
-                <td>3-track luxury UPVC/aluminium, 5mm glass + MS grill, &#8377;700/sq.ft, max 15% area</td>
+                <td>3-track UPVC/aluminium, 5mm plain glass (10% area)</td>
+                <td>3-track UPVC/aluminium, 5mm glass + MS safety grill (15% area)</td>
+                <td>3-track luxury acoustic UPVC/aluminium, 5mm glass + MS grill (15% area)</td>
               </tr>
               <tr><th>Staircase railing &amp; gates</th>
                 <td>MS staircase railing &amp; MS standard gate</td>
                 <td>MS staircase railing &amp; MS standard gate</td>
-                <td>Stainless steel (SS) railing &amp; designer gate</td>
+                <td>Stainless steel (SS 304) railing &amp; designer architectural gate</td>
               </tr>
             </tbody>
           </table></div>
@@ -1618,19 +1571,19 @@
             <thead><tr><th>Component</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
             <tbody>
               <tr><th>Sanitary ware &amp; CP fittings</th>
-                <td>Up to &#8377;20,000/bathroom &mdash; <span class="chip">Parryware / Cera / Hindware</span></td>
-                <td>Up to &#8377;25,000/bathroom &mdash; <span class="chip">Hindware / Jaquar / Cera</span></td>
-                <td>Up to &#8377;35,000/bathroom &mdash; <span class="chip">Jaquar / Grohe / Toto</span></td>
+                <td><span class="chip">Parryware / Cera / Hindware</span> standard line</td>
+                <td><span class="chip">Hindware / Jaquar / Cera</span> premium range</td>
+                <td><span class="chip">Jaquar / Grohe / Toto</span> luxury series</td>
               </tr>
               <tr><th>Bathroom accessories</th>
-                <td>EWC, health faucet, wash basin, wall mixer/diverter &amp; overhead shower</td>
-                <td>EWC, health faucet, wash basin, wall mixer/diverter &amp; overhead shower</td>
-                <td>Premium EWC, health faucet, counter basin, concealed diverter &amp; overhead shower</td>
+                <td>EWC, health faucet, wash basin, wall mixer &amp; overhead shower</td>
+                <td>EWC, health faucet, wash basin, concealed diverter &amp; overhead shower</td>
+                <td>Premium wall-hung EWC, health faucet, counter basin, concealed diverter &amp; shower</td>
               </tr>
               <tr><th>Kitchen sink &amp; tap</th>
-                <td>SS sink up to &#8377;2,000; faucet/ring up to &#8377;1,500</td>
-                <td>SS sink up to &#8377;3,000; faucet/ring up to &#8377;2,500</td>
-                <td>SS / Carysil quartz sink up to &#8377;7,000; faucet/ring up to &#8377;4,500</td>
+                <td>Stainless steel sink + chrome faucet</td>
+                <td>Heavy-gauge SS sink + premium swan-neck faucet</td>
+                <td>SS / Carysil quartz composite sink + luxury mixer tap</td>
               </tr>
               <tr><th>Piping &amp; overhead tank</th>
                 <td>CPVC (Ashirwad/Supreme/Astral); 1,500L Ekon tank (6ft MS stand)</td>
@@ -1638,7 +1591,7 @@
                 <td>CPVC (Ashirwad/Supreme/Astral); 2,000L Sintex Black tank (6ft MS stand)</td>
               </tr>
               <tr><th>Solar / geyser / RWH</th>
-                <td>Lines to diverters/mixers only; RWH optional extra (+&#8377;30,000)</td>
+                <td>Lines to diverters/mixers only; RWH optional provision</td>
                 <td>Full solar &amp; geyser lines + sustainable RWH</td>
                 <td>Full solar &amp; geyser lines to all baths + complete RWH</td>
               </tr>
@@ -1678,9 +1631,9 @@
           <div class="table-wrap"><table class="spec">
             <thead><tr><th>Service &amp; protection</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
             <tbody>
-              <tr><th>Elevation budget allocation</th><td>0.25% of construction cost</td><td>0.50% of construction cost</td><td>1.00% of construction cost</td></tr>
-              <tr><th>Soil testing &amp; quality audit</th><td>Extra at actuals</td><td>Included (diagonally 2 points tested)</td><td>Included (diagonally 2 points tested)</td></tr>
-              <tr><th>Site supervision &amp; visits</th><td>Dedicated site staff (architect visit extra)</td><td>Dedicated site staff + regular architect site visits</td><td>Dedicated site staff + regular architect site visits</td></tr>
+              <tr><th>Elevation architectural design</th><td>Standard front 3D elevation</td><td>Enhanced contemporary 3D facade</td><td>Full 360&deg; luxury all-sides facade detailing</td></tr>
+              <tr><th>Soil testing &amp; quality audit</th><td>Available on request</td><td>Included (diagonally 2 points tested)</td><td>Included (diagonally 2 points tested)</td></tr>
+              <tr><th>Site supervision &amp; visits</th><td>Dedicated full-time site staff</td><td>Dedicated site staff + regular architect site visits</td><td>Dedicated site staff + regular architect site visits</td></tr>
               <tr><th>Comprehensive warranty</th><td>10 yrs structure, 5 yrs waterproofing</td><td>10 yrs structure, 5 yrs waterproofing</td><td>10 yrs structure, 5 yrs waterproofing</td></tr>
               <tr><th>Govt sanctions &amp; utility liaison</th><td colspan="3">Complete agency liaison support: permissions, licenses, sanction plan assistance, and facilitation for temporary &amp; permanent electricity, water supply, and sewage connections &mdash; included across all three packages.</td></tr>
             </tbody>
@@ -1691,15 +1644,15 @@
         <div class="spec-panel" id="panel-H">
           <p class="spec-panel-sub">Read alongside every package for a complete, no-surprise scope.</p>
           <ul class="guideline-list">
-            <li><b>Compound wall</b><p>Chargeable if total construction area is under 4,000 sq.ft, or for extra height.</p></li>
-            <li><b>Plinth &amp; sump</b><p>Floor height up to 18&Prime; from road level is included. Outside ramping and extra sump depth are charged separately.</p></li>
-            <li><b>Soil bearing capacity</b><p>Standard design is based on SBC &ge; 180 kN/m&sup2;. Additional structural design applies if SBC is below 180.</p></li>
-            <li><b>Bathroom ratio</b><p>1 bathroom per 500 sq.ft is included; additional bathrooms are charged on actual material &amp; labor.</p></li>
-            <li><b>Rainwater harvesting</b><p>Available as an optional provision at &#8377;30,000 extra where not already included by default in the package.</p></li>
-            <li><b>Interiors</b><p>Modular kitchens, wardrobes and false ceilings fall under specialized interior contracts.</p></li>
-            <li><b>Elevation extras</b><p>Specialized external wall cladding, dynamic facade lighting and landscaping are charged separately.</p></li>
+            <li><b>Compound wall</b><p>Customized boundary enclosure per site perimeter &amp; height requirements.</p></li>
+            <li><b>Plinth &amp; sump</b><p>Standard floor height up to 18&Prime; from road level is included. Extra sump capacity custom engineered per occupancy.</p></li>
+            <li><b>Soil bearing capacity</b><p>Standard engineering based on SBC &ge; 180 kN/m&sup2;. Specialized foundation engineering applied for loose soil conditions.</p></li>
+            <li><b>Bathroom ratio</b><p>1 bathroom per 500 sq.ft included; additional en-suite bathrooms customized on requirement.</p></li>
+            <li><b>Rainwater harvesting</b><p>Integrated recharge pits and filtration chambers included in Premium and Royale packages.</p></li>
+            <li><b>Interiors</b><p>Modular kitchens, wardrobes and false ceilings fall under specialized turnkey interior contracts.</p></li>
+            <li><b>Elevation extras</b><p>Specialized external wall cladding, dynamic facade lighting and landscaping customized on request.</p></li>
             <li><b>Electrical fittings</b><p>End-user fittings &mdash; bulbs, tubes, fans, decorative lights &mdash; are supplied by the client.</p></li>
-            <li><b>Logistics</b><p>Material double-shifting charges apply where site storage or access is constrained.</p></li>
+            <li><b>Logistics</b><p>Material logistics planned with dedicated site storage and access management.</p></li>
           </ul>
         </div>
       </div>
@@ -1707,11 +1660,12 @@
   </section>
 
   <!-- ENGINEERING & QA FRAMEWORK -->
-  <section class="section" id="quality">
+  <section class="section section--paper" id="quality">
     <div class="section-inner">
       <div class="section-head reveal">
         <div class="eyebrow"><span class="tag">05</span>Engineering &amp; quality assurance framework</div>
-        <h2 class="section-title">Professional design. 350+ checkpoints.<br>Sustainable architecture.</h2>
+        <h2 class="section-title">Professional Design. 350+ Checkpoints.<br><span class="accent-gold">Sustainable Architecture</span></h2>
+        <p class="section-sub">Comprehensive multi-disciplinary engineering ensuring structural safety, energy efficiency, and climate resilience.</p>
       </div>
 
       <p class="mono" style="text-transform:uppercase; letter-spacing:0.05em; font-size:0.78rem; color:var(--ink-faint); margin-bottom:1rem;">Multi-disciplinary design &amp; engineering team</p>
@@ -1744,11 +1698,12 @@
   </section>
 
   <!-- STAGE-GATE AUDITS -->
-  <section class="section" style="background:var(--paper-2);">
+  <section class="section section--paper-2" id="audits">
     <div class="section-inner">
       <div class="section-head reveal">
         <div class="eyebrow"><span class="tag">06</span>350+ rigorous stage-gate quality audits</div>
-        <h2 class="section-title">Quality is never inspected at the end&nbsp;&mdash; it's built in at every milestone</h2>
+        <h2 class="section-title">Quality Is Never Inspected At The End &mdash;<br><span class="accent-gold">It's Built In At Every Milestone</span></h2>
+        <p class="section-sub">Every stage is signed off through rigorous digital inspection checklists and independent third-party laboratory tests before work advances.</p>
       </div>
       <div class="stage-table-wrap table-wrap reveal">
         <table class="stage-table">
@@ -1874,11 +1829,12 @@
   </section>
 
   <!-- TECH-ENABLED VISIBILITY -->
-  <section class="section">
+  <section class="section section--paper" id="visibility">
     <div class="section-inner">
       <div class="section-head reveal">
         <div class="eyebrow"><span class="tag">07</span>Tech-enabled site visibility</div>
-        <h2 class="section-title">Stay 100% in the loop, from anywhere</h2>
+        <h2 class="section-title">Stay 100% In The Loop, <span class="accent-gold">From Anywhere</span></h2>
+        <p class="section-sub">Digital project tracking, live site streaming, and complete transparency directly from your smartphone.</p>
       </div>
       <div class="card-grid-4 reveal">
         <div class="info-card info-card--top"><h3>Real-time progress tracking</h3><p>Micro-level project scheduling mapped on Microsoft Project / Primavera. Track planned vs. actual milestones anytime.</p></div>
@@ -1887,25 +1843,26 @@
         <div class="info-card info-card--top"><h3>Daily photo &amp; work logs</h3><p>Automated daily end-of-day reports detailing tasks completed, material received, workforce headcount, and next-day plans.</p></div>
       </div>
 
-      <p class="mono" style="text-transform:uppercase; letter-spacing:0.05em; font-size:0.78rem; color:var(--ink-faint); margin:2.6rem 0 1rem;">Structured governance, cost certainty &amp; zero hidden charges</p>
+      <p class="mono" style="text-transform:uppercase; letter-spacing:0.05em; font-size:0.78rem; color:var(--ink-faint); margin:2.6rem 0 1rem;">Structured governance, scope certainty &amp; zero hidden surprises</p>
       <div class="table-wrap reveal"><table class="gov-table">
         <thead><tr><th>Governance pillar</th><th>Integra operating protocol</th><th>Customer protection</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Cost certainty (no escalation)</th><td>Itemized bill of quantities (BOQ) with fixed unit rates. Raw material price fluctuations during the project lifecycle are absorbed by Integra.</td><td class="protect">100% Locked Contract Price</td></tr>
+          <tr><th scope="row">Scope certainty (no escalation)</th><td>Itemized bill of quantities (BOQ) with fixed unit rates. Raw material price fluctuations during the project lifecycle are absorbed by Integra.</td><td class="protect">100% Locked Contract Scope</td></tr>
           <tr><th scope="row">Milestone-linked payments</th><td>Payments are strictly tied to verifiable physical site completion milestones &mdash; plinth, slab casting, blockwork, plaster, finishes.</td><td class="protect">Zero Advance Risk</td></tr>
-          <tr><th scope="row">Transparent change orders</th><td>Any client-requested material upgrade or structural variation is estimated in writing and approved before execution.</td><td class="protect">No Surprise Final Invoices</td></tr>
-          <tr><th scope="row">Structured monthly reviews</th><td>Formal monthly reviews with leadership: planned vs. completed analysis, cash-flow updates, material approvals, and forward schedules.</td><td class="protect">Full Visibility &amp; Founder Access</td></tr>
+          <tr><th scope="row">Transparent change orders</th><td>Any client-requested material upgrade or structural variation is estimated in writing and approved before execution.</td><td class="protect">No Surprise Variations</td></tr>
+          <tr><th scope="row">Structured monthly reviews</th><td>Formal monthly reviews with leadership: planned vs. completed analysis, milestone updates, material approvals, and forward schedules.</td><td class="protect">Full Visibility &amp; Founder Access</td></tr>
         </tbody>
       </table></div>
     </div>
   </section>
 
   <!-- BRANDED MATERIALS -->
-  <section class="section" style="background:var(--paper-2);">
+  <section class="section section--paper-2" id="materials">
     <div class="section-inner">
       <div class="section-head reveal">
         <div class="eyebrow"><span class="tag">08</span>100% branded materials policy</div>
-        <h2 class="section-title">Zero local shortcuts &mdash; every material is Tier-1, brand-verified</h2>
+        <h2 class="section-title">Zero Local Shortcuts &mdash; <span class="accent-gold">Every Material Is Tier-1 Verified</span></h2>
+        <p class="section-sub">We build solely with factory-direct, authenticated products from India's leading manufacturers.</p>
       </div>
 
       <div class="brand-marquee-strip reveal">
@@ -2123,7 +2080,7 @@
           <span class="assure">100% factory-sealed original tint containers</span>
         </div>
       </div>
-<div class="card-grid-4 reveal" style="margin-top:2rem;">
+      <div class="card-grid-4 reveal" style="margin-top:2rem;">
         <div class="info-card"><h3>Factory invoices</h3><p>Direct manufacturer supply with verified batch test reports.</p></div>
         <div class="info-card"><h3>QR barcode verification</h3><p>On-site authenticity scanning for steel, wire &amp; paint supplies.</p></div>
         <div class="info-card"><h3>Anti-corrosion primers</h3><p>High-grade epoxy coating on exposed structural brackets.</p></div>
@@ -2137,11 +2094,12 @@
   </section>
 
   <!-- CONSTRUCTORS NOT PLATFORM -->
-  <section class="section">
+  <section class="section section--paper" id="comparison">
     <div class="section-inner">
       <div class="section-head reveal">
         <div class="eyebrow"><span class="tag">09</span>We are constructors, not a platform company</div>
-        <h2 class="section-title">What sets Integra apart</h2>
+        <h2 class="section-title">What Sets <span class="accent-gold">Integra Apart</span></h2>
+        <p class="section-sub">Understand the key engineering and accountability differences between Integra, unorganized local contractors, and online lead brokers.</p>
       </div>
       <div class="vs-table-wrap table-wrap reveal"><table class="vs-table">
         <thead><tr><th>Parameter</th><th>Local unorganized contractors</th><th>Online middleman platforms</th><th>Integra turnkey model</th></tr></thead>
@@ -2252,11 +2210,12 @@
   </section>
 
   <!-- HANDOVER -->
-  <section class="section" style="background:var(--paper-2);">
+  <section class="section section--paper-2" id="handover">
     <div class="section-inner">
       <div class="section-head reveal">
         <div class="eyebrow"><span class="tag">10</span>Documented handover &amp; the 10 customer promises</div>
-        <h2 class="section-title">When you receive the keys, you receive the dossier</h2>
+        <h2 class="section-title">When You Receive The Keys, <span class="accent-gold">You Receive The Dossier</span></h2>
+        <p class="section-sub">Complete as-built drawings, lab test certificates, and legal warranty documents delivered in a comprehensive handover package.</p>
       </div>
       <div class="handover-grid reveal">
         <div class="handover-card dossier">
@@ -2284,11 +2243,11 @@
   </section>
 
   <!-- WARRANTIES -->
-  <section class="section" id="warranty">
+  <section class="section section--paper" id="warranty">
     <div class="section-inner section-inner--narrow">
       <div class="section-head reveal">
         <div class="eyebrow"><span class="tag">11</span>Warranties &amp; guarantees</div>
-        <h2 class="section-title">Every commitment is written into your contract</h2>
+        <h2 class="section-title">Every Commitment Is <span class="accent-gold">Written Into Your Contract</span></h2>
         <p class="section-sub">Not left to a verbal promise.</p>
       </div>
       <div class="stat-strip reveal">
@@ -2309,148 +2268,55 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  
-  <!-- ---------- Interactive Get Quote Section ---------- -->
-  <section class="quote-section" id="quote">
-    <div class="section-inner">
-      <div class="section-head reveal">
-        <div class="eyebrow"><span class="tag">09</span>Instant Cost Estimator</div>
-        <h2 class="section-title" style="color:#ffffff;">Get an instant transparent estimate for your dream home</h2>
-        <p style="color:var(--on-navy-soft);max-width:55ch;margin-top:0.6rem;">Calculate your turnkey construction cost with zero hidden fees. Includes architectural 2D/3D layouts, structural engineering, branded materials, and 10-year warranty.</p>
-      </div>
-
-      <div class="quote-box reveal">
-        <div class="quote-calculator">
-          <div class="calc-field">
-            <label>
-              <span>Built-up Construction Area</span>
-              <span id="areaDisplay" style="font-size:1.1rem;font-weight:700;color:#fff;font-family:'IBM Plex Mono',monospace;">2,200 sq.ft</span>
-            </label>
-            <input type="range" min="800" max="8000" step="50" value="2200" id="areaSlider" class="calc-slider" oninput="calculateEstimate()">
-            <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748b;margin-top:0.3rem;">
-              <span>800 sq.ft</span>
-              <span>4,000 sq.ft</span>
-              <span>8,000 sq.ft</span>
-            </div>
-          </div>
-
-          <div class="calc-field">
-            <label><span>Select Construction Package</span></label>
-            <div class="calc-btn-group">
-              <div class="calc-pkg-btn" onclick="selectPackage('basic', 1750, this)">
-                <b>Basic</b>
-                <span>₹1,750 / sq.ft</span>
-              </div>
-              <div class="calc-pkg-btn active" onclick="selectPackage('premium', 2150, this)">
-                <b>Premium</b>
-                <span>₹2,150 / sq.ft</span>
-              </div>
-              <div class="calc-pkg-btn" onclick="selectPackage('royale', 2650, this)">
-                <b>Royale</b>
-                <span>₹2,650 / sq.ft</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="calc-field">
-            <label><span>Building Configuration</span></label>
-            <div class="calc-btn-group">
-              <div class="calc-pkg-btn" onclick="selectFloors(1, this)">
-                <b>Ground Only</b>
-                <span>Single Floor (G)</span>
-              </div>
-              <div class="calc-pkg-btn active" onclick="selectFloors(2, this)">
-                <b>G + 1 Floor</b>
-                <span>Duplex Villa</span>
-              </div>
-              <div class="calc-pkg-btn" onclick="selectFloors(3, this)">
-                <b>G + 2 Floors</b>
-                <span>Triplex / Multi-unit</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="quote-summary-card">
-          <div>
-            <div style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-2);font-weight:700;">Estimated Turnkey Investment</div>
-            <div class="quote-price-tag" id="totalEstimatePrice">₹47,30,000</div>
-            <div style="font-size:0.78rem;color:#94a3b8;">*Firm fixed-price BOQ. Zero price escalation during construction.</div>
-
-            <div class="quote-breakdown">
-              <div class="breakdown-row"><span>Structural RCC &amp; Masonry:</span> <b id="rccEstimate">₹23,65,000</b></div>
-              <div class="breakdown-row"><span>Finishing, Tiles &amp; CP/Sanitary:</span> <b id="finishEstimate">₹16,55,500</b></div>
-              <div class="breakdown-row"><span>Electrical &amp; Plumbing:</span> <b id="mepEstimate">₹7,09,500</b></div>
-              <div class="breakdown-row"><span>Architectural 2D/3D &amp; QA:</span> <b style="color:#22c55e;">INCLUDED (FREE)</b></div>
-              <div class="breakdown-row total"><span>Estimated Timeline:</span> <b id="estTimeline">6 - 8 Months</b></div>
-            </div>
-          </div>
-
-          <div style="margin-top:1.5rem;">
-            <input type="tel" id="userPhone" placeholder="Enter Mobile Number for Detailed BOQ" class="quote-form-input" style="background:#0f172a;border-color:rgba(217,154,68,0.4);">
-            <button class="btn btn-primary" onclick="submitDetailedQuote()" style="width:100%;justify-content:center;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;padding:0.9rem;border-radius:4px;cursor:pointer;">
-              Request Detailed BOQ &amp; Site Inspection
-            </button>
-            <div id="quoteSuccessMsg" style="display:none;color:#22c55e;font-size:0.85rem;font-weight:600;text-align:center;margin-top:0.6rem;">
-              Thank you! Our senior engineer will share the itemized BOQ within 30 minutes. Our senior engineer will share the itemized BOQ within 30 minutes.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- Modal Popup for Instant Quotes ---------- -->
-  <div class="modal-overlay" id="quoteModalOverlay" onclick="closeQuoteModal(event)">
+  <!-- ---------- Modal Popup for Architectural Consultation & BOQ ---------- -->
+  <div class="modal-overlay" id="consultModalOverlay" onclick="closeConsultModal(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
-      <button class="modal-close-btn" onclick="closeQuoteModal()" aria-label="Close modal">&times;</button>
+      <button class="modal-close-btn" onclick="closeConsultModal()" aria-label="Close modal">&times;</button>
       <div style="text-align:center;margin-bottom:1.5rem;">
-        <div style="font-family:'IBM Plex Mono',monospace;color:var(--accent-2);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;">Integra Homes Quote Desk</div>
-        <h3 style="font-size:1.7rem;color:#fff;margin:0.3rem 0;">Get Your Guaranteed Construction Quote</h3>
-        <p style="color:#94a3b8;font-size:0.88rem;">Itemized BOQ with brand-by-brand specifications &amp; 10-year warranty.</p>
+        <div style="font-family:'IBM Plex Mono',monospace;color:var(--accent-2);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;">Integra Homes &middot; Engineering Desk</div>
+        <h3 style="font-size:1.7rem;color:#fff;margin:0.3rem 0;">Request Architectural Consultation &amp; BOQ</h3>
+        <p style="color:#94a3b8;font-size:0.88rem;">Speak directly with our chartered structural engineers &amp; architects.</p>
       </div>
 
       <div class="modal-form-grid">
         <div>
           <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">YOUR FULL NAME</label>
-          <input type="text" id="modalName" placeholder="e.g. Rahul Sharma" class="quote-form-input">
+          <input type="text" id="modalName" placeholder="e.g. Rahul Sharma" class="modal-input">
         </div>
         <div>
           <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">PHONE NUMBER</label>
-          <input type="tel" id="modalPhone" placeholder="e.g. +91 8668463204" class="quote-form-input">
+          <input type="tel" id="modalPhone" placeholder="e.g. +91 8668463204" class="modal-input">
         </div>
       </div>
 
       <div class="modal-form-grid">
         <div>
           <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">ESTIMATED PLOT / BUILT-UP AREA (SQ.FT)</label>
-          <input type="number" id="modalArea" placeholder="e.g. 2000" value="2000" class="quote-form-input">
+          <input type="number" id="modalArea" placeholder="e.g. 2000" value="2000" class="modal-input">
         </div>
         <div>
           <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">DESIRED PACKAGE</label>
-          <select id="modalPkg" class="quote-form-input" style="background:#1e293b;">
-            <option value="Basic">Basic (₹1,750 / sq.ft)</option>
-            <option value="Premium" selected>Premium (₹2,150 / sq.ft)</option>
-            <option value="Royale">Royale Luxury (₹2,650 / sq.ft)</option>
+          <select id="modalPkg" class="modal-input" style="background:#1e293b;">
+            <option value="Basic">Basic Package</option>
+            <option value="Premium" selected>Premium Package (Most Popular)</option>
+            <option value="Royale">Royale Luxury Package</option>
           </select>
         </div>
       </div>
 
-      <div style="margin-bottom:1.2rem;">
+      <div style="margin-bottom:1.3rem;">
         <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">PLOT LOCATION / CITY</label>
-        <input type="text" id="modalLocation" placeholder="e.g. Baner, Pune / PCMC" class="quote-form-input">
+        <input type="text" id="modalLocation" placeholder="e.g. Baner, Pune / PCMC" class="modal-input">
       </div>
 
-      <button class="btn btn-primary" onclick="submitModalQuote()" style="width:100%;justify-content:center;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;padding:0.95rem;font-size:1rem;border-radius:4px;cursor:pointer;">
-        Send Me Itemized BOQ &amp; Schedule Site Visit
+      <button class="btn btn-primary" onclick="submitModalConsult()" style="width:100%;justify-content:center;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;padding:0.95rem;font-size:1rem;border-radius:4px;cursor:pointer;">
+        Book Engineering Consultation &amp; Site Visit
       </button>
       <div id="modalSuccessMsg" style="display:none;color:#22c55e;font-size:0.9rem;font-weight:600;text-align:center;margin-top:0.8rem;">
-        Request Received! Our engineering lead will contact you with the complete project estimate.
+        Request Received! Our engineering lead will contact you within 30 minutes to schedule your consultation.
       </div>
     </div>
   </div>
-
 
   <section class="final-cta">
     <div style="display:flex;justify-content:center;margin-bottom:1.2rem;">
@@ -2537,90 +2403,32 @@
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
   }
 
-  // Quote Calculator Logic
-  var currentPkgRate = 2150;
-  var currentFloors = 2;
-
-  function selectPackage(pkg, rate, el){
-    currentPkgRate = rate;
-    document.querySelectorAll('.calc-pkg-btn').forEach(function(b){
-      if(b.parentNode === el.parentNode) b.classList.remove('active');
-    });
-    el.classList.add('active');
-    calculateEstimate();
-  }
-
-  function selectFloors(floors, el){
-    currentFloors = floors;
-    document.querySelectorAll('.calc-pkg-btn').forEach(function(b){
-      if(b.parentNode === el.parentNode) b.classList.remove('active');
-    });
-    el.classList.add('active');
-    calculateEstimate();
-  }
-
-  function calculateEstimate(){
-    var area = parseInt(document.getElementById('areaSlider').value, 10);
-    document.getElementById('areaDisplay').textContent = area.toLocaleString('en-IN') + ' sq.ft';
-    
-    var totalPrice = area * currentPkgRate;
-    var rcc = Math.round(totalPrice * 0.50);
-    var finish = Math.round(totalPrice * 0.35);
-    var mep = Math.round(totalPrice * 0.15);
-
-    document.getElementById('totalEstimatePrice').textContent = '₹ ' + totalPrice.toLocaleString('en-IN');
-    document.getElementById('rccEstimate').textContent = '₹ ' + rcc.toLocaleString('en-IN');
-    document.getElementById('finishEstimate').textContent = '₹ ' + finish.toLocaleString('en-IN');
-    document.getElementById('mepEstimate').textContent = '₹ ' + mep.toLocaleString('en-IN');
-
-    // Base timeline for Ground Floor (1 Floor)
-    var baseMin = area <= 1800 ? 4 : area <= 3500 ? 5 : 7;
-    var baseMax = baseMin + 2;
-    // Each additional floor adds +2 months to the delivery timeline
-    var floorAddedMonths = (currentFloors - 1) * 2;
-    var minTimeline = baseMin + floorAddedMonths;
-    var maxTimeline = baseMax + floorAddedMonths;
-
-    document.getElementById('estTimeline').textContent = minTimeline + ' - ' + maxTimeline + ' Months';
-  }
-
-  function submitDetailedQuote(){
-    var phone = document.getElementById('userPhone').value.trim();
-    if(!phone){
-      alert('Please enter your mobile number to receive the detailed BOQ.');
-      return;
-    }
-    document.getElementById('quoteSuccessMsg').style.display = 'block';
-  }
-
-  function openQuoteModal(){
-    document.getElementById('quoteModalOverlay').classList.add('active');
+  // Consultation Modal Logic
+  function openConsultModal(){
+    document.getElementById('consultModalOverlay').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
-  function closeQuoteModal(e){
-    if(!e || e.target === document.getElementById('quoteModalOverlay') || e.target.classList.contains('modal-close-btn')){
-      document.getElementById('quoteModalOverlay').classList.remove('active');
+  function closeConsultModal(e){
+    if(!e || e.target === document.getElementById('consultModalOverlay') || e.target.classList.contains('modal-close-btn')){
+      document.getElementById('consultModalOverlay').classList.remove('active');
       document.body.style.overflow = '';
     }
   }
 
-  function submitModalQuote(){
+  function submitModalConsult(){
     var name = document.getElementById('modalName').value.trim();
     var phone = document.getElementById('modalPhone').value.trim();
     if(!phone){
-      alert('Please enter your contact number.');
+      alert('Please enter your contact phone number.');
       return;
     }
     document.getElementById('modalSuccessMsg').style.display = 'block';
     setTimeout(function(){
-      closeQuoteModal();
+      closeConsultModal();
       document.getElementById('modalSuccessMsg').style.display = 'none';
     }, 2800);
   }
-
-  // Initialize calculation on load
-  calculateEstimate();
 
   // Mobile Comparison Switcher (Problem Section)
   function showMobileCompare(type, btn){
