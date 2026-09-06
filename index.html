@@ -471,33 +471,139 @@
   .tier-foot{ margin-top:1.6rem; padding-top:1.2rem; border-top:1px solid var(--line); font-size:0.78rem; color:var(--ink-faint); font-family:"IBM Plex Mono",monospace; text-transform:uppercase; letter-spacing:0.05em; }
   .tier-card.featured .tier-foot{ border-color:rgba(238,241,240,0.18); color:var(--on-navy-soft); }
 
-  /* ---------- spec tabs ---------- */
-  .spec-tabs{ display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.8rem; }
-  @media (max-width:860px){
-    .spec-tabs{
-      flex-wrap:nowrap !important;
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
-      padding-bottom:0.75rem;
-      scrollbar-width:none;
-      margin-bottom:1.2rem;
-    }
-    .spec-tabs::-webkit-scrollbar{ display:none; }
-    .spec-tab{
-      flex-shrink:0;
-      white-space:nowrap;
-      padding:0.5rem 0.85rem;
-      font-size:0.74rem;
+  /* ---------- luxury architectural spec tabs ---------- */
+  .spec-tabs-wrap {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.75rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+  :root[data-theme="dark"] .spec-tabs-wrap {
+    background: #111824;
+    border-color: rgba(238,241,240,0.08);
+  }
+  .spec-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 0;
+  }
+  @media (max-width: 1100px) and (min-width: 861px) {
+    .spec-tabs {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
-  .spec-tab{
-    font-family:"IBM Plex Mono",monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em;
-    padding:0.55rem 0.95rem; border:1px solid var(--line-strong); border-radius:3px; background:transparent; color:var(--ink-soft);
-    cursor:pointer; display:flex; gap:0.5rem; align-items:center;
+  .spec-tab {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: left;
+    font-family: "IBM Plex Sans", sans-serif;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
   }
-  .spec-tab b{ display:inline-flex; align-items:center; justify-content:center; width:1.3rem; height:1.3rem; border-radius:2px; background:var(--paper-2); font-size:0.7rem; color:var(--ink); }
-  .spec-tab.active{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
-  .spec-tab.active b{ background:var(--accent); color:#1a1305; }
+  .spec-tab:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  }
+  :root[data-theme="dark"] .spec-tab {
+    background: #161e2e;
+    border-color: rgba(238,241,240,0.1);
+  }
+  .spec-tab-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 6px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--ink);
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+  }
+  :root[data-theme="dark"] .spec-tab-badge {
+    background: #111824;
+    border-color: rgba(238,241,240,0.12);
+    color: #e2e8f0;
+  }
+  .spec-tab-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+  .spec-tab-title {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+  .spec-tab-sub {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.65rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.2s ease;
+  }
+
+  /* Active State */
+  .spec-tab.active {
+    background: var(--navy);
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px rgba(217, 154, 68, 0.28);
+    transform: translateY(-2px);
+  }
+  :root[data-theme="dark"] .spec-tab.active {
+    background: linear-gradient(135deg, #1b263b 0%, #101726 100%);
+    border-color: var(--accent);
+    box-shadow: 0 6px 22px rgba(245, 166, 35, 0.35);
+  }
+  .spec-tab.active .spec-tab-badge {
+    background: linear-gradient(135deg, #f5a623 0%, #d99a44 100%);
+    color: #101726;
+    border-color: #f5a623;
+    font-weight: 800;
+    box-shadow: 0 2px 8px rgba(245, 166, 35, 0.3);
+  }
+  .spec-tab.active .spec-tab-title {
+    color: #ffffff;
+  }
+  .spec-tab.active .spec-tab-sub {
+    color: var(--accent-2);
+    font-weight: 600;
+  }
+  .spec-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 12%;
+    right: 12%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    border-radius: 2px;
+  }
 
   .spec-panel{ display:none; }
   .spec-panel.active{ display:block; }
@@ -1588,15 +1694,65 @@
 
       <!-- DESKTOP SPEC SHEETS (Visible >= 860px) -->
       <div class="specs-desktop-wrap">
-        <div class="spec-tabs reveal" role="tablist" aria-label="Specification categories">
-          <button class="spec-tab active" data-tab="A" role="tab" aria-selected="true"><b>A</b>Design &amp; Structural</button>
-          <button class="spec-tab" data-tab="B" role="tab" aria-selected="false"><b>B</b>Core Civil &amp; Materials</button>
-          <button class="spec-tab" data-tab="C" role="tab" aria-selected="false"><b>C</b>Flooring &amp; Stone</button>
-          <button class="spec-tab" data-tab="D" role="tab" aria-selected="false"><b>D</b>Doors &amp; Windows</button>
-          <button class="spec-tab" data-tab="E" role="tab" aria-selected="false"><b>E</b>Plumbing &amp; Kitchen</button>
-          <button class="spec-tab" data-tab="F" role="tab" aria-selected="false"><b>F</b>Electrical &amp; Paint</button>
-          <button class="spec-tab" data-tab="G" role="tab" aria-selected="false"><b>G</b>Budget &amp; Audits</button>
-          <button class="spec-tab" data-tab="H" role="tab" aria-selected="false"><b>H</b>Guidelines</button>
+        <div class="spec-tabs-wrap reveal">
+          <div class="spec-tabs" role="tablist" aria-label="Specification categories">
+            <button class="spec-tab active" data-tab="A" role="tab" aria-selected="true">
+              <span class="spec-tab-badge">A</span>
+              <span class="spec-tab-info">
+                <span class="spec-tab-title">Design &amp; 3D</span>
+                <span class="spec-tab-sub">Architectural &bull; MEP</span>
+              </span>
+            </button>
+            <button class="spec-tab" data-tab="B" role="tab" aria-selected="false">
+              <span class="spec-tab-badge">B</span>
+              <span class="spec-tab-info">
+                <span class="spec-tab-title">Core Civil</span>
+                <span class="spec-tab-sub">Steel &bull; Cement &bull; RMC</span>
+              </span>
+            </button>
+            <button class="spec-tab" data-tab="C" role="tab" aria-selected="false">
+              <span class="spec-tab-badge">C</span>
+              <span class="spec-tab-info">
+                <span class="spec-tab-title">Flooring &amp; Stone</span>
+                <span class="spec-tab-sub">Granite &bull; Tiles</span>
+              </span>
+            </button>
+            <button class="spec-tab" data-tab="D" role="tab" aria-selected="false">
+              <span class="spec-tab-badge">D</span>
+              <span class="spec-tab-info">
+                <span class="spec-tab-title">Doors &amp; Windows</span>
+                <span class="spec-tab-sub">Teak &bull; UPVC &bull; Glass</span>
+              </span>
+            </button>
+            <button class="spec-tab" data-tab="E" role="tab" aria-selected="false">
+              <span class="spec-tab-badge">E</span>
+              <span class="spec-tab-info">
+                <span class="spec-tab-title">Plumbing &amp; Sanitary</span>
+                <span class="spec-tab-sub">CP Fittings &bull; Sump</span>
+              </span>
+            </button>
+            <button class="spec-tab" data-tab="F" role="tab" aria-selected="false">
+              <span class="spec-tab-badge">F</span>
+              <span class="spec-tab-info">
+                <span class="spec-tab-title">Electrical &amp; Paint</span>
+                <span class="spec-tab-sub">Wiring &bull; Emulsions</span>
+              </span>
+            </button>
+            <button class="spec-tab" data-tab="G" role="tab" aria-selected="false">
+              <span class="spec-tab-badge">G</span>
+              <span class="spec-tab-info">
+                <span class="spec-tab-title">Protection &amp; Audits</span>
+                <span class="spec-tab-sub">Warranty &bull; Tests</span>
+              </span>
+            </button>
+            <button class="spec-tab" data-tab="H" role="tab" aria-selected="false">
+              <span class="spec-tab-badge">H</span>
+              <span class="spec-tab-info">
+                <span class="spec-tab-title">Guidelines</span>
+                <span class="spec-tab-sub">Site Scope &bull; Notes</span>
+              </span>
+            </button>
+          </div>
         </div>
 
         <div class="reveal">
