@@ -1,60 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="100%" height="100%" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 280" width="100%" height="100%" fill="none">
   <defs>
     <linearGradient id="integraGoldBrand" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ea9e32"/>
       <stop offset="100%" stop-color="#d48a20"/>
     </linearGradient>
     <linearGradient id="silverGlint" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.2"/>
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.3"/>
     </linearGradient>
   </defs>
 
-  <!-- 3 Golden Architectural Pillars on Left -->
-  <rect x="42" y="125" width="15" height="135" rx="2" fill="url(#integraGoldBrand)"/>
-  <rect x="66" y="90" width="15" height="170" rx="2" fill="url(#integraGoldBrand)"/>
-  <rect x="90" y="55" width="15" height="205" rx="2" fill="url(#integraGoldBrand)"/>
+  <!-- 3 Golden Architectural Pillars on Far Left -->
+  <rect x="22" y="115" width="13" height="135" rx="1.5" fill="url(#integraGoldBrand)"/>
+  <rect x="43" y="82" width="13" height="168" rx="1.5" fill="url(#integraGoldBrand)"/>
+  <rect x="64" y="50" width="13" height="200" rx="1.5" fill="url(#integraGoldBrand)"/>
 
   <!-- Architectural House Gable Roof Outline -->
-  <path d="M106 100 L215 18 L320 100 L320 116" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M78 92 L182 14 L282 92 L282 106" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- 4-Pane Amber Window (2x2 Grid) Under Gable Peak -->
+  <!-- 4-Pane Amber Window (2x2 Grid) -->
   <g fill="url(#integraGoldBrand)">
-    <rect x="188" y="48" width="22" height="22" rx="2.5"/>
-    <rect x="220" y="48" width="22" height="22" rx="2.5"/>
-    <rect x="188" y="80" width="22" height="22" rx="2.5"/>
-    <rect x="220" y="80" width="22" height="22" rx="2.5"/>
+    <rect x="156" y="44" width="20" height="20" rx="2"/>
+    <rect x="186" y="44" width="20" height="20" rx="2"/>
+    <rect x="156" y="74" width="20" height="20" rx="2"/>
+    <rect x="186" y="74" width="20" height="20" rx="2"/>
   </g>
 
-  <!-- Brand Typography: integra -->
-  <!-- i (shares left pillar alignment under roof) -->
-  <path d="M125 106 V260" stroke="#ffffff" stroke-width="16" stroke-linecap="square"/>
+  <!-- Wordmark: integra -->
+  <!-- i -->
+  <path d="M96 98 V250" stroke="#ffffff" stroke-width="15" stroke-linecap="square"/>
 
   <!-- n -->
-  <path d="M182 260 V180 C182 150 202 136 226 136 C250 136 268 150 268 180 V260" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M182 165 V260" stroke="#ffffff" stroke-width="16" stroke-linecap="square"/>
+  <path d="M152 250 V172 C152 144 170 130 194 130 C218 130 234 144 234 172 V250" stroke="#ffffff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M152 160 V250" stroke="#ffffff" stroke-width="15" stroke-linecap="square"/>
 
   <!-- t -->
-  <path d="M312 95 V242 C312 254 320 260 334 260" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M294 138 H338" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
+  <path d="M276 90 V232 C276 244 284 250 298 250" stroke="#ffffff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M258 132 H302" stroke="#ffffff" stroke-width="15" stroke-linecap="round"/>
 
   <!-- e -->
-  <path d="M374 184 H448 C448 154 430 136 408 136 C382 136 364 160 364 198 C364 236 384 260 412 260 C432 260 445 250 450 238" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M336 176 H408 C408 148 390 130 368 130 C344 130 326 152 326 190 C326 226 346 250 372 250 C392 250 405 240 410 228" stroke="#ffffff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- g -->
-  <circle cx="500" cy="180" r="38" stroke="#ffffff" stroke-width="16"/>
-  <path d="M538 142 V244 C538 274 518 288 488 288 C465 288 454 274 450 268" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="458" cy="172" r="36" stroke="#ffffff" stroke-width="15"/>
+  <path d="M494 136 V234 C494 262 476 276 448 276 C426 276 414 264 410 258" stroke="#ffffff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- r -->
-  <path d="M580 260 V142" stroke="#ffffff" stroke-width="16" stroke-linecap="square"/>
-  <path d="M580 172 C590 148 614 138 636 142" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
+  <path d="M536 250 V136" stroke="#ffffff" stroke-width="15" stroke-linecap="square"/>
+  <path d="M536 166 C546 142 568 132 590 136" stroke="#ffffff" stroke-width="15" stroke-linecap="round"/>
 
   <!-- a -->
-  <circle cx="692" cy="198" r="38" stroke="#ffffff" stroke-width="16"/>
-  <path d="M730 142 V260" stroke="#ffffff" stroke-width="16" stroke-linecap="square"/>
+  <circle cx="642" cy="190" r="36" stroke="#ffffff" stroke-width="15"/>
+  <path d="M678 136 V250" stroke="#ffffff" stroke-width="15" stroke-linecap="square"/>
 
-  <!-- Signature Amber Peel / Accent on 'a' -->
-  <polygon points="726,238 766,278 752,292 718,252" fill="url(#integraGoldBrand)"/>
-  <!-- Glint / Highlight on accent edge -->
-  <polygon points="752,292 766,278 760,272 746,286" fill="url(#silverGlint)"/>
+  <!-- Signature Golden Diagonal Accent on 'a' -->
+  <polygon points="674,228 712,266 698,280 666,242" fill="url(#integraGoldBrand)"/>
+  <polygon points="698,280 712,266 706,260 692,274" fill="url(#silverGlint)"/>
 </svg>
