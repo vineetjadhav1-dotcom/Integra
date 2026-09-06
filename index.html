@@ -328,8 +328,74 @@
   .badge-cell span{ font-size:0.68rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--on-navy-soft); }
 
   /* ---------- package tiers ---------- */
+  .mobile-tier-nav{ display:none; }
+  .tier-dots{ display:none; }
+  .mobile-compare-nav{ display:none; }
+  .table-hint-swipe{ display:none; }
+  .table-tier-filter{ display:none; }
+
   .tier-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
-  @media (max-width:900px){ .tier-grid{ grid-template-columns:1fr; } }
+  @media (max-width:860px){
+    .mobile-tier-nav{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:0.4rem;
+      margin-bottom:1.2rem;
+      background:var(--paper-2);
+      padding:0.35rem;
+      border-radius:8px;
+      border:1px solid var(--line);
+    }
+    .mobile-tier-btn{
+      background:transparent;
+      border:none;
+      color:var(--ink-soft);
+      padding:0.65rem 0.25rem;
+      font-size:0.75rem;
+      font-weight:700;
+      border-radius:5px;
+      cursor:pointer;
+      text-align:center;
+      transition:all 0.2s ease;
+      font-family:"IBM Plex Sans",sans-serif;
+    }
+    .mobile-tier-btn.active{
+      background:var(--accent);
+      color:#121820;
+      box-shadow:0 2px 8px rgba(0,0,0,0.15);
+    }
+    .tier-grid{
+      display:flex !important;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      gap:1rem;
+      padding:0.4rem 0.2rem 0.8rem;
+      scrollbar-width:none;
+    }
+    .tier-grid::-webkit-scrollbar{ display:none; }
+    .tier-card{
+      flex:0 0 100% !important;
+      min-width:100% !important;
+      box-sizing:border-box;
+      scroll-snap-align:center;
+      margin:0 !important;
+      transform:none !important;
+    }
+    .tier-dots{
+      display:flex;
+      justify-content:center;
+      gap:0.5rem;
+      margin:0.6rem 0 1rem;
+    }
+    .tier-dot{
+      width:8px; height:8px; border-radius:50%; background:var(--line-strong); transition:all 0.25s ease; cursor:pointer;
+    }
+    .tier-dot.active{
+      background:var(--accent); width:22px; border-radius:10px;
+    }
+  }
+
   .tier-card{
     border:1px solid var(--line); border-radius:8px; padding:1.9rem 1.7rem;
     background:var(--card); display:flex; flex-direction:column; position:relative;
@@ -339,7 +405,6 @@
     transform:translateY(-0.6rem);
     box-shadow:var(--shadow);
   }
-  @media (max-width:900px){ .tier-card.featured{ transform:none; } }
   .tier-flag{
     font-family:"IBM Plex Mono",monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
     color:var(--accent); margin-bottom:0.6rem;
@@ -357,6 +422,23 @@
 
   /* ---------- spec tabs ---------- */
   .spec-tabs{ display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.8rem; }
+  @media (max-width:860px){
+    .spec-tabs{
+      flex-wrap:nowrap !important;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      padding-bottom:0.75rem;
+      scrollbar-width:none;
+      margin-bottom:1.2rem;
+    }
+    .spec-tabs::-webkit-scrollbar{ display:none; }
+    .spec-tab{
+      flex-shrink:0;
+      white-space:nowrap;
+      padding:0.5rem 0.85rem;
+      font-size:0.74rem;
+    }
+  }
   .spec-tab{
     font-family:"IBM Plex Mono",monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em;
     padding:0.55rem 0.95rem; border:1px solid var(--line-strong); border-radius:3px; background:transparent; color:var(--ink-soft);
@@ -371,7 +453,7 @@
   .spec-panel-title{ font-size:1.3rem; margin-bottom:0.3rem; text-transform:none; font-family:"IBM Plex Sans",sans-serif; font-weight:700; }
   .spec-panel-sub{ color:var(--ink-faint); font-size:0.85rem; margin-bottom:1.4rem; }
 
-  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:6px; }
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:6px; -webkit-overflow-scrolling:touch; }
   table.spec{ width:100%; border-collapse:collapse; min-width:640px; }
   table.spec caption{ display:none; }
   table.spec th, table.spec td{ text-align:left; padding:0.85rem 1.1rem; vertical-align:top; font-size:0.86rem; border-bottom:1px solid var(--line); }
@@ -385,6 +467,100 @@
   table.spec td .line{ display:block; }
   table.spec td .line + .line{ margin-top:0.25rem; color:var(--ink-faint); font-size:0.82rem; }
   table.spec td .chip-line{ display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:0.3rem; }
+
+  @media (max-width:860px){
+    .table-hint-swipe{
+      display:flex !important;
+      align-items:center;
+      justify-content:space-between;
+      font-size:0.72rem;
+      color:var(--accent);
+      font-family:"IBM Plex Mono",monospace;
+      margin-bottom:0.6rem;
+      font-weight:600;
+      letter-spacing:0.04em;
+    }
+    .table-tier-filter{
+      display:flex;
+      align-items:center;
+      gap:0.35rem;
+      margin-bottom:0.8rem;
+      overflow-x:auto;
+      white-space:nowrap;
+    }
+    .tier-col-btn{
+      padding:0.32rem 0.65rem;
+      border-radius:4px;
+      font-size:0.74rem;
+      font-weight:700;
+      border:1px solid var(--line-strong);
+      background:var(--card);
+      color:var(--ink-soft);
+      cursor:pointer;
+      font-family:"IBM Plex Sans",sans-serif;
+    }
+    .tier-col-btn.active{
+      background:var(--accent);
+      color:#121820;
+      border-color:var(--accent);
+    }
+    table.spec th:first-child, table.spec tbody th{
+      position:sticky;
+      left:0;
+      z-index:2;
+      background:var(--paper-2);
+      box-shadow:2px 0 6px rgba(0,0,0,0.06);
+    }
+    :root[data-theme="dark"] table.spec tbody th{
+      background:#1a2334;
+    }
+    table.vs-table th[scope="row"]{
+      position:sticky;
+      left:0;
+      z-index:2;
+      background:var(--paper);
+    }
+  }
+
+  @media (max-width:760px){
+    .mobile-compare-nav{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0.4rem;
+      margin-bottom:1.2rem;
+      background:var(--paper-2);
+      padding:0.3rem;
+      border-radius:6px;
+      border:1px solid var(--line);
+    }
+    .mobile-comp-btn{
+      background:transparent;
+      border:none;
+      color:var(--ink-soft);
+      padding:0.6rem 0.3rem;
+      font-size:0.75rem;
+      font-weight:700;
+      border-radius:4px;
+      cursor:pointer;
+      text-align:center;
+      font-family:"IBM Plex Sans",sans-serif;
+      transition:all 0.2s ease;
+    }
+    .mobile-comp-btn.active{
+      background:var(--card);
+      color:var(--ink);
+      box-shadow:0 2px 8px rgba(0,0,0,0.12);
+    }
+    .compare-grid{
+      display:block !important;
+    }
+    .compare-card{
+      display:none;
+    }
+    .compare-card.active-mobile{
+      display:block !important;
+    }
+  }
 
   .chip{
     display:inline-flex; align-items:center; padding:0.15rem 0.55rem; border-radius:20px;
@@ -965,8 +1141,12 @@
         <h2 class="section-title">One accountable partner,<br>from concept to possession.</h2>
         <p class="section-sub">Most self-build journeys involve an architect, a contractor, and a dozen material vendors &mdash; each blaming the other the moment something goes wrong.</p>
       </div>
+      <div class="mobile-compare-nav">
+        <button class="mobile-comp-btn" onclick="showMobileCompare('bad', this)">❌ Traditional Model</button>
+        <button class="mobile-comp-btn active" onclick="showMobileCompare('good', this)">🛡️ Integra Turnkey</button>
+      </div>
       <div class="compare-grid reveal">
-        <div class="compare-card bad">
+        <div class="compare-card bad" id="compareBad">
           <div class="compare-title">Traditional broken model</div>
           <div class="compare-item">
             <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="color:var(--bad)"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -985,7 +1165,7 @@
             <p><b>Zero single accountability:</b> the homeowner is left running between ten different parties, stressed and exhausted.</p>
           </div>
         </div>
-        <div class="compare-card good">
+        <div class="compare-card good active-mobile" id="compareGood">
           <div class="compare-title">The Integra turnkey solution</div>
           <div class="compare-item">
             <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="color:var(--good)"><path d="M5 13l4 4L19 7"/></svg>
@@ -1054,8 +1234,13 @@
         <h2 class="section-title">Three engineered tiers &mdash; one accountable process</h2>
         <p class="section-sub">Every package is documented in full technical detail below, from structural steel grade to paint sheen, so you can compare exactly what you're paying for, brand by brand.</p>
       </div>
-      <div class="tier-grid reveal">
-        <div class="tier-card">
+      <div class="mobile-tier-nav">
+        <button class="mobile-tier-btn" onclick="showMobileTier(0, this)">Basic (₹1,750)</button>
+        <button class="mobile-tier-btn active" onclick="showMobileTier(1, this)">⭐ Premium (₹2,150)</button>
+        <button class="mobile-tier-btn" onclick="showMobileTier(2, this)">👑 Royale (₹2,650)</button>
+      </div>
+      <div class="tier-grid reveal" id="tierGrid">
+        <div class="tier-card" id="tierCard-0">
           <div class="tier-flag">Essential value</div>
           <h3 class="tier-name">Basic</h3>
           <ul class="tier-list">
@@ -1072,7 +1257,7 @@
           </ul>
           <div class="tier-foot">Sheet A&#8211;H &middot; Basic column</div>
         </div>
-        <div class="tier-card featured">
+        <div class="tier-card featured" id="tierCard-1">
           <div class="tier-flag">Most popular</div>
           <h3 class="tier-name">Premium</h3>
           <ul class="tier-list">
@@ -1087,7 +1272,7 @@
           </ul>
           <div class="tier-foot">Sheet A&#8211;H &middot; Premium column</div>
         </div>
-        <div class="tier-card">
+        <div class="tier-card" id="tierCard-2">
           <div class="tier-flag">Luxury elite</div>
           <h3 class="tier-name">Royale</h3>
           <ul class="tier-list">
@@ -1103,6 +1288,11 @@
           <div class="tier-foot">Sheet A&#8211;H &middot; Royale column</div>
         </div>
       </div>
+      <div class="tier-dots" id="tierDots">
+        <div class="tier-dot" onclick="showMobileTier(0)"></div>
+        <div class="tier-dot active" onclick="showMobileTier(1)"></div>
+        <div class="tier-dot" onclick="showMobileTier(2)"></div>
+      </div>
     </div>
   </section>
 
@@ -1113,6 +1303,18 @@
         <div class="eyebrow"><span class="tag">A&#8211;H</span>Engineering specification sheets</div>
         <h2 class="section-title">Compare exactly what you're paying for</h2>
         <p class="section-sub">Every package documented in full technical detail &mdash; from structural steel grade to paint sheen, brand by brand.</p>
+      </div>
+
+      <div class="table-hint-swipe">
+        <span>↔ Swipe horizontally to compare tiers</span>
+        <span>Sticky Feature Header</span>
+      </div>
+      <div class="table-tier-filter">
+        <span style="font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;margin-right:0.3rem;">Filter Column:</span>
+        <button class="tier-col-btn active" onclick="filterTableTier('all', this)">All Tiers</button>
+        <button class="tier-col-btn" onclick="filterTableTier('basic', this)">Basic</button>
+        <button class="tier-col-btn" onclick="filterTableTier('premium', this)">Premium</button>
+        <button class="tier-col-btn" onclick="filterTableTier('royale', this)">Royale</button>
       </div>
 
       <div class="spec-tabs reveal" role="tablist" aria-label="Specification categories">
@@ -2079,6 +2281,105 @@
   // Initialize calculation on load
   calculateEstimate();
 
+  // Mobile Comparison Switcher (Problem Section)
+  function showMobileCompare(type, btn){
+    document.querySelectorAll('.mobile-comp-btn').forEach(function(b){ b.classList.remove('active'); });
+    if(btn) btn.classList.add('active');
+    var badCard = document.getElementById('compareBad');
+    var goodCard = document.getElementById('compareGood');
+    if(type === 'bad'){
+      badCard.classList.add('active-mobile');
+      goodCard.classList.remove('active-mobile');
+    } else {
+      goodCard.classList.add('active-mobile');
+      badCard.classList.remove('active-mobile');
+    }
+  }
+
+  // Mobile Tier Switcher (Packages Section)
+  function showMobileTier(index, btn){
+    var tierButtons = document.querySelectorAll('.mobile-tier-btn');
+    var tierDots = document.querySelectorAll('.tier-dot');
+    var tierCards = document.querySelectorAll('.tier-grid .tier-card');
+    
+    tierButtons.forEach(function(b, i){ b.classList.toggle('active', i === index); });
+    tierDots.forEach(function(d, i){ d.classList.toggle('active', i === index); });
+
+    if(tierCards[index]){
+      var grid = document.getElementById('tierGrid');
+      var cardLeft = tierCards[index].offsetLeft - grid.offsetLeft;
+      grid.scrollTo({ left: cardLeft, behavior: 'smooth' });
+    }
+  }
+
+  // Sync mobile tier carousel swipe with indicator dots & buttons
+  var tierGridEl = document.getElementById('tierGrid');
+  if(tierGridEl){
+    var isScrolling;
+    tierGridEl.addEventListener('scroll', function(){
+      window.clearTimeout(isScrolling);
+      isScrolling = setTimeout(function(){
+        var scrollPos = tierGridEl.scrollLeft;
+        var width = tierGridEl.offsetWidth;
+        var index = Math.round(scrollPos / width);
+        if(index >= 0 && index <= 2){
+          document.querySelectorAll('.mobile-tier-btn').forEach(function(b, i){ b.classList.toggle('active', i === index); });
+          document.querySelectorAll('.tier-dot').forEach(function(d, i){ d.classList.toggle('active', i === index); });
+        }
+      }, 60);
+    });
+  }
+
+  // Mobile Table Column Filtering (Spec Sheets)
+  function filterTableTier(tier, btn){
+    document.querySelectorAll('.tier-col-btn').forEach(function(b){ b.classList.remove('active'); });
+    if(btn) btn.classList.add('active');
+
+    document.querySelectorAll('table.spec').forEach(function(table){
+      var ths = table.querySelectorAll('thead tr th');
+      var rows = table.querySelectorAll('tbody tr');
+
+      if(tier === 'all'){
+        ths.forEach(function(th){ th.style.display = ''; });
+        rows.forEach(function(row){
+          row.querySelectorAll('td, th').forEach(function(cell){ cell.style.display = ''; });
+        });
+      } else if(tier === 'basic'){
+        // Show col 1 (Feature) and col 2 (Basic)
+        if(ths[1]) ths[1].style.display = '';
+        if(ths[2]) ths[2].style.display = 'none';
+        if(ths[3]) ths[3].style.display = 'none';
+        rows.forEach(function(row){
+          var cells = row.querySelectorAll('td');
+          if(cells[0]) cells[0].style.display = '';
+          if(cells[1]) cells[1].style.display = 'none';
+          if(cells[2]) cells[2].style.display = 'none';
+        });
+      } else if(tier === 'premium'){
+        // Show col 1 (Feature) and col 3 (Premium)
+        if(ths[1]) ths[1].style.display = 'none';
+        if(ths[2]) ths[2].style.display = '';
+        if(ths[3]) ths[3].style.display = 'none';
+        rows.forEach(function(row){
+          var cells = row.querySelectorAll('td');
+          if(cells[0]) cells[0].style.display = 'none';
+          if(cells[1]) cells[1].style.display = '';
+          if(cells[2]) cells[2].style.display = 'none';
+        });
+      } else if(tier === 'royale'){
+        // Show col 1 (Feature) and col 4 (Royale)
+        if(ths[1]) ths[1].style.display = 'none';
+        if(ths[2]) ths[2].style.display = 'none';
+        if(ths[3]) ths[3].style.display = '';
+        rows.forEach(function(row){
+          var cells = row.querySelectorAll('td');
+          if(cells[0]) cells[0].style.display = 'none';
+          if(cells[1]) cells[1].style.display = 'none';
+          if(cells[2]) cells[2].style.display = '';
+        });
+      }
+    });
+  }
 </script>
 </body>
 </html>
