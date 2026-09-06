@@ -1,57 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" width="100%" height="100%" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="100%" height="100%" fill="none">
   <defs>
-    <linearGradient id="integraGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f0b56a"/>
-      <stop offset="50%" stop-color="#df9429"/>
-      <stop offset="100%" stop-color="#b6772a"/>
+    <linearGradient id="integraGoldBrand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea9e32"/>
+      <stop offset="100%" stop-color="#d48a20"/>
     </linearGradient>
-    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#df9429" flood-opacity="0.25"/>
-    </filter>
+    <linearGradient id="silverGlint" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.2"/>
+    </linearGradient>
   </defs>
 
-  <!-- Left Golden Architectural Pillars -->
-  <rect x="14" y="58" width="7" height="42" rx="1.5" fill="url(#integraGoldGrad)" filter="url(#subtleGlow)"/>
-  <rect x="25" y="42" width="7" height="58" rx="1.5" fill="url(#integraGoldGrad)" filter="url(#subtleGlow)"/>
-  <rect x="36.5" y="26" width="7" height="74" rx="1.5" fill="url(#integraGoldGrad)" filter="url(#subtleGlow)"/>
+  <!-- 3 Golden Architectural Pillars on Left -->
+  <rect x="42" y="125" width="15" height="135" rx="2" fill="url(#integraGoldBrand)"/>
+  <rect x="66" y="90" width="15" height="170" rx="2" fill="url(#integraGoldBrand)"/>
+  <rect x="90" y="55" width="15" height="205" rx="2" fill="url(#integraGoldBrand)"/>
 
-  <!-- Architectural Gable Roofline -->
-  <path d="M43 52 L98 12 L150 52 L150 60" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Architectural House Gable Roof Outline -->
+  <path d="M106 100 L215 18 L320 100 L320 116" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- 4-Pane Amber Window (2x2 Grid) -->
-  <g fill="url(#integraGoldGrad)" filter="url(#subtleGlow)">
-    <rect x="86" y="24" width="10" height="10" rx="1.5"/>
-    <rect x="100" y="24" width="10" height="10" rx="1.5"/>
-    <rect x="86" y="37.5" width="10" height="10" rx="1.5"/>
-    <rect x="100" y="37.5" width="10" height="10" rx="1.5"/>
+  <!-- 4-Pane Amber Window (2x2 Grid) Under Gable Peak -->
+  <g fill="url(#integraGoldBrand)">
+    <rect x="188" y="48" width="22" height="22" rx="2.5"/>
+    <rect x="220" y="48" width="22" height="22" rx="2.5"/>
+    <rect x="188" y="80" width="22" height="22" rx="2.5"/>
+    <rect x="220" y="80" width="22" height="22" rx="2.5"/>
   </g>
 
   <!-- Brand Typography: integra -->
-  <!-- i -->
-  <path d="M51 52 V100" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+  <!-- i (shares left pillar alignment under roof) -->
+  <path d="M125 106 V260" stroke="#ffffff" stroke-width="16" stroke-linecap="square"/>
 
   <!-- n -->
-  <path d="M78 100 V66 C78 54 87 48 98 48 C109 48 116 54 116 66 V100" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M78 60 V100" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+  <path d="M182 260 V180 C182 150 202 136 226 136 C250 136 268 150 268 180 V260" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M182 165 V260" stroke="#ffffff" stroke-width="16" stroke-linecap="square"/>
 
   <!-- t -->
-  <path d="M133 42 V94 C133 98 136 100 142 100" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M125 58 H145" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+  <path d="M312 95 V242 C312 254 320 260 334 260" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M294 138 H338" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
 
   <!-- e -->
-  <path d="M158 76 H192 C192 63 183 50 174 50 C162 50 154 61 154 75 C154 89 162 100 175 100 C184 100 190 95 193 90" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M374 184 H448 C448 154 430 136 408 136 C382 136 364 160 364 198 C364 236 384 260 412 260 C432 260 445 250 450 238" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- g -->
-  <circle cx="215" cy="71" r="16.5" stroke="currentColor" stroke-width="8"/>
-  <path d="M231.5 56 V97 C231.5 109 223 116 210 116 C200 116 195 110 193 107" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="500" cy="180" r="38" stroke="#ffffff" stroke-width="16"/>
+  <path d="M538 142 V244 C538 274 518 288 488 288 C465 288 454 274 450 268" stroke="#ffffff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- r -->
-  <path d="M250 100 V58" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
-  <path d="M250 70 C254 59 264 54 273 56" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+  <path d="M580 260 V142" stroke="#ffffff" stroke-width="16" stroke-linecap="square"/>
+  <path d="M580 172 C590 148 614 138 636 142" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
 
   <!-- a -->
-  <circle cx="298" cy="76" r="16" stroke="currentColor" stroke-width="8"/>
-  <path d="M314 58 V100" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
-  <!-- Signature Gold Accent Slash / Spur on 'a' -->
-  <polygon points="313,92 328,107 322,113 309,99" fill="url(#integraGoldGrad)" filter="url(#subtleGlow)"/>
+  <circle cx="692" cy="198" r="38" stroke="#ffffff" stroke-width="16"/>
+  <path d="M730 142 V260" stroke="#ffffff" stroke-width="16" stroke-linecap="square"/>
+
+  <!-- Signature Amber Peel / Accent on 'a' -->
+  <polygon points="726,238 766,278 752,292 718,252" fill="url(#integraGoldBrand)"/>
+  <!-- Glint / Highlight on accent edge -->
+  <polygon points="752,292 766,278 760,272 746,286" fill="url(#silverGlint)"/>
 </svg>
