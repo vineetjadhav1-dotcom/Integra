@@ -152,29 +152,26 @@
   /* ---------- nav ---------- */
   header.site-nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(12, 18, 30, 0.94);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(255,255,255,0.1);
-    box-shadow:0 4px 20px rgba(0,0,0,0.35);
+    background:#252e36;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 4px 20px rgba(0,0,0,0.3);
   }
   .nav-inner{
-    max-width:1160px; margin:0 auto;
-    padding:0.85rem clamp(1.25rem,4vw,3rem);
+    max-width:1180px; margin:0 auto;
+    padding:0.65rem clamp(1.25rem,4vw,3rem);
     display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
   }
   .brand{ display:flex; align-items:center; text-decoration:none; flex-shrink:0; }
   .brand-logo {
-    height: 40px !important;
+    height: 52px !important;
     width: auto !important;
     max-width: none !important;
     aspect-ratio: auto !important;
     object-fit: contain !important;
     display: block !important;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
     transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
   }
-  .brand:hover .brand-logo{ transform:scale(1.03); }
+  .brand:hover .brand-logo{ transform:scale(1.02); }
 
   nav.links{ display:flex; align-items:center; gap:1.9rem; }
   nav.links a{
@@ -210,7 +207,7 @@
     .nav-toggle{ display:inline-flex; }
     .mobile-panel.open{
       display:flex; flex-direction:column; gap:0; border-top:1px solid rgba(255,255,255,0.1);
-      background:#0c121e;
+      background:#252e36;
     }
     .mobile-panel.open a{
       padding:0.9rem clamp(1.25rem,4vw,3rem); text-decoration:none; color:#e2e8f0;
@@ -493,9 +490,9 @@
   .contact-cell .big{ font-family:"Big Shoulders Display",sans-serif; font-size:1.7rem; margin-top:0.3rem; }
 
   footer.site-foot{
-    background:#080c14;
+    background:#252e36;
     padding:1.8rem clamp(1.25rem,4vw,3rem); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
-    font-size:0.8rem; color:#94a3b8; border-top:1px solid rgba(255,255,255,0.1);
+    font-size:0.8rem; color:#94a3b8; border-top:1px solid rgba(255,255,255,0.12);
   }
   footer.site-foot a{ text-decoration:none; color:#cbd5e1; transition:color 0.2s ease; }
   footer.site-foot a:hover{ color:#ffffff; }
