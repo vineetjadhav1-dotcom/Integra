@@ -164,7 +164,7 @@
     display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
   }
   .brand{ display:flex; align-items:center; text-decoration:none; }
-  .brand-logo{ height:40px; width:auto; max-width:180px; display:block; filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4)); transition:transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+  .brand-logo{ height:40px; width:auto; max-width:none; object-fit:contain; display:block; filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4)); transition:transform 0.25s cubic-bezier(0.16,1,0.3,1); }
   .brand:hover .brand-logo{ transform:scale(1.03); }
 
   nav.links{ display:flex; align-items:center; gap:1.9rem; }
@@ -1872,7 +1872,7 @@
 
   <section class="final-cta">
     <div style="display:flex;justify-content:center;margin-bottom:1.2rem;">
-      <img src="integra-logo.svg" alt="Integra Homes" style="height:48px;width:auto;filter:brightness(1.15);">
+      <img src="integra-logo.svg" alt="Integra Homes" style="height:48px;width:auto;object-fit:contain;filter:brightness(1.15);">
     </div>
     <h2>Ready to build<br><span class="accent">with Integra?</span></h2>
     <p class="tagline">Professional design &middot; controlled construction &middot; 100% transparency &middot; total accountability</p>
@@ -1899,7 +1899,7 @@
 <footer class="site-foot">
   <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;">
     <a href="#top" aria-label="Integra Homes" style="display:inline-block;">
-      <img src="integra-logo.svg" alt="Integra" style="height:30px;width:auto;opacity:0.9;">
+      <img src="integra-logo.svg" alt="Integra" style="height:32px;width:auto;object-fit:contain;opacity:0.95;">
     </a>
     <span>&copy; <span id="year"></span> Integra Homes &middot; Home Construction &amp; Engineering Catalogue</span>
   </div>

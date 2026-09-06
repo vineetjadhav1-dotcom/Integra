@@ -1,59 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 285" width="100%" height="100%" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="100%" height="100%" fill="none">
   <defs>
     <linearGradient id="integraGoldBrand" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ea9e32"/>
-      <stop offset="100%" stop-color="#d48a20"/>
+      <stop offset="0%" stop-color="#E0952D"/>
+      <stop offset="100%" stop-color="#C9882B"/>
     </linearGradient>
-    <linearGradient id="silverGlint" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="glint" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#cbd5e1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.3"/>
     </linearGradient>
   </defs>
 
-  <!-- 3 Golden Architectural Pillars on Far Left -->
-  <rect x="24" y="118" width="13" height="132" rx="1.5" fill="url(#integraGoldBrand)"/>
-  <rect x="45" y="85" width="13" height="165" rx="1.5" fill="url(#integraGoldBrand)"/>
-  <rect x="66" y="52" width="13" height="198" rx="1.5" fill="url(#integraGoldBrand)"/>
+  <!-- 3 Golden Architectural Pillars (Flush baseline at y=360) -->
+  <rect x="25" y="175" width="18" height="185" rx="2" fill="url(#integraGoldBrand)"/>
+  <rect x="53" y="130" width="18" height="230" rx="2" fill="url(#integraGoldBrand)"/>
+  <rect x="81" y="85" width="18" height="275" rx="2" fill="url(#integraGoldBrand)"/>
 
-  <!-- Architectural House Gable Roof Outline in Pure White -->
-  <path d="M80 95 L182 16 L280 95 L280 108" stroke="#ffffff" stroke-width="13.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Architectural House Gable Roof Outline -->
+  <path d="M108 95 L245 15 L380 95 L380 115" stroke="#FFFFFF" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- 4-Pane Amber Window (2x2 Grid) -->
+  <!-- 4-Pane Square Window (2x2 Grid) Centered Beneath Roof Peak -->
   <g fill="url(#integraGoldBrand)">
-    <rect x="156" y="46" width="20" height="20" rx="2"/>
-    <rect x="186" y="46" width="20" height="20" rx="2"/>
-    <rect x="156" y="76" width="20" height="20" rx="2"/>
-    <rect x="186" y="76" width="20" height="20" rx="2"/>
+    <rect x="212" y="55" width="28" height="28" rx="2.5"/>
+    <rect x="250" y="55" width="28" height="28" rx="2.5"/>
+    <rect x="212" y="93" width="28" height="28" rx="2.5"/>
+    <rect x="250" y="93" width="28" height="28" rx="2.5"/>
   </g>
 
-  <!-- Wordmark: integra in Geometric Sans-Serif -->
-  <!-- i (stem integrates directly with the roof gable) -->
-  <path d="M98 100 V250" stroke="#ffffff" stroke-width="15.5" stroke-linecap="square"/>
+  <!-- Wordmark: integra (Geometric Sans-Serif) -->
+  <!-- i (stem integrates directly with the roof structure) -->
+  <path d="M118 105 V360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="square"/>
 
   <!-- n -->
-  <path d="M152 250 V172 C152 144 170 130 194 130 C218 130 234 144 234 172 V250" stroke="#ffffff" stroke-width="15.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M152 160 V250" stroke="#ffffff" stroke-width="15.5" stroke-linecap="square"/>
+  <path d="M185 360 V245 C185 205 210 185 240 185 C270 185 295 205 295 245 V360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M185 225 V360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="square"/>
 
   <!-- t -->
-  <path d="M276 90 V232 C276 244 284 250 298 250" stroke="#ffffff" stroke-width="15.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M258 132 H302" stroke="#ffffff" stroke-width="15.5" stroke-linecap="round"/>
+  <path d="M345 130 V335 C345 352 355 360 375 360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M322 188 H380" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"/>
 
   <!-- e -->
-  <path d="M336 176 H408 C408 148 390 130 368 130 C344 130 326 152 326 190 C326 226 346 250 372 250 C392 250 405 240 410 228" stroke="#ffffff" stroke-width="15.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M425 248 H515 C515 210 490 185 460 185 C428 185 405 215 405 272 C405 328 428 360 464 360 C490 360 508 346 515 330" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- g -->
-  <circle cx="458" cy="172" r="36" stroke="#ffffff" stroke-width="15.5"/>
-  <path d="M494 136 V234 C494 262 476 276 448 276 C426 276 414 264 410 258" stroke="#ffffff" stroke-width="15.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="580" cy="242" r="48" stroke="#FFFFFF" stroke-width="20"/>
+  <path d="M628 195 V325 C628 362 602 380 565 380 C535 380 520 364 515 355" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- r -->
-  <path d="M536 250 V136" stroke="#ffffff" stroke-width="15.5" stroke-linecap="square"/>
-  <path d="M536 166 C546 142 568 132 590 136" stroke="#ffffff" stroke-width="15.5" stroke-linecap="round"/>
+  <path d="M685 360 V195" stroke="#FFFFFF" stroke-width="20" stroke-linecap="square"/>
+  <path d="M685 235 C700 200 730 188 758 194" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"/>
 
   <!-- a -->
-  <circle cx="642" cy="190" r="36" stroke="#ffffff" stroke-width="15.5"/>
-  <path d="M678 136 V250" stroke="#ffffff" stroke-width="15.5" stroke-linecap="square"/>
+  <circle cx="820" cy="268" r="48" stroke="#FFFFFF" stroke-width="20"/>
+  <path d="M868 195 V360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="square"/>
 
-  <!-- Signature Golden Diagonal Accent on 'a' -->
-  <polygon points="674,228 712,266 698,280 666,242" fill="url(#integraGoldBrand)"/>
-  <polygon points="698,280 712,266 706,260 692,274" fill="url(#silverGlint)"/>
+  <!-- Integrated Angled Accent Tail on 'a' (#C9882B) -->
+  <polygon points="862,305 912,355 892,375 848,325" fill="url(#integraGoldBrand)"/>
+  <!-- Highlight Facet on Accent Tip -->
+  <polygon points="892,375 912,355 904,347 884,367" fill="url(#glint)"/>
 </svg>
