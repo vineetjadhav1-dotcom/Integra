@@ -1,0 +1,2108 @@
+<title>Integra Homes</title>
+<link rel="icon" type="image/svg+xml" href="integra-mark.svg">
+<style>
+  :root{
+    --paper:#eef0ee;
+    --paper-2:#e1e5e1;
+    --paper-3:#d6dbd5;
+    --ink:#101826;
+    --ink-soft:#3f4a5c;
+    --ink-faint:#6b7688;
+    --accent:#b6772a;
+    --accent-2:#8a5a1f;
+    --accent-soft:#e7d3ae;
+    --good:#3f7d5c;
+    --good-soft:#dbe9e0;
+    --bad:#a14b3f;
+    --bad-soft:#ecdcd8;
+    --line:rgba(16,24,38,0.14);
+    --line-strong:rgba(16,24,38,0.28);
+    --card:#f8f7f3;
+    --shadow:0 20px 50px -30px rgba(16,24,38,0.35);
+    --navy:#101826;
+    --navy-2:#1b263c;
+    --on-navy:#eef0ee;
+    --on-navy-soft:#aab4c6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0c111c;
+      --paper-2:#131a29;
+      --paper-3:#1a2334;
+      --ink:#eef0ee;
+      --ink-soft:#b6bfd0;
+      --ink-faint:#7f89a0;
+      --accent:#d99a44;
+      --accent-2:#f0b56a;
+      --accent-soft:#3a2c17;
+      --good:#6fae8b;
+      --good-soft:#1a2c24;
+      --bad:#d4796a;
+      --bad-soft:#2e1e1c;
+      --line:rgba(238,241,240,0.14);
+      --line-strong:rgba(238,241,240,0.28);
+      --card:#131a29;
+      --shadow:0 20px 50px -30px rgba(0,0,0,0.6);
+      --navy:#080c14;
+      --navy-2:#111927;
+      --on-navy:#eef0ee;
+      --on-navy-soft:#93a0b8;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0c111c;
+    --paper-2:#131a29;
+    --paper-3:#1a2334;
+    --ink:#eef0ee;
+    --ink-soft:#b6bfd0;
+    --ink-faint:#7f89a0;
+    --accent:#d99a44;
+    --accent-2:#f0b56a;
+    --accent-soft:#3a2c17;
+    --good:#6fae8b;
+    --good-soft:#1a2c24;
+    --bad:#d4796a;
+    --bad-soft:#2e1e1c;
+    --line:rgba(238,241,240,0.14);
+    --line-strong:rgba(238,241,240,0.28);
+    --card:#131a29;
+    --shadow:0 20px 50px -30px rgba(0,0,0,0.6);
+    --navy:#080c14;
+    --navy-2:#111927;
+    --on-navy:#eef0ee;
+    --on-navy-soft:#93a0b8;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",-apple-system,"Segoe UI",sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.display{
+    font-family:"Big Shoulders Display","Arial Narrow",sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+
+  .mono{ font-family:"IBM Plex Mono",ui-monospace,monospace; }
+
+  p{ margin:0; }
+  a{ color:inherit; }
+  ul{ margin:0; padding:0; list-style:none; }
+  img,svg{ display:block; max-width:100%; }
+
+  .section{ padding:clamp(3.5rem,7vw,6.5rem) clamp(1.25rem,4vw,3rem); }
+  .section-inner{ max-width:1160px; margin:0 auto; }
+  .section-inner--narrow{ max-width:880px; }
+
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.76rem;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin-bottom:0.9rem;
+  }
+  .eyebrow::before{
+    content:"";
+    width:1.6rem;
+    height:1px;
+    background:var(--accent);
+    display:inline-block;
+  }
+  .eyebrow .tag{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:1.5rem;
+    height:1.5rem;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    font-weight:600;
+    border-radius:3px;
+    font-size:0.7rem;
+  }
+
+  .section-title{ font-size:clamp(1.7rem,3.4vw,2.6rem); line-height:1.05; margin-bottom:0.7rem; }
+  .section-sub{ color:var(--ink-soft); font-style:italic; font-family:"IBM Plex Sans",sans-serif; max-width:56ch; font-size:1rem; }
+  .section-head{ margin-bottom:2.6rem; }
+
+  .rule{ height:1px; background:var(--line); border:0; margin:0; }
+
+  /* ---------- nav ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1160px; margin:0 auto;
+    padding:0.9rem clamp(1.25rem,4vw,3rem);
+    display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
+  }
+  .brand{ display:flex; align-items:center; text-decoration:none; color:var(--ink); }
+  .brand-logo{ height:38px; width:auto; max-width:170px; display:block; transition:transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+  .brand:hover .brand-logo{ transform:scale(1.03); }
+
+  nav.links{ display:flex; align-items:center; gap:1.9rem; }
+  nav.links a{
+    text-decoration:none; color:var(--ink-soft); font-size:0.86rem;
+    text-transform:uppercase; letter-spacing:0.06em; font-weight:500;
+    padding-bottom:2px; border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav.links a:hover{ color:var(--ink); border-color:var(--accent); }
+
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    background:var(--ink); color:var(--paper);
+    padding:0.55rem 1.1rem; border-radius:2px;
+    text-decoration:none; font-size:0.84rem; font-weight:600;
+    letter-spacing:0.03em;
+    white-space:nowrap;
+  }
+  :root[data-theme="dark"] .nav-cta{ background:var(--accent); color:var(--navy); }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .nav-cta{ background:var(--accent); color:var(--navy); } }
+
+  .nav-toggle{ display:none; background:none; border:1px solid var(--line-strong); color:var(--ink); width:2.4rem; height:2.4rem; border-radius:3px; cursor:pointer; align-items:center; justify-content:center; }
+  .nav-toggle svg{ width:1.1rem; height:1.1rem; }
+  .mobile-panel{ display:none; }
+
+  @media (max-width:860px){
+    nav.links{ display:none; }
+    .nav-toggle{ display:inline-flex; }
+    .mobile-panel.open{
+      display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line);
+      background:var(--paper);
+    }
+    .mobile-panel.open a{
+      padding:0.9rem clamp(1.25rem,4vw,3rem); text-decoration:none; color:var(--ink);
+      border-bottom:1px solid var(--line); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.04em;
+    }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    background:var(--navy); color:var(--on-navy);
+    padding:clamp(4rem,10vw,7.5rem) clamp(1.25rem,4vw,3rem) clamp(3.5rem,8vw,6rem);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(238,241,240,0.06) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(0deg, rgba(238,241,240,0.06) 0 1px, transparent 1px 64px);
+    mask-image:radial-gradient(ellipse 90% 70% at 60% 30%, black 40%, transparent 85%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative; max-width:1160px; margin:0 auto;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:clamp(2rem,5vw,4rem);
+    align-items:center;
+  }
+  @media (max-width:900px){ .hero-inner{ grid-template-columns:1fr; } }
+
+  .hero-eyebrow{
+    font-family:"IBM Plex Mono",monospace; text-transform:uppercase; letter-spacing:0.2em;
+    font-size:0.78rem; color:var(--accent-2); margin-bottom:1.3rem; display:flex; gap:0.6rem; align-items:center;
+  }
+  .hero-eyebrow::before{ content:""; width:1.6rem; height:1px; background:var(--accent-2); }
+  .hero h1{
+    font-size:clamp(2.6rem,6.4vw,4.6rem); line-height:0.98; color:#fff;
+  }
+  .hero h1 .accent{ color:var(--accent-2); }
+  .hero-lede{
+    margin-top:1.4rem; color:var(--on-navy-soft); font-size:1.05rem; max-width:46ch; font-family:"IBM Plex Sans",sans-serif;
+  }
+  .hero-cta-row{ display:flex; flex-wrap:wrap; gap:0.9rem; margin-top:2.1rem; }
+  .btn{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    padding:0.85rem 1.5rem; border-radius:2px; text-decoration:none;
+    font-weight:600; font-size:0.92rem; letter-spacing:0.02em; border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{ background:var(--accent-2); color:#1a1305; }
+  .btn-ghost{ border-color:rgba(238,241,240,0.4); color:#fff; }
+  .btn-ghost:hover{ border-color:#fff; }
+
+  .hero-stats{
+    margin-top:3rem; display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(238,241,240,0.18); padding-top:1.6rem; gap:1rem;
+  }
+  @media (max-width:640px){ .hero-stats{ grid-template-columns:repeat(2,1fr); } }
+  .hero-stat b{ display:block; font-family:"Big Shoulders Display",sans-serif; font-size:clamp(1.5rem,3vw,2rem); color:var(--accent-2); }
+  .hero-stat span{ font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-navy-soft); }
+
+  .hero-figure{ position:relative; }
+  .house-card{
+    background:rgba(238,241,240,0.04); border:1px solid rgba(238,241,240,0.16);
+    border-radius:6px; padding:clamp(1.5rem,3vw,2.5rem);
+  }
+  .house-card svg{ width:100%; height:auto; }
+  .house-caption{
+    display:flex; justify-content:space-between; margin-top:1rem; padding-top:1rem;
+    border-top:1px dashed rgba(238,241,240,0.2);
+    font-family:"IBM Plex Mono",monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--on-navy-soft);
+  }
+
+  /* ---------- problem / solution ---------- */
+  .compare-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; }
+  @media (max-width:760px){ .compare-grid{ grid-template-columns:1fr; } }
+  .compare-card{ border:1px solid var(--line); border-radius:6px; padding:1.8rem; background:var(--card); }
+  .compare-card.bad{ border-top:3px solid var(--bad); }
+  .compare-card.good{ border-top:3px solid var(--good); }
+  .compare-title{ font-family:"IBM Plex Mono",monospace; text-transform:uppercase; letter-spacing:0.08em; font-size:0.8rem; font-weight:600; margin-bottom:1.2rem; }
+  .compare-card.bad .compare-title{ color:var(--bad); }
+  .compare-card.good .compare-title{ color:var(--good); }
+  .compare-item{ display:flex; gap:0.7rem; padding:0.85rem 0; border-top:1px solid var(--line); }
+  .compare-item:first-of-type{ border-top:none; }
+  .glyph{ flex-shrink:0; width:1.15rem; height:1.15rem; margin-top:0.15rem; }
+  .compare-item p{ font-size:0.92rem; color:var(--ink-soft); }
+  .compare-item b{ color:var(--ink); }
+
+  /* ---------- process ---------- */
+  .process-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+  @media (max-width:820px){ .process-row{ grid-template-columns:1fr 1fr; gap:1.4rem 0.8rem; } }
+  @media (max-width:480px){ .process-row{ grid-template-columns:1fr; } }
+  .process-step{ padding:0 1.4rem 0 0; position:relative; }
+  .process-row .process-step:not(:last-child)::after{
+    content:""; position:absolute; top:1.05rem; right:0; width:1.4rem; height:1px; background:var(--line-strong);
+  }
+  @media (max-width:820px){ .process-row .process-step::after{ display:none; } }
+  .process-num{ font-family:"Big Shoulders Display",sans-serif; font-size:2.6rem; color:var(--accent); line-height:1; }
+  .process-step h3{ font-size:1.05rem; margin-top:0.6rem; letter-spacing:0.03em; }
+  .process-step p{ margin-top:0.6rem; color:var(--ink-soft); font-size:0.9rem; }
+
+  .badge-strip{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+    border:1px solid var(--line); margin-top:2.6rem; border-radius:6px; overflow:hidden;
+  }
+  @media (max-width:680px){ .badge-strip{ grid-template-columns:repeat(2,1fr); } }
+  .badge-cell{ background:var(--navy); color:var(--on-navy); padding:1.2rem 1rem; text-align:center; }
+  .badge-cell b{ display:block; font-family:"Big Shoulders Display",sans-serif; font-size:1.5rem; color:var(--accent-2); }
+  .badge-cell span{ font-size:0.68rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--on-navy-soft); }
+
+  /* ---------- package tiers ---------- */
+  .tier-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+  @media (max-width:900px){ .tier-grid{ grid-template-columns:1fr; } }
+  .tier-card{
+    border:1px solid var(--line); border-radius:8px; padding:1.9rem 1.7rem;
+    background:var(--card); display:flex; flex-direction:column; position:relative;
+  }
+  .tier-card.featured{
+    background:var(--navy); color:var(--on-navy); border-color:var(--navy);
+    transform:translateY(-0.6rem);
+    box-shadow:var(--shadow);
+  }
+  @media (max-width:900px){ .tier-card.featured{ transform:none; } }
+  .tier-flag{
+    font-family:"IBM Plex Mono",monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--accent); margin-bottom:0.6rem;
+  }
+  .tier-card.featured .tier-flag{ color:var(--accent-2); }
+  .tier-name{ font-size:2rem; margin-bottom:1.3rem; }
+  .tier-list{ display:flex; flex-direction:column; gap:0.7rem; flex:1; }
+  .tier-list li{ display:flex; gap:0.6rem; font-size:0.88rem; align-items:flex-start; }
+  .tier-list .glyph{ color:var(--good); }
+  .tier-card.featured .tier-list .glyph{ color:var(--accent-2); }
+  .tier-card.featured .tier-list p{ color:var(--on-navy-soft); }
+  .tier-list p{ color:var(--ink-soft); }
+  .tier-foot{ margin-top:1.6rem; padding-top:1.2rem; border-top:1px solid var(--line); font-size:0.78rem; color:var(--ink-faint); font-family:"IBM Plex Mono",monospace; text-transform:uppercase; letter-spacing:0.05em; }
+  .tier-card.featured .tier-foot{ border-color:rgba(238,241,240,0.18); color:var(--on-navy-soft); }
+
+  /* ---------- spec tabs ---------- */
+  .spec-tabs{ display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.8rem; }
+  .spec-tab{
+    font-family:"IBM Plex Mono",monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em;
+    padding:0.55rem 0.95rem; border:1px solid var(--line-strong); border-radius:3px; background:transparent; color:var(--ink-soft);
+    cursor:pointer; display:flex; gap:0.5rem; align-items:center;
+  }
+  .spec-tab b{ display:inline-flex; align-items:center; justify-content:center; width:1.3rem; height:1.3rem; border-radius:2px; background:var(--paper-2); font-size:0.7rem; color:var(--ink); }
+  .spec-tab.active{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .spec-tab.active b{ background:var(--accent); color:#1a1305; }
+
+  .spec-panel{ display:none; }
+  .spec-panel.active{ display:block; }
+  .spec-panel-title{ font-size:1.3rem; margin-bottom:0.3rem; text-transform:none; font-family:"IBM Plex Sans",sans-serif; font-weight:700; }
+  .spec-panel-sub{ color:var(--ink-faint); font-size:0.85rem; margin-bottom:1.4rem; }
+
+  .table-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:6px; }
+  table.spec{ width:100%; border-collapse:collapse; min-width:640px; }
+  table.spec caption{ display:none; }
+  table.spec th, table.spec td{ text-align:left; padding:0.85rem 1.1rem; vertical-align:top; font-size:0.86rem; border-bottom:1px solid var(--line); }
+  table.spec thead th{
+    background:var(--ink); color:var(--paper); font-family:"IBM Plex Mono",monospace;
+    text-transform:uppercase; letter-spacing:0.05em; font-size:0.72rem; font-weight:600;
+  }
+  table.spec tbody th{ font-weight:600; background:var(--paper-2); white-space:nowrap; }
+  table.spec tbody tr:last-child td, table.spec tbody tr:last-child th{ border-bottom:none; }
+  table.spec tbody tr:nth-child(even) td, table.spec tbody tr:nth-child(even) th{ background:color-mix(in srgb, var(--paper-2) 45%, transparent); }
+  table.spec td .line{ display:block; }
+  table.spec td .line + .line{ margin-top:0.25rem; color:var(--ink-faint); font-size:0.82rem; }
+  table.spec td .chip-line{ display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:0.3rem; }
+
+  .chip{
+    display:inline-flex; align-items:center; padding:0.15rem 0.55rem; border-radius:20px;
+    font-size:0.72rem; font-family:"IBM Plex Mono",monospace; border:1px solid var(--line-strong); color:var(--ink-soft);
+  }
+
+  .guideline-list{ margin-top:2.4rem; display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line); }
+  .guideline-list li{ display:grid; grid-template-columns:11rem 1fr; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line); font-size:0.9rem; }
+  @media (max-width:640px){ .guideline-list li{ grid-template-columns:1fr; gap:0.3rem; } }
+  .guideline-list b{ font-family:"IBM Plex Mono",monospace; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--accent); }
+  .guideline-list p{ color:var(--ink-soft); }
+
+  /* ---------- three col cards ---------- */
+  .card-grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+  @media (max-width:820px){ .card-grid-3{ grid-template-columns:1fr; } }
+  .card-grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; }
+  @media (max-width:900px){ .card-grid-4{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .card-grid-4{ grid-template-columns:1fr; } }
+  .info-card{ border:1px solid var(--line); border-radius:6px; padding:1.4rem 1.3rem; background:var(--card); }
+  .info-card .cap{ font-family:"IBM Plex Mono",monospace; text-transform:uppercase; font-size:0.72rem; letter-spacing:0.06em; color:var(--accent); margin-bottom:0.6rem; }
+  .info-card h3{ font-family:"IBM Plex Sans",sans-serif; text-transform:none; font-size:1rem; font-weight:700; margin-bottom:0.5rem; }
+  .info-card p{ font-size:0.86rem; color:var(--ink-soft); }
+  .info-card--top{ border-top:3px solid var(--accent); }
+
+  /* ---------- stage table ---------- */
+  .stage-table{ width:100%; border-collapse:collapse; }
+  .stage-table td, .stage-table th{ padding:1rem 1.1rem; border-bottom:1px solid var(--line); font-size:0.87rem; vertical-align:top; text-align:left; }
+  .stage-table thead th{ background:var(--ink); color:var(--paper); font-family:"IBM Plex Mono",monospace; text-transform:uppercase; font-size:0.7rem; letter-spacing:0.06em; }
+  .stage-table td.num{ font-family:"Big Shoulders Display",sans-serif; font-size:1.5rem; color:var(--accent); width:2.4rem; }
+  .stage-table td.protocol{ font-family:"IBM Plex Mono",monospace; font-size:0.76rem; color:var(--accent-2); white-space:nowrap; }
+  :root:not([data-theme="dark"]) .stage-table td.protocol{ color:var(--accent-2); }
+
+  .callout{
+    margin-top:2.2rem; border:1px solid var(--accent-soft); background:color-mix(in srgb, var(--accent-soft) 55%, var(--paper));
+    border-left:4px solid var(--accent); border-radius:4px; padding:1.3rem 1.5rem;
+  }
+  .callout .cap{ font-family:"IBM Plex Mono",monospace; text-transform:uppercase; font-size:0.72rem; letter-spacing:0.07em; color:var(--accent-2); margin-bottom:0.4rem; }
+  .callout p{ font-size:0.92rem; color:var(--ink); }
+
+  /* ---------- governance table ---------- */
+  .gov-table{ width:100%; border-collapse:collapse; }
+  .gov-table th, .gov-table td{ padding:1rem 1.1rem; border-bottom:1px solid var(--line); font-size:0.87rem; text-align:left; vertical-align:top; }
+  .gov-table thead th{ background:var(--paper-2); text-transform:uppercase; font-family:"IBM Plex Mono",monospace; font-size:0.7rem; letter-spacing:0.06em; color:var(--ink-soft); }
+  .gov-table td.protect{ color:var(--good); font-weight:600; font-size:0.83rem; }
+
+  /* ---------- materials ---------- */
+  .material-row{ display:grid; grid-template-columns:12rem 1fr 14rem; gap:1.2rem; padding:1.3rem 0; border-bottom:1px solid var(--line); align-items:start; }
+  @media (max-width:760px){ .material-row{ grid-template-columns:1fr; gap:0.5rem; } }
+  .material-row b{ font-size:0.92rem; }
+  .material-chips{ display:flex; flex-wrap:wrap; gap:0.5rem; }
+  .material-chip{
+    padding:0.35rem 0.8rem; border-radius:3px; font-size:0.78rem; font-weight:600;
+    background:var(--paper-2); border:1px solid var(--line-strong);
+  }
+  .material-row .assure{ font-size:0.8rem; color:var(--ink-faint); }
+
+  /* ---------- vs table ---------- */
+  .vs-table{ width:100%; border-collapse:collapse; }
+  .vs-table th, .vs-table td{ padding:1rem 1.1rem; border-bottom:1px solid var(--line); font-size:0.85rem; text-align:left; vertical-align:top; }
+  .vs-table thead th{ font-family:"IBM Plex Mono",monospace; text-transform:uppercase; font-size:0.7rem; letter-spacing:0.05em; }
+  .vs-table thead th:nth-child(2), .vs-table thead th:nth-child(3){ color:var(--ink-faint); background:var(--paper-2); }
+  .vs-table thead th:nth-child(4){ background:var(--navy); color:var(--on-navy); }
+  .vs-table thead th:first-child{ background:transparent; }
+  .vs-table td:nth-child(2), .vs-table td:nth-child(3){ color:var(--ink-faint); }
+  .vs-table td:nth-child(4){ color:var(--good); font-weight:600; background:color-mix(in srgb, var(--good-soft) 60%, transparent); }
+  .vs-table th[scope="row"]{ font-weight:600; white-space:nowrap; }
+
+  /* ---------- handover ---------- */
+  .handover-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; }
+  @media (max-width:820px){ .handover-grid{ grid-template-columns:1fr; } }
+  .handover-card{ border-radius:8px; padding:1.9rem; }
+  .handover-card.dossier{ background:var(--card); border:1px solid var(--line); }
+  .handover-card.commit{ background:var(--navy); color:var(--on-navy); }
+  .handover-card h3{ font-family:"IBM Plex Sans",sans-serif; text-transform:none; font-size:1.05rem; margin-bottom:1.1rem; }
+  .handover-card.commit h3{ color:var(--accent-2); }
+  .dossier-item{ display:flex; gap:0.7rem; padding:0.75rem 0; border-top:1px solid var(--line); }
+  .dossier-item:first-of-type{ border-top:none; }
+  .dossier-item p{ font-size:0.87rem; color:var(--ink-soft); }
+  .commit-item{ display:grid; grid-template-columns:1.7rem 1fr; gap:0.7rem; padding:0.6rem 0; font-size:0.87rem; }
+  .commit-item b.n{ font-family:"Big Shoulders Display",sans-serif; color:var(--accent-2); font-size:1.2rem; }
+  .commit-item span{ color:var(--on-navy-soft); }
+  .commit-item strong{ color:#fff; }
+
+  /* ---------- warranty stat ---------- */
+  .stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  @media (max-width:640px){ .stat-strip{ grid-template-columns:1fr 1fr; } }
+  .stat-strip > div{ padding:1.6rem 1rem; text-align:center; border-left:1px solid var(--line); }
+  .stat-strip > div:first-child{ border-left:none; }
+  .stat-strip b{ display:block; font-family:"Big Shoulders Display",sans-serif; font-size:clamp(1.6rem,3vw,2.1rem); color:var(--accent); }
+  .stat-strip span{ font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-faint); }
+
+  .principle-list{ margin-top:1.8rem; display:flex; flex-direction:column; gap:0.9rem; }
+  .principle-list li{ display:flex; gap:0.8rem; font-size:0.94rem; }
+  .principle-list b{ color:var(--ink); }
+  .principle-list p{ color:var(--ink-soft); display:inline; }
+
+  /* ---------- final cta ---------- */
+  .final-cta{ background:var(--navy); color:var(--on-navy); text-align:center; padding:clamp(3.5rem,8vw,5.5rem) 1.5rem; }
+  .final-cta .brand-mark{ width:52px; height:52px; margin:0 auto 1.6rem; }
+  .final-cta h2{ color:#fff; font-size:clamp(2rem,5vw,3.2rem); }
+  .final-cta h2 .accent{ color:var(--accent-2); }
+  .final-cta p.tagline{ margin-top:1rem; color:var(--on-navy-soft); font-size:0.95rem; }
+  .final-cta .stat-strip{ margin:2.4rem auto 0; max-width:640px; background:rgba(238,241,240,0.05); border-color:rgba(238,241,240,0.15); }
+  .final-cta .stat-strip > div{ border-color:rgba(238,241,240,0.15); }
+  .final-cta .stat-strip span{ color:var(--on-navy-soft); }
+
+  .contact-strip{ display:grid; grid-template-columns:1fr 1fr; max-width:1160px; margin:2.6rem auto 0; }
+  @media (max-width:640px){ .contact-strip{ grid-template-columns:1fr; } }
+  .contact-cell{ padding:1.6rem; }
+  .contact-cell.call{ background:var(--accent-2); color:#1a1305; }
+  .contact-cell.web{ background:var(--navy-2); color:var(--on-navy); }
+  .contact-cell .lbl{ font-family:"IBM Plex Mono",monospace; text-transform:uppercase; letter-spacing:0.08em; font-size:0.72rem; opacity:0.8; }
+  .contact-cell .big{ font-family:"Big Shoulders Display",sans-serif; font-size:1.7rem; margin-top:0.3rem; }
+
+  footer.site-foot{
+    padding:1.6rem clamp(1.25rem,4vw,3rem); display:flex; justify-content:space-between; flex-wrap:wrap; gap:0.6rem;
+    font-size:0.78rem; color:var(--ink-faint); border-top:1px solid var(--line);
+  }
+  footer.site-foot a{ text-decoration:none; color:var(--ink-faint); }
+
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  /* ---------- Enhanced 3D Hero Render Showcase ---------- */
+
+  /* Fresh & Clean Badge Styling */
+  .hero-badge{
+    position:absolute;
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    background:rgba(15,23,42,0.85);
+    color:#ffffff;
+    padding:0.5rem 1rem;
+    border-radius:30px;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    border:1px solid rgba(255,255,255,0.22);
+    box-shadow:0 10px 25px rgba(0,0,0,0.45);
+    z-index:2;
+    transition:all 0.3s ease;
+  }
+  .hero-badge:hover{
+    background:rgba(15,23,42,0.95);
+    border-color:var(--accent-2);
+    transform:translateY(-2px);
+  }
+  .hero-badge-bottom{ bottom:18px; left:18px; }
+  .hero-badge-right{ bottom:18px; right:18px; }
+  @media(max-width:600px){
+    .hero-badge-bottom{ bottom:12px; left:12px; font-size:0.7rem; padding:0.35rem 0.7rem; }
+    .hero-badge-right{ bottom:12px; right:12px; font-size:0.7rem; padding:0.35rem 0.7rem; }
+  }
+
+  .hero-render-wrap{
+    position:relative;
+    border-radius:12px;
+    overflow:hidden;
+    background:linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 24px 60px -12px rgba(0,0,0,0.65), 0 0 40px rgba(217,154,68,0.18);
+    transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+  }
+  .hero-render-wrap:hover{
+    transform:translateY(-4px);
+    box-shadow:0 32px 70px -10px rgba(0,0,0,0.75), 0 0 50px rgba(217,154,68,0.28);
+  }
+  .hero-render-img{
+    width:100%;
+    height:100%;
+    max-height:460px;
+    object-fit:cover;
+    display:block;
+    transition:transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .hero-render-wrap:hover .hero-render-img{
+    transform:scale(1.03);
+  }
+  .hero-badge{
+    position:absolute;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    background:rgba(15,23,42,0.82);
+    color:#fff;
+    padding:0.45rem 0.85rem;
+    border-radius:6px;
+    font-size:0.75rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    border:1px solid rgba(255,255,255,0.18);
+    display:inline-flex;
+    align-items:center;
+    gap:0.45rem;
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+    z-index:2;
+  }
+  .hero-badge-top{ top:14px; left:14px; }
+  .hero-badge-bottom{ bottom:14px; left:14px; }
+  .hero-badge-right{ bottom:14px; right:14px; }
+  .badge-dot{ width:8px; height:8px; border-radius:50%; background:#22c55e; display:inline-block; box-shadow:0 0 8px #22c55e; }
+  .badge-accent{ color:var(--accent-2); }
+
+  /* ---------- Nav Get Quote Button ---------- */
+  .nav-quote-btn{
+    background:linear-gradient(135deg, #d99a44 0%, #b6772a 100%);
+    color:#121820 !important;
+    font-weight:700 !important;
+    padding:0.45rem 1rem !important;
+    border-radius:4px !important;
+    text-transform:uppercase;
+    font-size:0.78rem !important;
+    letter-spacing:0.06em;
+    transition:all 0.25s ease !important;
+    box-shadow:0 4px 14px rgba(217,154,68,0.35);
+    display:inline-flex;
+    align-items:center;
+    gap:0.35rem;
+  }
+  .nav-quote-btn:hover{
+    transform:translateY(-1px);
+    box-shadow:0 6px 20px rgba(217,154,68,0.55);
+    filter:brightness(1.08);
+  }
+
+  /* ---------- Authentic Tier-1 Brand Logos ---------- */
+  .brand-logo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));
+    gap:0.75rem;
+    margin:1.5rem 0 2rem;
+  }
+  .brand-chip-card{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:6px;
+    padding:0.6rem 0.85rem;
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    box-shadow:0 2px 6px rgba(0,0,0,0.03);
+    transition:all 0.25s cubic-bezier(0.16,1,0.3,1);
+    cursor:default;
+  }
+  .brand-chip-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(0,0,0,0.08);
+    border-color:var(--accent);
+  }
+  .brand-logo-icon{
+    width:24px;
+    height:24px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .brand-chip-card .brand-name{
+    font-size:0.82rem;
+    font-weight:700;
+    color:#1e293b;
+    letter-spacing:0.01em;
+    white-space:nowrap;
+  }
+  .brand-chip-card .brand-sub{
+    font-size:0.65rem;
+    color:#64748b;
+    display:block;
+  }
+
+  /* ---------- Marquee Partner Strip ---------- */
+  .brand-marquee-strip{
+    margin:2.5rem 0 1rem;
+    padding:1.25rem 1.5rem;
+    background:linear-gradient(90deg, #f8fafc, #f1f5f9, #f8fafc);
+    border:1px solid #e2e8f0;
+    border-radius:8px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:1.5rem;
+  }
+  .brand-marquee-title{
+    font-size:0.78rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:#475569;
+  }
+  .marquee-logos{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:1.25rem;
+  }
+  .partner-logo-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    padding:0.35rem 0.75rem;
+    background:#ffffff;
+    border:1px solid #cbd5e1;
+    border-radius:20px;
+    font-size:0.75rem;
+    font-weight:700;
+    color:#0f172a;
+    box-shadow:0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  /* ---------- Interactive Quote Section & Calculator ---------- */
+  .quote-section{
+    background:linear-gradient(180deg, #0b131e 0%, #111d2e 100%);
+    color:#eef0ee;
+    padding:clamp(4rem,8vw,6.5rem) clamp(1.25rem,4vw,3rem);
+    position:relative;
+    overflow:hidden;
+  }
+  .quote-section::before{
+    content:"";
+    position:absolute; inset:0;
+    background-radial-gradient(circle at 80% 20%, rgba(217,154,68,0.12) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .quote-box{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:2.5rem;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:12px;
+    padding:clamp(1.5rem,4vw,2.5rem);
+    box-shadow:0 25px 60px rgba(0,0,0,0.5);
+  }
+  @media(max-width:900px){
+    .quote-box{ grid-template-columns:1fr; }
+  }
+  .calc-field{ margin-bottom:1.5rem; }
+  .calc-field label{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--accent-2); margin-bottom:0.6rem;
+  }
+  .calc-slider{
+    width:100%;
+    accent-color:var(--accent-2);
+    height:6px;
+    background:rgba(255,255,255,0.15);
+    border-radius:3px;
+    cursor:pointer;
+  }
+  .calc-btn-group{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0.6rem;
+  }
+  @media(max-width:550px){
+    .calc-btn-group{ grid-template-columns:1fr; }
+  }
+  .calc-pkg-btn{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.15);
+    color:#eef0ee;
+    padding:0.75rem 0.5rem;
+    border-radius:6px;
+    text-align:center;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .calc-pkg-btn.active{
+    background:rgba(217,154,68,0.15);
+    border-color:var(--accent-2);
+    color:#fff;
+    box-shadow:0 0 15px rgba(217,154,68,0.25);
+  }
+  .calc-pkg-btn b{ display:block; font-size:0.95rem; margin-bottom:0.2rem; }
+  .calc-pkg-btn span{ font-size:0.75rem; color:#94a3b8; }
+  .calc-pkg-btn.active span{ color:var(--accent-2); font-weight:600; }
+
+  .quote-summary-card{
+    background:linear-gradient(145deg, rgba(217,154,68,0.12), rgba(15,23,42,0.6));
+    border:1px solid rgba(217,154,68,0.3);
+    border-radius:10px;
+    padding:1.8rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .quote-price-tag{
+    font-size:clamp(2rem,4vw,2.8rem);
+    font-weight:700;
+    color:#ffffff;
+    font-family:"IBM Plex Mono",monospace;
+    margin:0.4rem 0 0.8rem;
+  }
+  .quote-breakdown{
+    border-top:1px dashed rgba(255,255,255,0.15);
+    padding-top:1rem;
+    margin-top:1rem;
+    font-size:0.82rem;
+    color:#cbd5e1;
+  }
+  .breakdown-row{
+    display:flex; justify-content:space-between; margin-bottom:0.5rem;
+  }
+  .breakdown-row.total{
+    font-weight:700; color:#fff; border-top:1px solid rgba(255,255,255,0.2); padding-top:0.5rem; font-size:0.9rem;
+  }
+  .quote-form-input{
+    width:100%;
+    padding:0.75rem 1rem;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:4px;
+    color:#fff;
+    font-size:0.9rem;
+    margin-bottom:0.75rem;
+    font-family:inherit;
+    box-sizing:border-box;
+  }
+  .quote-form-input:focus{
+    outline:none;
+    border-color:var(--accent-2);
+    background:rgba(255,255,255,0.1);
+  }
+
+  /* ---------- Quote Modal Popup ---------- */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(10,15,25,0.85);
+    backdrop-filter:blur(6px);
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:1.5rem;
+  }
+  .modal-overlay.active{
+    display:flex;
+  }
+  .modal-card{
+    background:#111d2e;
+    color:#eef0ee;
+    border:1px solid rgba(217,154,68,0.3);
+    border-radius:12px;
+    max-width:680px;
+    width:100%;
+    max-height:90vh;
+    overflow-y:auto;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    position:relative;
+    padding:2rem;
+  }
+  .modal-close-btn{
+    position:absolute;
+    top:1rem;
+    right:1rem;
+    background:transparent;
+    border:none;
+    color:#94a3b8;
+    font-size:1.5rem;
+    cursor:pointer;
+    padding:0.25rem 0.5rem;
+  }
+  .modal-close-btn:hover{ color:#fff; }
+
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Integra Homes">
+      <svg class="brand-logo" viewBox="0 0 340 120" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="hdrLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f0b56a"/>
+            <stop offset="50%" stop-color="#df9429"/>
+            <stop offset="100%" stop-color="#b6772a"/>
+          </linearGradient>
+        </defs>
+        <!-- 3 Gold Pillars on Left -->
+        <rect x="14" y="58" width="7" height="42" rx="1.5" fill="url(#hdrLogoGold)"/>
+        <rect x="25" y="42" width="7" height="58" rx="1.5" fill="url(#hdrLogoGold)"/>
+        <rect x="36.5" y="26" width="7" height="74" rx="1.5" fill="url(#hdrLogoGold)"/>
+        
+        <!-- House Roof Outline -->
+        <path d="M43 52 L98 12 L150 52 L150 60" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <!-- 4-Pane Amber Window (2x2 Grid) -->
+        <g fill="url(#hdrLogoGold)">
+          <rect x="86" y="24" width="10" height="10" rx="1.5"/>
+          <rect x="100" y="24" width="10" height="10" rx="1.5"/>
+          <rect x="86" y="37.5" width="10" height="10" rx="1.5"/>
+          <rect x="100" y="37.5" width="10" height="10" rx="1.5"/>
+        </g>
+        
+        <!-- integra typography -->
+        <!-- i -->
+        <path d="M51 52 V100" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+        
+        <!-- n -->
+        <path d="M78 100 V66 C78 54 87 48 98 48 C109 48 116 54 116 66 V100" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M78 60 V100" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+        
+        <!-- t -->
+        <path d="M133 42 V94 C133 98 136 100 142 100" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M125 58 H145" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+        
+        <!-- e -->
+        <path d="M158 76 H192 C192 63 183 50 174 50 C162 50 154 61 154 75 C154 89 162 100 175 100 C184 100 190 95 193 90" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <!-- g -->
+        <circle cx="215" cy="71" r="16.5" stroke="currentColor" stroke-width="8"/>
+        <path d="M231.5 56 V97 C231.5 109 223 116 210 116 C200 116 195 110 193 107" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <!-- r -->
+        <path d="M250 100 V58" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+        <path d="M250 70 C254 59 264 54 273 56" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+        
+        <!-- a -->
+        <circle cx="298" cy="76" r="16" stroke="currentColor" stroke-width="8"/>
+        <path d="M314 58 V100" stroke="currentColor" stroke-width="8" stroke-linecap="square"/>
+        <polygon points="313,92 328,107 322,113 309,99" fill="url(#hdrLogoGold)"/>
+      </svg>
+    </a>
+    <nav class="links">
+      <a href="#problem">Why Integra</a>
+      <a href="#process">Process</a>
+      <a href="#packages">Packages</a>
+      <a href="#specs">Specifications</a>
+      <a href="#quality">Quality</a>
+      <a href="#warranty">Warranty</a>
+    </nav>
+    <button class="nav-quote-btn" onclick="openQuoteModal()" aria-label="Get Instant Quote">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        Get Quote
+      </button>
+      <a class="nav-cta" href="tel:+918668463204">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 2.9a2 2 0 0 1-.4 2.1L8 10.1a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+      8668463204
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#quote" onclick="openQuoteModal()" style="background:var(--accent-2);color:#121820;font-weight:700;border-radius:4px;padding:0.7rem 1rem;margin-bottom:0.5rem;text-align:center;">Get Instant Quote</a>
+    <a href="#problem">Why Integra</a>
+    <a href="#process">Process</a>
+    <a href="#packages">Packages</a>
+    <a href="#specs">Specifications</a>
+    <a href="#quality">Quality</a>
+    <a href="#warranty">Warranty</a>
+    <a class="nav-cta" href="tel:+918668463204">Call 8668463204</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Home Construction &amp; Engineering Catalogue</div>
+        <h1>Build your home<br>with <span class="accent">confidence.</span></h1>
+        <p class="hero-lede">One accountable partner, from concept to possession. Integra replaces the fragmented architect&nbsp;&mdash; contractor&nbsp;&mdash; vendor chain with a single coordinated team, a single fixed-price contract, and a single phone number to call.</p>
+        <div class="hero-cta-row">
+          <button class="btn btn-primary" onclick="openQuoteModal()" style="cursor:pointer;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;">
+            Get Free Instant Quote
+          </button>
+          <a class="btn btn-ghost" href="#packages">Compare packages</a>
+          <a class="btn btn-ghost" href="tel:+918668463204" style="border-color:rgba(255,255,255,0.25);">Call 8668463204</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>10-Yr</b><span>Structural Warranty</span></div>
+          <div class="hero-stat"><b>5-Yr</b><span>Waterproofing Warranty</span></div>
+          <div class="hero-stat"><b>350+</b><span>Digital QA Checkpoints</span></div>
+          <div class="hero-stat"><b>100%</b><span>Turnkey Ownership</span></div>
+        </div>
+      </div>
+      <div class="hero-figure">
+        <div class="hero-render-wrap">
+          <div class="hero-badge hero-badge-bottom">
+            <span>Turnkey Construction</span>
+          </div>
+          <div class="hero-badge hero-badge-right">
+            <span>10-Year Structural Warranty</span>
+          </div>
+          <img src="hero-render.jpg" alt="Integra Homes Luxury Residence" class="hero-render-img" loading="eager" width="800" height="500">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM / SOLUTION -->
+  <section class="section" id="problem">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">02</span>The problem we solve</div>
+        <h2 class="section-title">One accountable partner,<br>from concept to possession.</h2>
+        <p class="section-sub">Most self-build journeys involve an architect, a contractor, and a dozen material vendors &mdash; each blaming the other the moment something goes wrong.</p>
+      </div>
+      <div class="compare-grid reveal">
+        <div class="compare-card bad">
+          <div class="compare-title">Traditional broken model</div>
+          <div class="compare-item">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="color:var(--bad)"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            <p><b>Architect vs. contractor:</b> architects blame builders for poor execution; builders blame faulty drawings.</p>
+          </div>
+          <div class="compare-item">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="color:var(--bad)"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            <p><b>Contractor vs. vendors:</b> contractors blame suppliers for substandard materials and delayed site deliveries.</p>
+          </div>
+          <div class="compare-item">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="color:var(--bad)"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            <p><b>Unpredictable cost creep:</b> low initial quotes are followed by massive price escalations after work begins.</p>
+          </div>
+          <div class="compare-item">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="color:var(--bad)"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            <p><b>Zero single accountability:</b> the homeowner is left running between ten different parties, stressed and exhausted.</p>
+          </div>
+        </div>
+        <div class="compare-card good">
+          <div class="compare-title">The Integra turnkey solution</div>
+          <div class="compare-item">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="color:var(--good)"><path d="M5 13l4 4L19 7"/></svg>
+            <p><b>Single point of contact:</b> a team of associated architects, consultants &amp; dedicated on-site staff, coordinated for you end to end.</p>
+          </div>
+          <div class="compare-item">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="color:var(--good)"><path d="M5 13l4 4L19 7"/></svg>
+            <p><b>100% direct execution:</b> we directly appoint, manage and supervise all sub-trades; no middleman broker.</p>
+          </div>
+          <div class="compare-item">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="color:var(--good)"><path d="M5 13l4 4L19 7"/></svg>
+            <p><b>Firm price guarantee:</b> guaranteed scope with zero cost escalation for contracted specifications.</p>
+          </div>
+          <div class="compare-item">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" style="color:var(--good)"><path d="M5 13l4 4L19 7"/></svg>
+            <p><b>Total single ownership:</b> one phone call. Complete transparency. On-time delivery. True peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="process" style="background:var(--paper-2);">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">03</span>Our 4-step delivery process</div>
+        <h2 class="section-title">Design &middot; Build &middot; Monitor &middot; Deliver</h2>
+      </div>
+      <div class="process-row reveal">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <h3>Design</h3>
+          <p>Architectural 2D/3D layouts, structural analysis and MEP engineering integrated seamlessly.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <h3>Build</h3>
+          <p>Supervised RCC structure, factory-direct branded materials and skilled precision execution.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <h3>Monitor</h3>
+          <p>Live CCTV, 350+ stage inspection checklists and real-time mobile app progress tracking.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <h3>Deliver</h3>
+          <p>On-time completion with delay penalties, a 10-year warranty and digital as-built dossiers.</p>
+        </div>
+      </div>
+      <div class="badge-strip reveal">
+        <div class="badge-cell"><b>10-Year</b><span>Structural Warranty</span></div>
+        <div class="badge-cell"><b>5-Year</b><span>Waterproofing</span></div>
+        <div class="badge-cell"><b>Live</b><span>Site CCTV Tracking</span></div>
+        <div class="badge-cell"><b>Zero</b><span>Cost Escalation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section" id="packages">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">04</span>Choose your package</div>
+        <h2 class="section-title">Three engineered tiers &mdash; one accountable process</h2>
+        <p class="section-sub">Every package is documented in full technical detail below, from structural steel grade to paint sheen, so you can compare exactly what you're paying for, brand by brand.</p>
+      </div>
+      <div class="tier-grid reveal">
+        <div class="tier-card">
+          <div class="tier-flag">Essential value</div>
+          <h3 class="tier-name">Basic</h3>
+          <ul class="tier-list">
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Steel: Fe500/550 Kalika / Rajuri</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Cement: 53 &amp; 43 Grade Dalmia / Chettinad</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>M20/M25 RMC (per structural design) &amp; 10 ft ceiling</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Red brick masonry throughout</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>2D plans &amp; 3D front elevation</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Vitrified flooring up to &#8377;45/sq.ft</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Teak main door up to &#8377;25k</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>3-track UPVC / aluminium windows (10% area)</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Parryware / Cera / Hindware sanitary</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>10-year structural warranty</p></li>
+          </ul>
+          <div class="tier-foot">Sheet A&#8211;H &middot; Basic column</div>
+        </div>
+        <div class="tier-card featured">
+          <div class="tier-flag">Most popular</div>
+          <h3 class="tier-name">Premium</h3>
+          <ul class="tier-list">
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Steel: Fe500/550 JSW Neo / Jindal Panther</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Red brick masonry, stone masonry substructure</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>2D, 3D elevation, MEP &amp; furniture drawings</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Premium tiles &#8377;70/sq.ft, granite &#8377;120</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Teak main (&#8377;25k) + pooja door (&#8377;15k)</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>3-track UPVC / aluminium (&#8377;580/sq.ft, 15% area)</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Jaquar / Hindware / Cera fixtures</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>EV point, RWH included, soil testing &amp; architect visits</p></li>
+          </ul>
+          <div class="tier-foot">Sheet A&#8211;H &middot; Premium column</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-flag">Luxury elite</div>
+          <h3 class="tier-name">Royale</h3>
+          <ul class="tier-list">
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Steel: Fe500/550 Tata Tiscon / JSW Steel</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>M20/M25 RMC (per structural design), 10 ft ceiling</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>360&deg; all-side 3D &amp; comprehensive MEP</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Luxury tiles &#8377;120/sq.ft, granite &#8377;160</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Grand teak (&#8377;25k) + carved teak pooja (&#8377;22k)</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>3-track UPVC / aluminium (&#8377;700/sq.ft, 15% area)</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Grohe / Toto / Jaquar fixtures + Carysil sink</p></li>
+            <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p>Asian Royale, Apex exterior, SS railing, designer gate</p></li>
+          </ul>
+          <div class="tier-foot">Sheet A&#8211;H &middot; Royale column</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEC SHEETS -->
+  <section class="section" id="specs" style="background:var(--paper-2);">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">A&#8211;H</span>Engineering specification sheets</div>
+        <h2 class="section-title">Compare exactly what you're paying for</h2>
+        <p class="section-sub">Every package documented in full technical detail &mdash; from structural steel grade to paint sheen, brand by brand.</p>
+      </div>
+
+      <div class="spec-tabs reveal" role="tablist" aria-label="Specification categories">
+        <button class="spec-tab active" data-tab="A" role="tab" aria-selected="true"><b>A</b>Design &amp; Structural</button>
+        <button class="spec-tab" data-tab="B" role="tab" aria-selected="false"><b>B</b>Core Civil &amp; Materials</button>
+        <button class="spec-tab" data-tab="C" role="tab" aria-selected="false"><b>C</b>Flooring &amp; Stone</button>
+        <button class="spec-tab" data-tab="D" role="tab" aria-selected="false"><b>D</b>Doors &amp; Windows</button>
+        <button class="spec-tab" data-tab="E" role="tab" aria-selected="false"><b>E</b>Plumbing &amp; Kitchen</button>
+        <button class="spec-tab" data-tab="F" role="tab" aria-selected="false"><b>F</b>Electrical &amp; Paint</button>
+        <button class="spec-tab" data-tab="G" role="tab" aria-selected="false"><b>G</b>Budget &amp; Audits</button>
+        <button class="spec-tab" data-tab="H" role="tab" aria-selected="false"><b>H</b>Guidelines</button>
+      </div>
+
+      <div class="reveal">
+        <!-- A -->
+        <div class="spec-panel active" id="panel-A">
+          <div class="table-wrap"><table class="spec">
+            <thead><tr><th>Design deliverables</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
+            <tbody>
+              <tr><th>Architectural &amp; 3D drawings</th>
+                <td><span class="line">2D floor plans</span><span class="line">3D elevation (front view)</span></td>
+                <td><span class="line">2D floor plans</span><span class="line">3D elevation</span><span class="line">Plumbing &amp; electrical layouts</span><span class="line">Furniture layout planning</span></td>
+                <td><span class="line">2D floor plans</span><span class="line">3D elevations from all sides (360&deg;)</span><span class="line">Plumbing &amp; electrical layouts</span><span class="line">Comprehensive furniture layouts</span></td>
+              </tr>
+              <tr><th>Structural &amp; execution drawings</th>
+                <td><span class="line">Structural drawings</span><span class="line">Working drawings for execution</span><span class="line">Schedule of openings &amp; sectionals</span></td>
+                <td><span class="line">Structural drawings</span><span class="line">Working drawings for execution</span><span class="line">Schedule of openings &amp; sectionals</span></td>
+                <td><span class="line">Structural drawings</span><span class="line">Working drawings for execution</span><span class="line">Schedule of openings &amp; sectionals</span></td>
+              </tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <!-- B -->
+        <div class="spec-panel" id="panel-B">
+          <div class="table-wrap"><table class="spec">
+            <thead><tr><th>Core material / item</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
+            <tbody>
+              <tr><th>Reinforcement steel (TMT)</th>
+                <td>Fe 500/550 &mdash; <span class="chip">Kalika / Rajuri</span> or equivalent</td>
+                <td>Fe 500/550 &mdash; <span class="chip">JSW Neo / Jindal Panther</span> or equivalent</td>
+                <td>Fe 500/550 &mdash; <span class="chip">Tata Tiscon / JSW Steel</span> or equivalent</td>
+              </tr>
+              <tr><th>Cement brands &amp; grade</th>
+                <td>53 &amp; 43 grade &mdash; <span class="chip">Dalmia / Chettinad</span> or equivalent</td>
+                <td>53 &amp; 43 grade &mdash; <span class="chip">Dalmia / Chettinad</span> or equivalent</td>
+                <td>53 &amp; 43 grade &mdash; <span class="chip">UltraTech / Birla Super / ACC / Zuari</span></td>
+              </tr>
+              <tr><th>Ready-mix concrete (RMC)</th>
+                <td>M20/M25 grade, per structural designer's recommendation</td>
+                <td>M20/M25 grade, per structural designer's recommendation</td>
+                <td>M20/M25 grade, per structural designer's recommendation</td>
+              </tr>
+              <tr><th>Masonry &amp; aggregates</th>
+                <td>9&Prime; &amp; 4.5&Prime; red brick masonry; aggregates 20mm &amp; 40mm</td>
+                <td>9&Prime; &amp; 4.5&Prime; red brick masonry; aggregates 20mm &amp; 40mm</td>
+                <td>Premium quality 9&Prime; &amp; 4.5&Prime; red brick masonry; aggregates 20mm &amp; 40mm</td>
+              </tr>
+              <tr><th>Sand specification</th>
+                <td>M-Sand (blockwork) &amp; P-Sand (plaster)</td>
+                <td>M-Sand (blockwork) &amp; P-Sand (plaster)</td>
+                <td>M-Sand (blockwork) &amp; P-Sand (plaster)</td>
+              </tr>
+              <tr><th>Underground water sump</th>
+                <td>6&Prime; solid block with waterproof plaster</td>
+                <td>6&Prime; solid block with waterproof plaster</td>
+                <td>Reinforced RCC sump with waterproof plaster</td>
+              </tr>
+              <tr><th>Substructure masonry (SSM)</th>
+                <td>Standard plinth (no SSM)</td>
+                <td>2-course size stone masonry (SSM)</td>
+                <td>2-course size stone masonry (SSM)</td>
+              </tr>
+              <tr><th>Clear ceiling height</th>
+                <td>10.0 feet (floor to floor)</td>
+                <td>10.0 feet (floor to floor)</td>
+                <td>10.0 feet (floor to floor)</td>
+              </tr>
+              <tr><th>Waterproofing standard</th>
+                <td>Brick-bat waterproofing with Dr. Fixit chemical / screed + LW+</td>
+                <td>Brick-bat waterproofing with Dr. Fixit chemical / screed + LW+</td>
+                <td>Brick-bat waterproofing with Dr. Fixit chemical / screed + LW+</td>
+              </tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <!-- C -->
+        <div class="spec-panel" id="panel-C">
+          <div class="table-wrap"><table class="spec">
+            <thead><tr><th>Area / application</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
+            <tbody>
+              <tr><th>Living, dining, kitchen &amp; bed</th><td>Up to &#8377;45/sq.ft (vitrified tiles)</td><td>Up to &#8377;70/sq.ft (premium vitrified)</td><td>Up to &#8377;120/sq.ft (luxury vitrified / stone)</td></tr>
+              <tr><th>Staircase flooring</th><td>Granite up to &#8377;70/sq.ft</td><td>Granite up to &#8377;100/sq.ft</td><td>Granite up to &#8377;120/sq.ft</td></tr>
+              <tr><th>Balconies &amp; sit-out areas</th><td>Anti-skid tiles up to &#8377;35/sq.ft</td><td>Anti-skid tiles up to &#8377;50/sq.ft</td><td>Anti-skid tiles up to &#8377;65/sq.ft</td></tr>
+              <tr><th>Bathroom wall &amp; floor tiling</th><td>Tiles up to &#8377;35/sq.ft; dado to 7 ft</td><td>Tiles up to &#8377;50/sq.ft; dado to 7 ft</td><td>Tiles up to &#8377;70/sq.ft; dado to full ceiling height</td></tr>
+              <tr><th>Kitchen granite countertop</th><td>Slab up to &#8377;120/sq.ft</td><td>Slab up to &#8377;120/sq.ft</td><td>Slab up to &#8377;160/sq.ft</td></tr>
+              <tr><th>Kitchen wall dadoing</th><td>Up to 2 ft height @ &#8377;40/sq.ft</td><td>Up to 2 ft height @ &#8377;50/sq.ft</td><td>Up to 2 ft height @ &#8377;60/sq.ft</td></tr>
+              <tr><th>Parking area flooring</th><td>Heavy-duty tiles up to &#8377;35/sq.ft</td><td>Heavy-duty tiles up to &#8377;40/sq.ft</td><td>Heavy-duty tiles up to &#8377;50/sq.ft</td></tr>
+              <tr><th>Terrace flooring &amp; water-seal</th><td>Brick-bat waterproofing, Dr. Fixit / screed / LW+</td><td>Brick-bat waterproofing, Dr. Fixit / screed / LW+</td><td>Brick-bat waterproofing, Dr. Fixit / screed / LW+</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <!-- D -->
+        <div class="spec-panel" id="panel-D">
+          <div class="table-wrap"><table class="spec">
+            <thead><tr><th>Element</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
+            <tbody>
+              <tr><th>Main entrance door (1/unit)</th>
+                <td>Teak frame (5&Prime;x3&Prime;) + teak shutter, up to &#8377;25,000</td>
+                <td>Teak frame (6&Prime;x4&Prime;) + teak shutter, up to &#8377;25,000</td>
+                <td>Grand teak frame (6&Prime;x4&Prime;) + teak shutter, up to &#8377;25,000</td>
+              </tr>
+              <tr><th>Internal bedroom doors</th>
+                <td>WPC/Sal frame (4&Prime;x3&Prime;) + membrane, up to &#8377;10,000/door</td>
+                <td>WPC/Sal frame (4&Prime;x3&Prime;) + membrane, up to &#8377;10,000/door</td>
+                <td>WPC/Sal frame (5&Prime;x3&Prime;) + laminate, up to &#8377;10,000/door</td>
+              </tr>
+              <tr><th>Pooja room door (1/unit)</th>
+                <td>Standard provision</td>
+                <td>Frame (5&Prime;x3&Prime;) + readymade shutter, up to &#8377;15,000</td>
+                <td>Teak frame (5&Prime;x3&Prime;) + carved teak shutter, up to &#8377;22,000</td>
+              </tr>
+              <tr><th>Bathroom doors</th>
+                <td>Granite frame + waterproof PVC shutter, up to &#8377;7,000</td>
+                <td>Granite frame + WPC waterproof shutter, up to &#8377;7,000</td>
+                <td>Granite frame + premium WPC waterproof shutter, up to &#8377;7,000</td>
+              </tr>
+              <tr><th>Windows &amp; glazing</th>
+                <td>3-track UPVC/aluminium, 5mm plain glass, max 10% floor area</td>
+                <td>3-track UPVC/aluminium, 5mm glass + MS grill, &#8377;580/sq.ft, max 15% area</td>
+                <td>3-track luxury UPVC/aluminium, 5mm glass + MS grill, &#8377;700/sq.ft, max 15% area</td>
+              </tr>
+              <tr><th>Staircase railing &amp; gates</th>
+                <td>MS staircase railing &amp; MS standard gate</td>
+                <td>MS staircase railing &amp; MS standard gate</td>
+                <td>Stainless steel (SS) railing &amp; designer gate</td>
+              </tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <!-- E -->
+        <div class="spec-panel" id="panel-E">
+          <div class="table-wrap"><table class="spec">
+            <thead><tr><th>Component</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
+            <tbody>
+              <tr><th>Sanitary ware &amp; CP fittings</th>
+                <td>Up to &#8377;20,000/bathroom &mdash; <span class="chip">Parryware / Cera / Hindware</span></td>
+                <td>Up to &#8377;25,000/bathroom &mdash; <span class="chip">Hindware / Jaquar / Cera</span></td>
+                <td>Up to &#8377;35,000/bathroom &mdash; <span class="chip">Jaquar / Grohe / Toto</span></td>
+              </tr>
+              <tr><th>Bathroom accessories</th>
+                <td>EWC, health faucet, wash basin, wall mixer/diverter &amp; overhead shower</td>
+                <td>EWC, health faucet, wash basin, wall mixer/diverter &amp; overhead shower</td>
+                <td>Premium EWC, health faucet, counter basin, concealed diverter &amp; overhead shower</td>
+              </tr>
+              <tr><th>Kitchen sink &amp; tap</th>
+                <td>SS sink up to &#8377;2,000; faucet/ring up to &#8377;1,500</td>
+                <td>SS sink up to &#8377;3,000; faucet/ring up to &#8377;2,500</td>
+                <td>SS / Carysil quartz sink up to &#8377;7,000; faucet/ring up to &#8377;4,500</td>
+              </tr>
+              <tr><th>Piping &amp; overhead tank</th>
+                <td>CPVC (Ashirwad/Supreme/Astral); 1,500L Ekon tank (6ft MS stand)</td>
+                <td>CPVC (Ashirwad/Supreme/Astral); 1,500L Supreme tank (6ft MS stand)</td>
+                <td>CPVC (Ashirwad/Supreme/Astral); 2,000L Sintex Black tank (6ft MS stand)</td>
+              </tr>
+              <tr><th>Solar / geyser / RWH</th>
+                <td>Lines to diverters/mixers only; RWH optional extra (+&#8377;30,000)</td>
+                <td>Full solar &amp; geyser lines + sustainable RWH</td>
+                <td>Full solar &amp; geyser lines to all baths + complete RWH</td>
+              </tr>
+              <tr><th>Sewage chambers</th>
+                <td>PVC covers inside plot area</td>
+                <td>PVC covers inside plot area</td>
+                <td>Heavy-duty GI / FRP chamber covers</td>
+              </tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <!-- F -->
+        <div class="spec-panel" id="panel-F">
+          <div class="table-wrap"><table class="spec">
+            <thead><tr><th>Specification</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
+            <tbody>
+              <tr><th>Wiring &amp; DB / MCB</th>
+                <td><span class="chip">Polycab / Finolex</span> or equivalent, DBs &amp; MCBs incl.</td>
+                <td><span class="chip">Polycab / Finolex</span> or equivalent, DBs &amp; MCBs incl.</td>
+                <td><span class="chip">Polycab / Finolex</span> or equivalent, DBs &amp; MCBs incl.</td>
+              </tr>
+              <tr><th>Modular switches</th><td><span class="chip">Anchor Ziva</span></td><td><span class="chip">Legrand</span></td><td><span class="chip">Legrand</span></td></tr>
+              <tr><th>UPS &amp; EV charging</th><td>1 UPS point per unit</td><td>1 UPS point + EV charging point in parking</td><td>1 UPS point + dedicated EV charging point</td></tr>
+              <tr><th>Interior wall &amp; ceiling paint</th><td>2 putty + 1 primer + 2 coats, Asian Tractor Emulsion</td><td>2 putty + 1 primer + 2 coats, Asian Premium Emulsion</td><td>2 putty + 1 primer + 2 coats, Asian Royale Luxury Emulsion</td></tr>
+              <tr><th>Exterior wall &amp; grill paint</th><td>1 primer + 2 coats Ace Emulsion; enamel MS grill</td><td>1 primer + 2 coats Ace Emulsion; enamel MS grill</td><td>1 primer + 2 coats Apex Weatherproof; enamel MS grill</td></tr>
+            </tbody>
+          </table></div>
+          <div class="callout">
+            <div class="cap">Approved paint brands</div>
+            <p>Asian Paints &middot; Berger &middot; Dulux &middot; Birla Opus &mdash; 2 coats of enamel on MS grillwork is standard across all three packages.</p>
+          </div>
+        </div>
+
+        <!-- G -->
+        <div class="spec-panel" id="panel-G">
+          <div class="table-wrap"><table class="spec">
+            <thead><tr><th>Service &amp; protection</th><th>Basic</th><th>Premium</th><th>Royale</th></tr></thead>
+            <tbody>
+              <tr><th>Elevation budget allocation</th><td>0.25% of construction cost</td><td>0.50% of construction cost</td><td>1.00% of construction cost</td></tr>
+              <tr><th>Soil testing &amp; quality audit</th><td>Extra at actuals</td><td>Included (diagonally 2 points tested)</td><td>Included (diagonally 2 points tested)</td></tr>
+              <tr><th>Site supervision &amp; visits</th><td>Dedicated site staff (architect visit extra)</td><td>Dedicated site staff + regular architect site visits</td><td>Dedicated site staff + regular architect site visits</td></tr>
+              <tr><th>Comprehensive warranty</th><td>10 yrs structure, 5 yrs waterproofing</td><td>10 yrs structure, 5 yrs waterproofing</td><td>10 yrs structure, 5 yrs waterproofing</td></tr>
+              <tr><th>Govt sanctions &amp; utility liaison</th><td colspan="3">Complete agency liaison support: permissions, licenses, sanction plan assistance, and facilitation for temporary &amp; permanent electricity, water supply, and sewage connections &mdash; included across all three packages.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <!-- H -->
+        <div class="spec-panel" id="panel-H">
+          <p class="spec-panel-sub">Read alongside every package for a complete, no-surprise scope.</p>
+          <ul class="guideline-list">
+            <li><b>Compound wall</b><p>Chargeable if total construction area is under 4,000 sq.ft, or for extra height.</p></li>
+            <li><b>Plinth &amp; sump</b><p>Floor height up to 18&Prime; from road level is included. Outside ramping and extra sump depth are charged separately.</p></li>
+            <li><b>Soil bearing capacity</b><p>Standard design is based on SBC &ge; 180 kN/m&sup2;. Additional structural design applies if SBC is below 180.</p></li>
+            <li><b>Bathroom ratio</b><p>1 bathroom per 500 sq.ft is included; additional bathrooms are charged on actual material &amp; labor.</p></li>
+            <li><b>Rainwater harvesting</b><p>Available as an optional provision at &#8377;30,000 extra where not already included by default in the package.</p></li>
+            <li><b>Interiors</b><p>Modular kitchens, wardrobes and false ceilings fall under specialized interior contracts.</p></li>
+            <li><b>Elevation extras</b><p>Specialized external wall cladding, dynamic facade lighting and landscaping are charged separately.</p></li>
+            <li><b>Electrical fittings</b><p>End-user fittings &mdash; bulbs, tubes, fans, decorative lights &mdash; are supplied by the client.</p></li>
+            <li><b>Logistics</b><p>Material double-shifting charges apply where site storage or access is constrained.</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGINEERING & QA FRAMEWORK -->
+  <section class="section" id="quality">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">05</span>Engineering &amp; quality assurance framework</div>
+        <h2 class="section-title">Professional design. 350+ checkpoints.<br>Sustainable architecture.</h2>
+      </div>
+
+      <p class="mono" style="text-transform:uppercase; letter-spacing:0.05em; font-size:0.78rem; color:var(--ink-faint); margin-bottom:1rem;">Multi-disciplinary design &amp; engineering team</p>
+      <div class="card-grid-3 reveal">
+        <div class="info-card info-card--top">
+          <div class="cap">Architectural design</div>
+          <h3>Human-centric planning</h3>
+          <p>Human-centric space planning, Vaastu compliance, 2D working execution drawings, 3D photorealistic elevations (360&deg; views), and custom furniture layouts crafted for optimal living comfort.</p>
+        </div>
+        <div class="info-card info-card--top">
+          <div class="cap">Structural engineering</div>
+          <h3>Certified &amp; tested</h3>
+          <p>Comprehensive soil bearing capacity (SBC) testing, seismic-resistant RCC structural detailing, STAAD.Pro load calculations, and ductile reinforcement schedules certified by chartered engineers.</p>
+        </div>
+        <div class="info-card info-card--top">
+          <div class="cap">MEP systems design</div>
+          <h3>Fully coordinated</h3>
+          <p>Fully coordinated mechanical, electrical and plumbing schematics, pressure-tested hydro-piping layouts, optimal conduit routes, and dedicated EV charging load infrastructure.</p>
+        </div>
+      </div>
+
+      <p class="mono" style="text-transform:uppercase; letter-spacing:0.05em; font-size:0.78rem; color:var(--ink-faint); margin:2.6rem 0 1rem;">Sustainable, energy-efficient &amp; climate-responsive homes</p>
+      <div class="card-grid-4 reveal">
+        <div class="info-card"><div class="cap">Daylight</div><h3>Maximized daylight</h3><p>Strategic window-to-wall ratios and solar orientation reduce artificial daytime lighting needs and lower power bills.</p></div>
+        <div class="info-card"><div class="cap">Insulation</div><h3>Thermal insulation</h3><p>Cavity/solid blockwork, sunshades, and reflective weatherproof roof screeds minimize heat gain in peak summers.</p></div>
+        <div class="info-card"><div class="cap">Airflow</div><h3>Natural ventilation</h3><p>Engineered air-flow drafts and cross-ventilation window alignments ensure continuous fresh air circulation.</p></div>
+        <div class="info-card"><div class="cap">Water</div><h3>Rainwater harvesting</h3><p>Integrated recharge pits, filtration chambers, and dual-plumbed greywater provisions for environmental sustainability.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE-GATE AUDITS -->
+  <section class="section" style="background:var(--paper-2);">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">06</span>350+ rigorous stage-gate quality audits</div>
+        <h2 class="section-title">Quality is never inspected at the end&nbsp;&mdash; it's built in at every milestone</h2>
+      </div>
+      <div class="table-wrap reveal">
+        <table class="stage-table">
+          <thead><tr><th></th><th>Construction stage</th><th>Key inspection checkpoints &amp; engineering standards</th><th>Testing protocol</th></tr></thead>
+          <tbody>
+            <tr><td class="num">01</td><th>Foundation &amp; substructure</th><td>Soil excavation depth, PCC leveling, anti-termite chemical soil injection, footings reinforcement tying, column starter alignment, 2-course size stone masonry (SSM).</td><td class="protocol">SBC Test &middot; Core Compaction</td></tr>
+            <tr><td class="num">02</td><th>RCC structural frame</th><td>TMT rebar grade &amp; bend tests, lap lengths, cover blocks placement, shuttering line/plumb/oil check, de-shuttering curing monitoring.</td><td class="protocol">Cube Test (7/28 Days) &middot; Slump Cone</td></tr>
+            <tr><td class="num">03</td><th>Masonry &amp; wall joints</th><td>High-density solid concrete blocks, 1:4 cement mortar ratio, joint racking, coping beams, holdfast anchoring for door frames.</td><td class="protocol">Plumb Bob &amp; Line Check</td></tr>
+            <tr><td class="num">04</td><th>Multi-layer waterproofing</th><td>Toilet sunken slabs, brick-bat coba terrace waterproofing with polymer chemicals, water-retaining RCC sump pressure plastering.</td><td class="protocol">72-Hour Ponding Test</td></tr>
+            <tr><td class="num">05</td><th>Concealed plumbing</th><td>CPVC/PVC pipe routing, solvent weld bonding, gradient slope verification, pressure valve testing before plaster concealment.</td><td class="protocol">10 Bar Hydro-Pressure Test</td></tr>
+            <tr><td class="num">06</td><th>Concealed electricals</th><td>FR PVC conduits, copper wire gauge checks, separate earthing pits, circuit load distribution across MCB/RCCB boards.</td><td class="protocol">Megger Insulation Test</td></tr>
+            <tr><td class="num">07</td><th>Plastering &amp; screed</th><td>Chicken-mesh at RCC-block joints, bull-mark alignment, ceiling plaster bonding, minimum 14-day continuous wet-curing regime.</td><td class="protocol">Hollow Hammer Tap Test</td></tr>
+            <tr><td class="num">08</td><th>Tiling, flooring &amp; granite</th><td>Sub-base bedding, zero hollow sound, laser leveling, 2mm spacer grouting, granite edge chamfering on staircase treads.</td><td class="protocol">Digital Level Meter Check</td></tr>
+            <tr><td class="num">09</td><th>Premium finishes &amp; paint</th><td>Moisture reading on walls (&lt;12%), 2-coat acrylic putty scraping, primer application, 2-coat branded emulsion roller finish.</td><td class="protocol">Digital Moisture Meter</td></tr>
+            <tr><td class="num">10</td><th>Pre-handover snagging</th><td>Doors/windows smooth operation, hardware tightness, drain slope drainage, sanitary leak checks, switchboard polarity.</td><td class="protocol">100% Comprehensive Snag List</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-grid-4 reveal" style="margin-top:1.8rem;">
+        <div class="info-card"><div class="cap">Curing</div><h3>Standardized curing</h3><p>Mandatory 14-day wet ponding &amp; sprinkler curing on all cast elements.</p></div>
+        <div class="info-card"><div class="cap">Leveling</div><h3>Laser level accuracy</h3><p>Zero surface deflection with digital floor &amp; sill alignment checks.</p></div>
+        <div class="info-card"><div class="cap">Testing</div><h3>Independent lab tests</h3><p>Third-party certified compressive strength &amp; tensile test dossiers.</p></div>
+        <div class="info-card"><div class="cap">Policy</div><h3>Zero tolerance policy</h3><p>Defects are rectified before advancing to any subsequent milestone.</p></div>
+      </div>
+      <div class="callout reveal">
+        <div class="cap">The Integra quality standard</div>
+        <p>Quality is never an afterthought or inspected at the end. We execute multi-tier digital checklists at every stage before advancing to the next milestone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH-ENABLED VISIBILITY -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">07</span>Tech-enabled site visibility</div>
+        <h2 class="section-title">Stay 100% in the loop, from anywhere</h2>
+      </div>
+      <div class="card-grid-4 reveal">
+        <div class="info-card info-card--top"><h3>Real-time progress tracking</h3><p>Micro-level project scheduling mapped on Microsoft Project / Primavera. Track planned vs. actual milestones anytime.</p></div>
+        <div class="info-card info-card--top"><h3>Live CCTV site access</h3><p>High-definition live streaming cameras installed across active site zones &mdash; view daily work directly from your phone.</p></div>
+        <div class="info-card info-card--top"><h3>Digital quality checklists</h3><p>All 350+ stage inspection sign-offs, lab test reports (cube, steel, soil) and batch mix slips uploaded to your client portal.</p></div>
+        <div class="info-card info-card--top"><h3>Daily photo &amp; work logs</h3><p>Automated daily end-of-day reports detailing tasks completed, material received, workforce headcount, and next-day plans.</p></div>
+      </div>
+
+      <p class="mono" style="text-transform:uppercase; letter-spacing:0.05em; font-size:0.78rem; color:var(--ink-faint); margin:2.6rem 0 1rem;">Structured governance, cost certainty &amp; zero hidden charges</p>
+      <div class="table-wrap reveal"><table class="gov-table">
+        <thead><tr><th>Governance pillar</th><th>Integra operating protocol</th><th>Customer protection</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Cost certainty (no escalation)</th><td>Itemized bill of quantities (BOQ) with fixed unit rates. Raw material price fluctuations during the project lifecycle are absorbed by Integra.</td><td class="protect">100% Locked Contract Price</td></tr>
+          <tr><th scope="row">Milestone-linked payments</th><td>Payments are strictly tied to verifiable physical site completion milestones &mdash; plinth, slab casting, blockwork, plaster, finishes.</td><td class="protect">Zero Advance Risk</td></tr>
+          <tr><th scope="row">Transparent change orders</th><td>Any client-requested material upgrade or structural variation is estimated in writing and approved before execution.</td><td class="protect">No Surprise Final Invoices</td></tr>
+          <tr><th scope="row">Structured monthly reviews</th><td>Formal monthly reviews with leadership: planned vs. completed analysis, cash-flow updates, material approvals, and forward schedules.</td><td class="protect">Full Visibility &amp; Founder Access</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- BRANDED MATERIALS -->
+  <section class="section" style="background:var(--paper-2);">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">08</span>100% branded materials policy</div>
+        <h2 class="section-title">Zero local shortcuts &mdash; every material is Tier-1, brand-verified</h2>
+      </div>
+
+      <div class="brand-marquee-strip reveal">
+        <div class="brand-marquee-title">Verified Tier-1 Partner Brands</div>
+        <div class="marquee-logos">
+          <div class="partner-logo-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00529B"/><path d="M7 8h10M12 8v8" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+            TATA TISCON
+          </div>
+          <div class="partner-logo-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 3, 21 12, 12 21, 3 12" fill="#FBBF24"/><text x="12" y="15" font-size="7" font-weight="900" text-anchor="middle" fill="#000">UT</text></svg>
+            UltraTech
+          </div>
+          <div class="partner-logo-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#E11D48"/><path d="M6 16l6-10 6 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+            asianpaints
+          </div>
+          <div class="partner-logo-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0284C7"/><path d="M8 12h8M12 8l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            ASTRAL
+          </div>
+          <div class="partner-logo-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#DC2626"/><circle cx="12" cy="12" r="6" stroke="#fff" stroke-width="2.5" fill="none"/></svg>
+            HAVELLS
+          </div>
+          <div class="partner-logo-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#0F172A"/><text x="12" y="16" font-size="10" font-weight="900" text-anchor="middle" fill="#d99a44">J</text></svg>
+            Jaquar
+          </div>
+          <div class="partner-logo-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1E3A8A"/><text x="12" y="16" font-size="9" font-weight="800" text-anchor="middle" fill="#fff">JSW</text></svg>
+            JSW Steel
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="material-row">
+          <b>Reinforcement steel</b>
+          <div class="material-chips">
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#00529B"/><path d="M7 8h10M12 8v8" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/></svg>
+              </div>
+              <div><span class="brand-name">Tata Tiscon</span><span class="brand-sub">Fe550D Super Ductile</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1E3A8A"/><path d="M6 15l4-8 4 8" stroke="#EF4444" stroke-width="2.5" fill="none"/><text x="17" y="16" font-size="7" font-weight="900" fill="#fff">S</text></svg>
+              </div>
+              <div><span class="brand-name">JSW Neosteel</span><span class="brand-sub">Pure Steel Grade</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#047857"/><path d="M6 8h12M12 8v9M9 17h6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/></svg>
+              </div>
+              <div><span class="brand-name">Jindal Panther</span><span class="brand-sub">Fe550 TMT</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#475569"/><text x="12" y="16" font-size="9" font-weight="800" text-anchor="middle" fill="#fff">R</text></svg>
+              </div>
+              <div><span class="brand-name">Rajuri / Kalika</span><span class="brand-sub">Certified ISI TMT</span></div>
+            </div>
+          </div>
+          <span class="assure">Fe500D/550D TMT with batch test certificates</span>
+        </div>
+
+        <div class="material-row">
+          <b>Cement &amp; RMC</b>
+          <div class="material-chips">
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12 2, 22 12, 12 22, 2 12" fill="#F59E0B"/><text x="12" y="15" font-size="7" font-weight="900" text-anchor="middle" fill="#000">UT</text></svg>
+              </div>
+              <div><span class="brand-name">UltraTech</span><span class="brand-sub">53G OPC / Super PPC</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#DC2626"/><text x="12" y="16" font-size="8" font-weight="900" text-anchor="middle" fill="#fff">ACC</text></svg>
+              </div>
+              <div><span class="brand-name">ACC Cement</span><span class="brand-sub">Concrete Plus Gold</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#EA580C"/><path d="M12 5l6 14H6z" fill="#fff"/></svg>
+              </div>
+              <div><span class="brand-name">Birla Super</span><span class="brand-sub">Premium 53 Grade</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0369A1"/><text x="12" y="16" font-size="9" font-weight="800" text-anchor="middle" fill="#fff">D</text></svg>
+              </div>
+              <div><span class="brand-name">Dalmia / Chettinad</span><span class="brand-sub">High Sulfate Resist</span></div>
+            </div>
+          </div>
+          <span class="assure">53 &amp; 43 grade, fresh tamper-proof bags</span>
+        </div>
+
+        <div class="material-row">
+          <b>Concealed pipes</b>
+          <div class="material-chips">
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0284C7"/><path d="M7 12a5 5 0 0 1 10 0" stroke="#fff" stroke-width="2.5" fill="none"/></svg>
+              </div>
+              <div><span class="brand-name">Astral Pipes</span><span class="brand-sub">CPVC Pro Lead-Free</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#B91C1C"/><path d="M12 4v16M4 12h16" stroke="#fff" stroke-width="2.5"/></svg>
+              </div>
+              <div><span class="brand-name">Ashirwad CPVC</span><span class="brand-sub">FlowGuard Plus SDR 11</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1D4ED8"/><polygon points="12 6, 14 10, 18 11, 15 14, 16 18, 12 16, 8 18, 9 14, 6 11, 10 10" fill="#fff"/></svg>
+              </div>
+              <div><span class="brand-name">Supreme PVC</span><span class="brand-sub">Heavy SWR Drainage</span></div>
+            </div>
+          </div>
+          <span class="assure">Heavy-duty SDR 11 pressure-tested piping</span>
+        </div>
+
+        <div class="material-row">
+          <b>Cables &amp; switches</b>
+          <div class="material-chips">
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#DC2626"/><circle cx="12" cy="12" r="6" stroke="#fff" stroke-width="2.2" fill="none"/></svg>
+              </div>
+              <div><span class="brand-name">Havells</span><span class="brand-sub">HRFR Flame Retardant</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#E11D48"/><path d="M7 6v12h4M13 6h4v12" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div><span class="brand-name">Legrand</span><span class="brand-sub">Arteor / Mylinc Modular</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#047857"/><text x="12" y="16" font-size="10" font-weight="900" text-anchor="middle" fill="#fff">F</text></svg>
+              </div>
+              <div><span class="brand-name">Finolex</span><span class="brand-sub">100% Pure Electrolytic</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#059669"/><path d="M8 8h8v3H8zm0 5h8v3H8z" fill="#fff"/></svg>
+              </div>
+              <div><span class="brand-name">Schneider / Anchor</span><span class="brand-sub">Modular Shock-Proof</span></div>
+            </div>
+          </div>
+          <span class="assure">100% copper wiring with zero alloy blends</span>
+        </div>
+
+        <div class="material-row">
+          <b>Sanitary ware &amp; CP</b>
+          <div class="material-chips">
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#0F172A"/><text x="12" y="16" font-size="9" font-weight="900" text-anchor="middle" fill="#d99a44">J</text></svg>
+              </div>
+              <div><span class="brand-name">Jaquar</span><span class="brand-sub">Florentine / Kubix Faucets</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#0284C7"/><path d="M6 12h12M12 6v12" stroke="#fff" stroke-width="2.5"/></svg>
+              </div>
+              <div><span class="brand-name">Grohe</span><span class="brand-sub">German Precision CP</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#18181B"/><text x="12" y="16" font-size="8" font-weight="900" text-anchor="middle" fill="#fff">KOHLER</text></svg>
+              </div>
+              <div><span class="brand-name">Kohler / Toto</span><span class="brand-sub">Luxury Wall-Hung</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2563EB"/><text x="12" y="16" font-size="8" font-weight="800" text-anchor="middle" fill="#fff">CERA</text></svg>
+              </div>
+              <div><span class="brand-name">Cera / Hindware</span><span class="brand-sub">Rimless Water-Saving</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#78350F"/><text x="12" y="16" font-size="7" font-weight="900" text-anchor="middle" fill="#FDE68A">QUARTZ</text></svg>
+              </div>
+              <div><span class="brand-name">Carysil</span><span class="brand-sub">Granite Quartz Sink</span></div>
+            </div>
+          </div>
+          <span class="assure">Brass diverters with official brand warranty</span>
+        </div>
+
+        <div class="material-row">
+          <b>Paints &amp; waterproofing</b>
+          <div class="material-chips">
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#E11D48"/><path d="M6 16l6-10 6 10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+              </div>
+              <div><span class="brand-name">Asian Paints</span><span class="brand-sub">Royale Luxury / Apex Ultima</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#991B1B"/><polygon points="12 4, 18 10, 15 18, 9 18, 6 10" fill="#fff"/></svg>
+              </div>
+              <div><span class="brand-name">Berger Paints</span><span class="brand-sub">Silk Glamor / WeatherCoat</span></div>
+            </div>
+            <div class="brand-chip-card">
+              <div class="brand-logo-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#CA8A04"/><circle cx="12" cy="12" r="6" fill="#000"/><path d="M10 12l2 2 3-4" stroke="#fff" stroke-width="1.8" fill="none"/></svg>
+              </div>
+              <div><span class="brand-name">Dr. Fixit</span><span class="brand-sub">PIDIFIN 2K Polymer Barrier</span></div>
+            </div>
+          </div>
+          <span class="assure">100% factory-sealed original tint containers</span>
+        </div>
+      </div>
+<div class="card-grid-4 reveal" style="margin-top:2rem;">
+        <div class="info-card"><h3>Factory invoices</h3><p>Direct manufacturer supply with verified batch test reports.</p></div>
+        <div class="info-card"><h3>QR barcode verification</h3><p>On-site authenticity scanning for steel, wire &amp; paint supplies.</p></div>
+        <div class="info-card"><h3>Anti-corrosion primers</h3><p>High-grade epoxy coating on exposed structural brackets.</p></div>
+        <div class="info-card"><h3>100% copper wiring</h3><p>Zero aluminium alloy blends for total fire &amp; electrical safety.</p></div>
+      </div>
+      <div class="callout reveal">
+        <div class="cap">Zero substitution policy</div>
+        <p>We never swap in unapproved local alternatives to cut costs. Every single bag of cement, ton of steel, and plumbing fitting is brand-verified on arrival at site.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSTRUCTORS NOT PLATFORM -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">09</span>We are constructors, not a platform company</div>
+        <h2 class="section-title">What sets Integra apart</h2>
+      </div>
+      <div class="table-wrap reveal"><table class="vs-table">
+        <thead><tr><th>Parameter</th><th>Local unorganized contractors</th><th>Online middleman platforms</th><th>Integra turnkey model</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Business model</th><td>Informal labour contractor; sub-contracts work randomly.</td><td>Lead-generation aggregator; takes commission &amp; delegates the site.</td><td>Self-reliant constructor with associated engineers, consultants &amp; dedicated on-site staff.</td></tr>
+          <tr><th scope="row">Accountability</th><td>Multiple blame games between architect, contractor &amp; vendor.</td><td>Platform forwards tickets &amp; blames the contractor on site.</td><td>100% single-point responsibility from drawings to handover.</td></tr>
+          <tr><th scope="row">Pricing &amp; costs</th><td>Low initial quote; massive escalation as construction proceeds.</td><td>Hidden commission margins + extra cost variations.</td><td>Fixed-price contract with zero cost escalation on agreed scope.</td></tr>
+          <tr><th scope="row">Quality control</th><td>Visual thumb-rule inspection; zero lab testing or audits.</td><td>Third-party inspector visits periodically; no daily control.</td><td>350+ digital QA checklists, daily engineer supervision &amp; lab tests.</td></tr>
+          <tr><th scope="row">Timely delivery</th><td>Frequent delays of 6 to 18 months with zero penalty.</td><td>Contractor disputes cause frequent site work stoppages.</td><td>Committed timeline with a delay compensation penalty clause.</td></tr>
+          <tr><th scope="row">Post-handover warranty</th><td>Verbal promises; contractor vanishes after final payment.</td><td>Disclaimers shift warranty responsibility to the contractor.</td><td>Legal written 10-Yr structural &amp; 5-Yr waterproofing warranty.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- HANDOVER -->
+  <section class="section" style="background:var(--paper-2);">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">10</span>Documented handover &amp; the 10 customer promises</div>
+        <h2 class="section-title">When you receive the keys, you receive the dossier</h2>
+      </div>
+      <div class="handover-grid reveal">
+        <div class="handover-card dossier">
+          <h3>Documented handover dossier</h3>
+          <div class="dossier-item"><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p><b style="color:var(--ink)">As-built drawings:</b> complete architectural, structural, and concealed MEP piping/electrical layouts.</p></div>
+          <div class="dossier-item"><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p><b style="color:var(--ink)">Certificates &amp; lab reports:</b> soil test, concrete cube strength, steel tensile test, and water test certificates.</p></div>
+          <div class="dossier-item"><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p><b style="color:var(--ink)">Legal warranty certificates:</b> 10-year structural warranty &amp; 5-year waterproofing warranty documents.</p></div>
+          <div class="dossier-item"><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p><b style="color:var(--ink)">Operations &amp; maintenance guide:</b> product manuals, paint shade codes, and maintenance schedules.</p></div>
+        </div>
+        <div class="handover-card commit">
+          <h3>The 10 Integra commitments</h3>
+          <div class="commit-item"><b class="n">01</b><span><strong>Professional design:</strong> associated architecture, structural &amp; MEP consultants.</span></div>
+          <div class="commit-item"><b class="n">02</b><span><strong>100% branded materials:</strong> verified makes with zero substitutions.</span></div>
+          <div class="commit-item"><b class="n">03</b><span><strong>350+ quality checks:</strong> documented engineering inspection gates.</span></div>
+          <div class="commit-item"><b class="n">04</b><span><strong>Real-time tech visibility:</strong> live CCTV, progress app &amp; daily logs.</span></div>
+          <div class="commit-item"><b class="n">05</b><span><strong>No cost escalation:</strong> firm price commitment on BOQ scope.</span></div>
+          <div class="commit-item"><b class="n">06</b><span><strong>Delay compensation:</strong> contractual on-time delivery commitment.</span></div>
+          <div class="commit-item"><b class="n">07</b><span><strong>Dedicated site supervision:</strong> qualified full-time site engineers.</span></div>
+          <div class="commit-item"><b class="n">08</b><span><strong>Support beyond scope:</strong> proactive problem-solving support.</span></div>
+          <div class="commit-item"><b class="n">09</b><span><strong>Written warranties:</strong> 10-year structure + 5-year waterproofing.</span></div>
+          <div class="commit-item"><b class="n">10</b><span><strong>Direct founder access:</strong> reachable leadership for key decisions.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARRANTIES -->
+  <section class="section" id="warranty">
+    <div class="section-inner section-inner--narrow">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">11</span>Warranties &amp; guarantees</div>
+        <h2 class="section-title">Every commitment is written into your contract</h2>
+        <p class="section-sub">Not left to a verbal promise.</p>
+      </div>
+      <div class="stat-strip reveal">
+        <div><b>10-Yr</b><span>Structural warranty</span></div>
+        <div><b>5-Yr</b><span>Waterproofing warranty</span></div>
+        <div><b>350+</b><span>Quality audits</span></div>
+        <div><b>100%</b><span>Turnkey ownership</span></div>
+      </div>
+      <p class="reveal" style="margin-top:1.8rem; color:var(--ink-soft); font-size:0.95rem;">Every Integra contract is backed by a legally written 10-year structural warranty and a 5-year waterproofing warranty &mdash; not a verbal assurance that disappears after final payment. Combined with our fixed-price BOQ, milestone-linked payments, and 350+ documented quality checkpoints, these are commitments you can hold us to, on paper, from day one.</p>
+
+      <p class="mono reveal" style="text-transform:uppercase; letter-spacing:0.05em; font-size:0.78rem; color:var(--ink-faint); margin:2.2rem 0 0.6rem;">What makes a warranty worth the paper it's written on</p>
+      <ul class="principle-list reveal">
+        <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p><b>Milestone-linked payments:</b> payments strictly tied to verifiable physical site completion milestones &mdash; zero advance risk.</p></li>
+        <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p><b>Locked contract price:</b> raw material price fluctuations during the project lifecycle are absorbed by Integra, not passed to you.</p></li>
+        <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p><b>Transparent change orders:</b> any client-requested upgrade or structural variation is estimated in writing and approved before execution.</p></li>
+        <li><svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--good)" stroke-width="2.6"><path d="M5 13l4 4L19 7"/></svg><p><b>Structured governance:</b> formal monthly reviews with leadership, with full visibility and direct founder access.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  
+  <!-- ---------- Interactive Get Quote Section ---------- -->
+  <section class="quote-section" id="quote">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="tag">09</span>Instant Cost Estimator</div>
+        <h2 class="section-title" style="color:#ffffff;">Get an instant transparent estimate for your dream home</h2>
+        <p style="color:var(--on-navy-soft);max-width:55ch;margin-top:0.6rem;">Calculate your turnkey construction cost with zero hidden fees. Includes architectural 2D/3D layouts, structural engineering, branded materials, and 10-year warranty.</p>
+      </div>
+
+      <div class="quote-box reveal">
+        <div class="quote-calculator">
+          <div class="calc-field">
+            <label>
+              <span>Built-up Construction Area</span>
+              <span id="areaDisplay" style="font-size:1.1rem;font-weight:700;color:#fff;font-family:'IBM Plex Mono',monospace;">2,200 sq.ft</span>
+            </label>
+            <input type="range" min="800" max="8000" step="50" value="2200" id="areaSlider" class="calc-slider" oninput="calculateEstimate()">
+            <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748b;margin-top:0.3rem;">
+              <span>800 sq.ft</span>
+              <span>4,000 sq.ft</span>
+              <span>8,000 sq.ft</span>
+            </div>
+          </div>
+
+          <div class="calc-field">
+            <label><span>Select Construction Package</span></label>
+            <div class="calc-btn-group">
+              <div class="calc-pkg-btn" onclick="selectPackage('basic', 1750, this)">
+                <b>Basic</b>
+                <span>₹1,750 / sq.ft</span>
+              </div>
+              <div class="calc-pkg-btn active" onclick="selectPackage('premium', 2150, this)">
+                <b>Premium</b>
+                <span>₹2,150 / sq.ft</span>
+              </div>
+              <div class="calc-pkg-btn" onclick="selectPackage('royale', 2650, this)">
+                <b>Royale</b>
+                <span>₹2,650 / sq.ft</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-field">
+            <label><span>Building Configuration</span></label>
+            <div class="calc-btn-group">
+              <div class="calc-pkg-btn" onclick="selectFloors(1, this)">
+                <b>Ground Only</b>
+                <span>Single Floor (G)</span>
+              </div>
+              <div class="calc-pkg-btn active" onclick="selectFloors(2, this)">
+                <b>G + 1 Floor</b>
+                <span>Duplex Villa</span>
+              </div>
+              <div class="calc-pkg-btn" onclick="selectFloors(3, this)">
+                <b>G + 2 Floors</b>
+                <span>Triplex / Multi-unit</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-field">
+            <label><span>Project Location</span></label>
+            <input type="text" id="quoteCity" placeholder="e.g. Pune, Baner, Wakad, PCMC, etc." class="quote-form-input" value="Pune / PCMC">
+          </div>
+        </div>
+
+        <div class="quote-summary-card">
+          <div>
+            <div style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent-2);font-weight:700;">Estimated Turnkey Investment</div>
+            <div class="quote-price-tag" id="totalEstimatePrice">₹47,30,000</div>
+            <div style="font-size:0.78rem;color:#94a3b8;">*Firm fixed-price BOQ. Zero price escalation during construction.</div>
+
+            <div class="quote-breakdown">
+              <div class="breakdown-row"><span>Structural RCC &amp; Masonry:</span> <b id="rccEstimate">₹23,65,000</b></div>
+              <div class="breakdown-row"><span>Finishing, Tiles &amp; CP/Sanitary:</span> <b id="finishEstimate">₹16,55,500</b></div>
+              <div class="breakdown-row"><span>Electrical &amp; Plumbing:</span> <b id="mepEstimate">₹7,09,500</b></div>
+              <div class="breakdown-row"><span>Architectural 2D/3D &amp; QA:</span> <b style="color:#22c55e;">INCLUDED (FREE)</b></div>
+              <div class="breakdown-row total"><span>Estimated Timeline:</span> <b id="estTimeline">6 - 8 Months</b></div>
+            </div>
+          </div>
+
+          <div style="margin-top:1.5rem;">
+            <input type="tel" id="userPhone" placeholder="Enter Mobile Number for Detailed BOQ" class="quote-form-input" style="background:#0f172a;border-color:rgba(217,154,68,0.4);">
+            <button class="btn btn-primary" onclick="submitDetailedQuote()" style="width:100%;justify-content:center;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;padding:0.9rem;border-radius:4px;cursor:pointer;">
+              Request Detailed BOQ &amp; Site Inspection
+            </button>
+            <div id="quoteSuccessMsg" style="display:none;color:#22c55e;font-size:0.85rem;font-weight:600;text-align:center;margin-top:0.6rem;">
+              Thank you! Our senior engineer will share the itemized BOQ within 30 minutes. Our senior engineer will share the itemized BOQ within 30 minutes.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Modal Popup for Instant Quotes ---------- -->
+  <div class="modal-overlay" id="quoteModalOverlay" onclick="closeQuoteModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeQuoteModal()" aria-label="Close modal">&times;</button>
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <div style="font-family:'IBM Plex Mono',monospace;color:var(--accent-2);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;">Integra Homes Quote Desk</div>
+        <h3 style="font-size:1.7rem;color:#fff;margin:0.3rem 0;">Get Your Guaranteed Construction Quote</h3>
+        <p style="color:#94a3b8;font-size:0.88rem;">Itemized BOQ with brand-by-brand specifications &amp; 10-year warranty.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">YOUR FULL NAME</label>
+          <input type="text" id="modalName" placeholder="e.g. Rahul Sharma" class="quote-form-input">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">PHONE NUMBER</label>
+          <input type="tel" id="modalPhone" placeholder="e.g. 9876543210" class="quote-form-input">
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">ESTIMATED PLOT / BUILT-UP AREA (SQ.FT)</label>
+          <input type="number" id="modalArea" placeholder="e.g. 2000" value="2000" class="quote-form-input">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">DESIRED PACKAGE</label>
+          <select id="modalPkg" class="quote-form-input" style="background:#1e293b;">
+            <option value="Basic">Basic (₹1,750 / sq.ft)</option>
+            <option value="Premium" selected>Premium (₹2,150 / sq.ft)</option>
+            <option value="Royale">Royale Luxury (₹2,650 / sq.ft)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1.2rem;">
+        <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">PLOT LOCATION / CITY</label>
+        <input type="text" id="modalLocation" placeholder="e.g. Baner, Pune / PCMC" class="quote-form-input">
+      </div>
+
+      <button class="btn btn-primary" onclick="submitModalQuote()" style="width:100%;justify-content:center;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;padding:0.95rem;font-size:1rem;border-radius:4px;cursor:pointer;">
+        Send Me Itemized BOQ &amp; Schedule Site Visit
+      </button>
+      <div id="modalSuccessMsg" style="display:none;color:#22c55e;font-size:0.9rem;font-weight:600;text-align:center;margin-top:0.8rem;">
+        Request Received! Our engineering lead will contact you with the complete project estimate. Our engineering lead will contact you with the complete project estimate.
+      </div>
+    </div>
+  </div>
+
+
+  <section class="final-cta">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <path d="M20 4 L36 17 V35 H24 V25 H16 V35 H4 V17 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+      <rect x="17.5" y="10" width="2.6" height="2.6" fill="#f0b56a"/>
+      <rect x="21.3" y="10" width="2.6" height="2.6" fill="#f0b56a"/>
+      <rect x="17.5" y="13.8" width="2.6" height="2.6" fill="#f0b56a"/>
+      <rect x="21.3" y="13.8" width="2.6" height="2.6" fill="#f0b56a"/>
+    </svg>
+    <h2>Ready to build<br><span class="accent">with Integra?</span></h2>
+    <p class="tagline">Professional design &middot; controlled construction &middot; 100% transparency &middot; total accountability</p>
+    <div class="stat-strip">
+      <div><b>10-Yr</b><span>Structure warranty</span></div>
+      <div><b>5-Yr</b><span>Waterproofing</span></div>
+      <div><b>100%</b><span>Turnkey ownership</span></div>
+    </div>
+    <div class="contact-strip">
+      <div class="contact-cell call">
+        <div class="lbl">Call us today</div>
+        <a class="big" href="tel:+918668463204" style="text-decoration:none; color:inherit;">8668463204</a>
+      </div>
+      <div class="contact-cell web">
+        <div class="lbl">Visit us online</div>
+        <a class="big" href="https://integrahomes.in" style="text-decoration:none; color:inherit;">integrahomes.in</a>
+        <div style="margin-top:0.3rem; font-size:0.82rem; color:var(--on-navy-soft);">info@integrahomes.in</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+  
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">ESTIMATED PLOT / BUILT-UP AREA (SQ.FT)</label>
+          <input type="number" id="modalArea" placeholder="e.g. 2000" value="2000" class="quote-form-input">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">DESIRED PACKAGE</label>
+          <select id="modalPkg" class="quote-form-input" style="background:#1e293b;">
+            <option value="Basic">Basic (₹1,750 / sq.ft)</option>
+            <option value="Premium" selected>Premium (₹2,150 / sq.ft)</option>
+            <option value="Royale">Royale Luxury (₹2,650 / sq.ft)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1.2rem;">
+        <label style="display:block;font-size:0.78rem;font-weight:600;color:var(--accent-2);margin-bottom:0.3rem;">PLOT LOCATION / CITY</label>
+        <input type="text" id="modalLocation" placeholder="e.g. Baner, Pune / PCMC" class="quote-form-input">
+      </div>
+
+      <button class="btn btn-primary" onclick="submitModalQuote()" style="width:100%;justify-content:center;background:linear-gradient(135deg,#d99a44,#b6772a);color:#121820;font-weight:700;border:none;padding:0.95rem;font-size:1rem;border-radius:4px;cursor:pointer;">
+        Send Me Itemized BOQ &amp; Schedule Site Visit
+      </button>
+      <div id="modalSuccessMsg" style="display:none;color:#22c55e;font-size:0.9rem;font-weight:600;text-align:center;margin-top:0.8rem;">
+        Request Received! Our engineering lead will contact you with the complete project estimate. Our engineering lead will contact you with the complete project estimate.
+      </div>
+    </div>
+  </div>
+
+<footer class="site-foot">
+  <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;">
+    <a href="#top" aria-label="Integra Homes" style="display:inline-block;">
+      <img src="integra-logo.svg" alt="Integra" style="height:30px;width:auto;opacity:0.9;">
+    </a>
+    <span>&copy; <span id="year"></span> Integra Homes &middot; Home Construction &amp; Engineering Catalogue</span>
+  </div>
+  <span><a href="tel:+918668463204">8668463204</a> &middot; <a href="mailto:info@integrahomes.in">info@integrahomes.in</a> &middot; <a href="https://integrahomes.in">integrahomes.in</a></span>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile nav
+  var navToggle = document.getElementById('navToggle');
+  var mobilePanel = document.getElementById('mobilePanel');
+  navToggle.addEventListener('click', function(){
+    var open = mobilePanel.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobilePanel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mobilePanel.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); });
+  });
+
+  // spec tabs
+  var tabs = document.querySelectorAll('.spec-tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var key = tab.getAttribute('data-tab');
+      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+      document.querySelectorAll('.spec-panel').forEach(function(p){ p.classList.remove('active'); });
+      var panel = document.getElementById('panel-' + key);
+      if(panel){ panel.classList.add('active'); }
+    });
+  });
+
+  // reveal on scroll
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduceMotion && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // Quote Calculator Logic
+  var currentPkgRate = 2150;
+  var currentFloors = 2;
+
+  function selectPackage(pkg, rate, el){
+    currentPkgRate = rate;
+    document.querySelectorAll('.calc-pkg-btn').forEach(function(b){
+      if(b.parentNode === el.parentNode) b.classList.remove('active');
+    });
+    el.classList.add('active');
+    calculateEstimate();
+  }
+
+  function selectFloors(floors, el){
+    currentFloors = floors;
+    document.querySelectorAll('.calc-pkg-btn').forEach(function(b){
+      if(b.parentNode === el.parentNode) b.classList.remove('active');
+    });
+    el.classList.add('active');
+    calculateEstimate();
+  }
+
+  function calculateEstimate(){
+    var area = parseInt(document.getElementById('areaSlider').value, 10);
+    document.getElementById('areaDisplay').textContent = area.toLocaleString('en-IN') + ' sq.ft';
+    
+    var totalPrice = area * currentPkgRate;
+    var rcc = Math.round(totalPrice * 0.50);
+    var finish = Math.round(totalPrice * 0.35);
+    var mep = Math.round(totalPrice * 0.15);
+
+    var formattedTotal = '₹' + totalPrice.toLocaleString('en-IN');
+    document.getElementById('totalEstimatePrice').textContent = formattedTotal;
+    document.getElementById('rccEstimate').textContent = '₹' + rcc.toLocaleString('en-IN');
+    document.getElementById('finishEstimate').textContent = '₹' + finish.toLocaleString('en-IN');
+    document.getElementById('mepEstimate').textContent = '₹' + mep.toLocaleString('en-IN');
+
+    var months = area <= 1800 ? '5 - 6 Months' : area <= 3500 ? '6 - 8 Months' : '8 - 12 Months';
+    document.getElementById('estTimeline').textContent = months;
+  }
+
+  function submitDetailedQuote(){
+    var phone = document.getElementById('userPhone').value.trim();
+    if(!phone){
+      alert('Please enter your mobile number to receive the detailed BOQ.');
+      return;
+    }
+    document.getElementById('quoteSuccessMsg').style.display = 'block';
+  }
+
+  function openQuoteModal(){
+    document.getElementById('quoteModalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeQuoteModal(e){
+    if(!e || e.target === document.getElementById('quoteModalOverlay') || e.target.classList.contains('modal-close-btn')){
+      document.getElementById('quoteModalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function submitModalQuote(){
+    var name = document.getElementById('modalName').value.trim();
+    var phone = document.getElementById('modalPhone').value.trim();
+    if(!phone){
+      alert('Please enter your contact number.');
+      return;
+    }
+    document.getElementById('modalSuccessMsg').style.display = 'block';
+    setTimeout(function(){
+      closeQuoteModal();
+      document.getElementById('modalSuccessMsg').style.display = 'none';
+    }, 2800);
+  }
+
+  // Initialize calculation on load
+  calculateEstimate();
+
+</script>
