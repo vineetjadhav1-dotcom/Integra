@@ -3,13 +3,18 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://integrahomes.in/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://integrahomes.in/hero-render.jpg</image:loc>
       <image:title>Integra Homes - Luxury Turnkey Home Construction</image:title>
       <image:caption>Modern luxury villa residence architectural rendering by Integra Homes</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://integrahomes.in/integra-logo.png</image:loc>
+      <image:title>Integra Homes Official Brand Logo</image:title>
+      <image:caption>Official brand logo of Integra Homes</image:caption>
     </image:image>
   </url>
 </urlset>

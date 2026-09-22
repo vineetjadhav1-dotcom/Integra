@@ -1,25 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="100%" height="100%" fill="none">
   <defs>
-    <linearGradient id="integraGoldBrand" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E0952D"/>
-      <stop offset="100%" stop-color="#C9882B"/>
-    </linearGradient>
-    <linearGradient id="glint" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.3"/>
+    <linearGradient id="integraOrangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7547"/>
+      <stop offset="100%" stop-color="#E84F1C"/>
     </linearGradient>
   </defs>
 
-  <!-- 3 Golden Architectural Pillars (Flush baseline at y=360) -->
-  <rect x="25" y="175" width="18" height="185" rx="2" fill="url(#integraGoldBrand)"/>
-  <rect x="53" y="130" width="18" height="230" rx="2" fill="url(#integraGoldBrand)"/>
-  <rect x="81" y="85" width="18" height="275" rx="2" fill="url(#integraGoldBrand)"/>
+  <!-- 3 Vibrant Pillars (Flush baseline at y=360) -->
+  <rect x="25" y="175" width="18" height="185" rx="2" fill="url(#integraOrangeGradient)"/>
+  <rect x="53" y="130" width="18" height="230" rx="2" fill="url(#integraOrangeGradient)"/>
+  <rect x="81" y="85" width="18" height="275" rx="2" fill="url(#integraOrangeGradient)"/>
 
-  <!-- Architectural House Gable Roof Outline -->
-  <path d="M108 95 L245 15 L380 95 L380 115" stroke="#FFFFFF" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Architectural House Gable Roof Outline (Navy #07274C) -->
+  <path d="M108 95 L245 15 L380 95 L380 115" stroke="#07274C" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- 4-Pane Square Window (2x2 Grid) Centered Beneath Roof Peak -->
-  <g fill="url(#integraGoldBrand)">
+  <g fill="url(#integraOrangeGradient)">
     <rect x="212" y="55" width="28" height="28" rx="2.5"/>
     <rect x="250" y="55" width="28" height="28" rx="2.5"/>
     <rect x="212" y="93" width="28" height="28" rx="2.5"/>
@@ -28,33 +24,28 @@
 
   <!-- Wordmark: integra (Geometric Sans-Serif) -->
   <!-- i (stem integrates directly with the roof structure) -->
-  <path d="M118 105 V360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="square"/>
+  <path d="M118 105 V360" stroke="#07274C" stroke-width="20" stroke-linecap="square"/>
 
-  <!-- n -->
-  <path d="M185 360 V245 C185 205 210 185 240 185 C270 185 295 205 295 245 V360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M185 225 V360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="square"/>
+  <!-- n (Navy #07274C) -->
+  <path d="M185 360 V245 C185 205 210 185 240 185 C270 185 295 205 295 245 V360" stroke="#07274C" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M185 225 V360" stroke="#07274C" stroke-width="20" stroke-linecap="square"/>
 
-  <!-- t -->
-  <path d="M345 130 V335 C345 352 355 360 375 360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M322 188 H380" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"/>
+  <!-- t (Navy #07274C) -->
+  <path d="M345 130 V335 C345 352 355 360 375 360" stroke="#07274C" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M322 188 H380" stroke="#07274C" stroke-width="20" stroke-linecap="round"/>
 
-  <!-- e -->
-  <path d="M425 248 H515 C515 210 490 185 460 185 C428 185 405 215 405 272 C405 328 428 360 464 360 C490 360 508 346 515 330" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- e (Navy #07274C) -->
+  <path d="M425 248 H515 C515 210 490 185 460 185 C428 185 405 215 405 272 C405 328 428 360 464 360 C490 360 508 346 515 330" stroke="#07274C" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- g -->
-  <circle cx="580" cy="242" r="48" stroke="#FFFFFF" stroke-width="20"/>
-  <path d="M628 195 V325 C628 362 602 380 565 380 C535 380 520 364 515 355" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- g (Navy #07274C) -->
+  <circle cx="580" cy="242" r="48" stroke="#07274C" stroke-width="20"/>
+  <path d="M628 195 V325 C628 362 602 380 565 380 C535 380 520 364 515 355" stroke="#07274C" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- r -->
-  <path d="M685 360 V195" stroke="#FFFFFF" stroke-width="20" stroke-linecap="square"/>
-  <path d="M685 235 C700 200 730 188 758 194" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"/>
+  <!-- r (Navy #07274C) -->
+  <path d="M685 360 V195" stroke="#07274C" stroke-width="20" stroke-linecap="square"/>
+  <path d="M685 235 C700 200 730 188 758 194" stroke="#07274C" stroke-width="20" stroke-linecap="round"/>
 
-  <!-- a -->
-  <circle cx="820" cy="268" r="48" stroke="#FFFFFF" stroke-width="20"/>
-  <path d="M868 195 V360" stroke="#FFFFFF" stroke-width="20" stroke-linecap="square"/>
-
-  <!-- Integrated Angled Accent Tail on 'a' (#C9882B) -->
-  <polygon points="862,305 912,355 892,375 848,325" fill="url(#integraGoldBrand)"/>
-  <!-- Highlight Facet on Accent Tip -->
-  <polygon points="892,375 912,355 904,347 884,367" fill="url(#glint)"/>
+  <!-- a (Vibrant Orange Accent #FA6333) -->
+  <circle cx="820" cy="268" r="48" stroke="url(#integraOrangeGradient)" stroke-width="20"/>
+  <path d="M868 195 V360" stroke="url(#integraOrangeGradient)" stroke-width="20" stroke-linecap="square"/>
 </svg>
