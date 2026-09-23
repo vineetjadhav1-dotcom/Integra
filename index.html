@@ -874,7 +874,7 @@
   table.spec td .line + .line{ margin-top:0.25rem; color:var(--ink-faint); font-size:0.82rem; }
   table.spec td .chip-line{ display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:0.3rem; }
 
-  /* ---------- mobile spec cards redesign ---------- */
+  /* ---------- MOBILE STYLES & TOUCH SLIDER ---------- */
   .specs-mobile-wrap {
     display: none;
   }
@@ -888,31 +888,78 @@
     .table-hint-swipe, .table-tier-filter {
       display: none !important;
     }
+
+    /* Enhanced Section Demarcation & Boundaries on Mobile */
+    .section {
+      padding: clamp(2.6rem, 6vw, 4.2rem) clamp(1rem, 4vw, 1.8rem);
+      border-bottom: 2px solid var(--line-strong);
+      position: relative;
+    }
+    .section::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    .section-head {
+      margin-bottom: 2rem;
+      padding-bottom: 1.3rem;
+      border-bottom: 1px solid var(--line-strong);
+    }
+    .compare-card, .process-step, .info-card, .handover-card, .vs-card-item {
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .process-step {
+      background: var(--card);
+      padding: 1.3rem 1.15rem;
+      margin-bottom: 0.85rem;
+      border-left: 4px solid var(--accent);
+    }
+    .process-row .process-step:not(:last-child)::after {
+      display: none;
+    }
+    .badge-strip {
+      margin-top: 1.8rem;
+      border-radius: 10px;
+    }
+    .badge-cell {
+      padding: 1rem 0.65rem;
+    }
+    .brand-marquee-strip {
+      padding: 1.2rem 1rem;
+      border-radius: 10px;
+      margin: 1.8rem 0 1rem;
+    }
   }
 
-  /* Category horizontal chip slider */
+  /* Category Horizontal Chip Slider */
   .specs-mob-cat-scroll {
     display: flex;
     gap: 0.45rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 0.2rem 0.2rem 0.65rem 0.2rem;
-    margin-bottom: 0.75rem;
+    padding: 0.2rem 0.2rem 0.75rem 0.2rem;
+    margin-bottom: 0.85rem;
   }
   .specs-mob-cat-scroll::-webkit-scrollbar { display: none; }
   .specs-mob-cat-btn {
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem 0.85rem;
+    gap: 0.45rem;
+    padding: 0.55rem 0.95rem;
     border-radius: 999px;
     background: var(--card);
     border: 1px solid var(--line-strong);
     color: var(--ink-soft);
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.74rem;
+    font-size: 0.76rem;
     font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
@@ -922,72 +969,118 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.35rem;
+    height: 1.35rem;
     border-radius: 50%;
     background: var(--paper-2);
     color: var(--ink);
-    font-size: 0.68rem;
+    font-size: 0.7rem;
+    font-weight: 800;
   }
   .specs-mob-cat-btn.active {
     background: var(--accent);
     color: #121820;
     border-color: var(--accent);
     font-weight: 700;
-    box-shadow: 0 4px 12px rgba(250,99,51,0.3);
+    box-shadow: 0 4px 14px rgba(250,99,51,0.35);
   }
   .specs-mob-cat-btn.active b {
     background: #121820;
     color: var(--accent);
   }
 
-  /* Sticky tier segmented selector */
+  /* Sticky Tier Segmented Switcher & Slider Bar */
   .specs-mob-tier-bar {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.3rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
     background: var(--paper-2);
     border: 1px solid var(--line-strong);
-    padding: 0.32rem;
-    border-radius: 8px;
-    margin-bottom: 1.1rem;
+    padding: 0.35rem;
+    border-radius: 10px;
+    margin-bottom: 0.65rem;
     position: sticky;
     top: 60px;
-    z-index: 20;
+    z-index: 25;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   }
   :root[data-theme="dark"] .specs-mob-tier-bar {
-    background: rgba(26, 35, 52, 0.92);
-    border-color: rgba(238, 241, 240, 0.14);
+    background: rgba(17, 24, 39, 0.94);
+    border-color: rgba(255, 255, 255, 0.12);
   }
   .specs-mob-tier-btn {
     background: transparent;
     border: 1px solid transparent;
-    padding: 0.52rem 0.2rem;
-    font-size: 0.72rem;
+    padding: 0.58rem 0.25rem;
+    font-size: 0.74rem;
     font-weight: 700;
     color: var(--ink-soft);
-    border-radius: 6px;
+    border-radius: 7px;
     cursor: pointer;
     text-align: center;
     font-family: "IBM Plex Sans", sans-serif;
-    transition: all 0.2s ease;
+    transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
+    white-space: nowrap;
   }
   .specs-mob-tier-btn.active {
     background: var(--card);
     color: var(--ink);
     border-color: var(--line-strong);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
-  :root[data-theme="dark"] .specs-mob-tier-btn.active {
-    background: #1f2a3f;
-    color: var(--accent);
-    border-color: rgba(250,99,51,0.4);
+  .specs-mob-tier-btn.btn-tier-basic.active {
+    background: var(--card);
+    color: var(--ink);
+    border-color: rgba(142, 154, 175, 0.6);
+  }
+  .specs-mob-tier-btn.btn-tier-premium.active {
+    background: var(--accent);
+    color: #121820;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(250,99,51,0.35);
+  }
+  .specs-mob-tier-btn.btn-tier-royale.active {
+    background: #9d4edd;
+    color: #ffffff;
+    border-color: #9d4edd;
+    box-shadow: 0 4px 12px rgba(157,78,221,0.35);
   }
 
-  /* Mobile Spec Panels & Cards */
+  /* Slider Hint Bar & Interactive Dots */
+  .specs-slider-hint {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0 0.3rem;
+  }
+  .specs-slider-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .specs-slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+  .specs-slider-dot.active {
+    width: 22px;
+    border-radius: 10px;
+    background: var(--accent);
+  }
+
+  /* Mobile Spec Panels */
   .specs-mob-panel {
     display: none;
     animation: fadeIn 0.25s ease forwards;
@@ -995,107 +1088,144 @@
   .specs-mob-panel.active {
     display: block;
   }
-  .specs-mob-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 1rem 1.05rem;
-    margin-bottom: 0.85rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    transition: border-color 0.2s ease;
-  }
-  :root[data-theme="dark"] .specs-mob-card {
-    background: #161e2e;
-    border-color: rgba(238, 241, 240, 0.08);
-  }
-  .specs-mob-card-head {
+
+  /* Horizontal Touch Slider Track */
+  .specs-mob-slider-track {
     display: flex;
-    align-items: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.9rem;
+    padding: 0.2rem 0.15rem 0.9rem;
+    scrollbar-width: none;
+  }
+  .specs-mob-slider-track::-webkit-scrollbar { display: none; }
+
+  /* Full Tier Slide Card */
+  .specs-tier-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+    scroll-snap-align: center;
+    background: var(--card);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    padding: 1.25rem 1.15rem;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  :root[data-theme="dark"] .specs-tier-slide {
+    background: #131c2e;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .specs-tier-slide.slide-premium {
+    border: 2px solid var(--accent);
+    box-shadow: 0 6px 24px rgba(250,99,51,0.16);
+  }
+  .specs-tier-slide.slide-royale {
+    border: 2px solid #9d4edd;
+    box-shadow: 0 6px 24px rgba(157,78,221,0.16);
+  }
+
+  /* Slide Card Header */
+  .slide-header {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 0.6rem;
-    margin-bottom: 0.65rem;
-    padding-bottom: 0.55rem;
+    padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--line);
   }
-  .specs-mob-card-title {
-    font-size: 0.92rem;
+  .slide-tier-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+  }
+  .slide-tier-badge.badge-basic {
+    background: rgba(142, 154, 175, 0.18);
+    color: var(--ink);
+    border: 1px solid rgba(142, 154, 175, 0.4);
+  }
+  .slide-tier-badge.badge-premium {
+    background: linear-gradient(135deg, #ff7547, #fa6333);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(250,99,51,0.35);
+  }
+  .slide-tier-badge.badge-royale {
+    background: linear-gradient(135deg, #b388ff, #9d4edd);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(157,78,221,0.35);
+  }
+  .slide-tier-subtitle {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* Spec item in slide */
+  .slide-spec-item {
+    padding: 0.75rem 0.85rem;
+    border-radius: 8px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  :root[data-theme="dark"] .slide-spec-item {
+    background: #0d1522;
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+  .slide-spec-title {
+    font-size: 0.78rem;
     font-weight: 700;
     color: var(--ink);
-    line-height: 1.35;
-  }
-  .specs-mob-badge {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.62rem;
-    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    flex-shrink: 0;
+    letter-spacing: 0.04em;
+    font-family: "IBM Plex Mono", monospace;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
-  .badge-basic { background: rgba(142, 154, 175, 0.15); color: var(--ink-soft); border: 1px solid rgba(142, 154, 175, 0.3); }
-  .badge-premium { background: rgba(250,99,51,0.18); color: var(--accent); border: 1px solid rgba(250,99,51,0.4); }
-  .badge-royale { background: rgba(157, 78, 221, 0.18); color: #b388ff; border: 1px solid rgba(157, 78, 221, 0.4); }
-
-  .specs-mob-single-view {
-    font-size: 0.86rem;
+  .slide-spec-title::before {
+    content: "▪";
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+  .slide-spec-val {
+    font-size: 0.88rem;
     color: var(--ink);
     line-height: 1.5;
   }
-  .specs-mob-single-view .line {
-    display: block;
-    margin-bottom: 0.25rem;
-  }
-  .specs-mob-single-view .line:last-child {
-    margin-bottom: 0;
-  }
-  .specs-mob-compare-view {
-    display: none;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .specs-mob-comp-row {
-    padding: 0.6rem 0.75rem;
-    border-radius: 6px;
-    background: var(--paper-2);
-    border: 1px solid var(--line);
-    font-size: 0.82rem;
-  }
-  :root[data-theme="dark"] .specs-mob-comp-row {
-    background: #111824;
-    border-color: rgba(238, 241, 240, 0.06);
-  }
-  .specs-mob-comp-row.row-premium {
-    border-color: rgba(250,99,51,0.35);
-    background: color-mix(in srgb, var(--accent) 5%, var(--paper-2));
-  }
-  .specs-mob-comp-row.row-royale {
-    border-color: rgba(157, 78, 221, 0.35);
-    background: color-mix(in srgb, #9d4edd 5%, var(--paper-2));
-  }
-  .specs-mob-comp-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.64rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 0.3rem;
-  }
-  .tag-basic { color: var(--ink-soft); }
-  .tag-premium { color: var(--accent); }
-  .tag-royale { color: #b388ff; }
-  .specs-mob-comp-val {
-    color: var(--ink);
-    line-height: 1.45;
-  }
-  .specs-mob-comp-val .line {
+  .slide-spec-val .line {
     display: block;
     margin-bottom: 0.2rem;
   }
-  .specs-mob-comp-val .line:last-child {
+  .slide-spec-val .line:last-child {
     margin-bottom: 0;
+  }
+  .slide-spec-val .chip {
+    display: inline-block;
+    background: rgba(250,99,51,0.12);
+    border: 1px solid rgba(250,99,51,0.35);
+    color: var(--accent);
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: "IBM Plex Mono", monospace;
+    margin: 0.1rem 0;
   }
 
   @media (max-width:860px){
@@ -2225,7 +2355,7 @@
         </div>
       </div>
 
-      <!-- MOBILE SPEC EXPLORER (Card-Based, Fast, Clear Comparison) -->
+      <!-- MOBILE SPEC EXPLORER (Smooth Horizontal Touch Slider: Basic -> Premium -> Royale) -->
       <div class="specs-mobile-wrap">
         <!-- Horizontal Scrollable Category Pills -->
         <div class="specs-mob-cat-scroll" role="tablist" aria-label="Specification Categories">
@@ -2239,91 +2369,96 @@
           <button class="specs-mob-cat-btn" onclick="setMobileSpecCategory('H', this)" role="tab" aria-selected="false"><b>H</b> Guidelines</button>
         </div>
 
-        <!-- Sticky Package Tier Segmented Switcher -->
+        <!-- Sticky Package Tier Segmented Switcher & Active Indicator -->
         <div class="specs-mob-tier-bar" id="specsMobTierBar">
-          <button class="specs-mob-tier-btn" onclick="setMobileSpecTier('basic', this)">Basic</button>
-          <button class="specs-mob-tier-btn active" onclick="setMobileSpecTier('premium', this)">⭐ Premium</button>
-          <button class="specs-mob-tier-btn" onclick="setMobileSpecTier('royale', this)">👑 Royale</button>
-          <button class="specs-mob-tier-btn" onclick="setMobileSpecTier('compare', this)">⚡ Compare</button>
+          <button class="specs-mob-tier-btn btn-tier-basic" onclick="slideToMobileSpecTier(0, this)">🥉 Basic</button>
+          <button class="specs-mob-tier-btn btn-tier-premium active" onclick="slideToMobileSpecTier(1, this)">⭐ Premium</button>
+          <button class="specs-mob-tier-btn btn-tier-royale" onclick="slideToMobileSpecTier(2, this)">👑 Royale</button>
         </div>
 
-        <!-- Mobile Panels Container -->
-        <div class="specs-mob-panels">
-          <!-- Mobile Panel A: Design & Structural -->
-          <div class="specs-mob-panel active" id="mob-panel-A">
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Architectural &amp; 3D Drawings</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">
-                  <span class="line">&bull; 2D floor plans</span>
-                  <span class="line">&bull; 3D elevation (front view)</span>
-                </div>
-                <div class="tier-content-premium" style="display:block;">
-                  <span class="line">&bull; 2D floor plans</span>
-                  <span class="line">&bull; 3D elevation facade</span>
-                  <span class="line">&bull; Plumbing &amp; electrical layouts</span>
-                  <span class="line">&bull; Furniture layout planning</span>
-                </div>
-                <div class="tier-content-royale" style="display:none;">
-                  <span class="line">&bull; 2D floor plans</span>
-                  <span class="line">&bull; 3D elevations from all sides (360&deg;)</span>
-                  <span class="line">&bull; Plumbing &amp; electrical layouts</span>
-                  <span class="line">&bull; Comprehensive luxury furniture layouts</span>
-                </div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic Package</div>
-                  <div class="specs-mob-comp-val">2D floor plans &middot; 3D front elevation</div>
-                </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium (Popular)</div>
-                  <div class="specs-mob-comp-val">2D floor plans &middot; 3D facade &middot; Plumbing &amp; electrical schematics &middot; Furniture planning</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale Package</div>
-                  <div class="specs-mob-comp-val">2D floor plans &middot; Full 360&deg; 3D elevations &middot; Plumbing/electrical &middot; Comprehensive furniture layouts</div>
-                </div>
-              </div>
-            </div>
+        <!-- Touch Slider Hint & Active Progress Dots -->
+        <div class="specs-slider-hint" id="specsSliderHint">
+          <span>👈 Swipe cards to slide tiers 👉</span>
+          <div class="specs-slider-dots">
+            <span class="specs-slider-dot" onclick="slideToMobileSpecTier(0)"></span>
+            <span class="specs-slider-dot active" onclick="slideToMobileSpecTier(1)"></span>
+            <span class="specs-slider-dot" onclick="slideToMobileSpecTier(2)"></span>
+          </div>
+        </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Structural &amp; Execution Drawings</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
+        <!-- Mobile Panels Container with Touch Sliders -->
+        <div class="specs-mob-panels">
+          <!-- Mobile Panel A: Design & 3D -->
+          <div class="specs-mob-panel active" id="mob-panel-A">
+            <div class="specs-mob-slider-track">
+              <!-- Slide 0: Basic -->
+              <div class="specs-tier-slide slide-basic">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-basic">🥉 Basic Package</span>
+                  <span class="slide-tier-subtitle">Essential Scope</span>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Architectural &amp; 3D Design</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; 2D floor plans</span>
+                    <span class="line">&bull; 3D elevation (front view)</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Structural Drawings</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Certified structural engineering drawings</span>
+                    <span class="line">&bull; Working drawings for site execution</span>
+                    <span class="line">&bull; Schedule of openings &amp; sectionals</span>
+                  </div>
+                </div>
               </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">
-                  <span class="line">&bull; Structural drawings certified by licensed engineer</span>
-                  <span class="line">&bull; Working drawings for site execution</span>
-                  <span class="line">&bull; Schedule of openings &amp; sectionals</span>
+
+              <!-- Slide 1: Premium (Default) -->
+              <div class="specs-tier-slide slide-premium">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-premium">⭐ Premium Package</span>
+                  <span class="slide-tier-subtitle">Most Popular</span>
                 </div>
-                <div class="tier-content-premium" style="display:block;">
-                  <span class="line">&bull; Structural drawings certified by licensed engineer</span>
-                  <span class="line">&bull; Working drawings for site execution</span>
-                  <span class="line">&bull; Schedule of openings &amp; sectionals</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Architectural &amp; 3D Design</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; 2D floor plans &amp; 3D facade elevation</span>
+                    <span class="line">&bull; Complete plumbing &amp; electrical layouts</span>
+                    <span class="line">&bull; Room-by-room furniture layout planning</span>
+                  </div>
                 </div>
-                <div class="tier-content-royale" style="display:none;">
-                  <span class="line">&bull; Structural drawings certified by licensed engineer</span>
-                  <span class="line">&bull; Working drawings for site execution</span>
-                  <span class="line">&bull; Schedule of openings &amp; sectionals</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Structural &amp; Execution Drawings</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Certified structural engineering drawings</span>
+                    <span class="line">&bull; Working drawings for site execution</span>
+                    <span class="line">&bull; Schedule of openings &amp; sectionals</span>
+                  </div>
                 </div>
               </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic Package</div>
-                  <div class="specs-mob-comp-val">Structural engineering drawings &middot; Working execution drawings &middot; Schedule of openings</div>
+
+              <!-- Slide 2: Royale -->
+              <div class="specs-tier-slide slide-royale">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-royale">👑 Royale Luxury</span>
+                  <span class="slide-tier-subtitle">Ultra Luxury</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium (Popular)</div>
-                  <div class="specs-mob-comp-val">Structural engineering drawings &middot; Working execution drawings &middot; Schedule of openings</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Architectural &amp; 3D Design</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; 2D floor plans &amp; 360&deg; all-sides 3D elevations</span>
+                    <span class="line">&bull; Advanced MEP schematics &amp; plumbing layouts</span>
+                    <span class="line">&bull; Comprehensive bespoke furniture layouts</span>
+                  </div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale Package</div>
-                  <div class="specs-mob-comp-val">Structural engineering drawings &middot; Working execution drawings &middot; Schedule of openings</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Structural &amp; Execution Drawings</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Certified structural engineering drawings</span>
+                    <span class="line">&bull; Detailed working drawings for site execution</span>
+                    <span class="line">&bull; Schedule of openings &amp; architectural sectionals</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2331,162 +2466,100 @@
 
           <!-- Mobile Panel B: Core Civil & Materials -->
           <div class="specs-mob-panel" id="mob-panel-B">
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Reinforcement Steel (TMT)</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">Fe 500/550 &mdash; <span class="chip">Kalika / Rajuri</span> or equivalent</div>
-                <div class="tier-content-premium" style="display:block;">Fe 500/550 &mdash; <span class="chip">JSW Neo / Jindal Panther</span> or equivalent</div>
-                <div class="tier-content-royale" style="display:none;">Fe 500/550 &mdash; <span class="chip">Tata Tiscon / JSW Steel</span> or equivalent</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Fe 500/550 &mdash; <span class="chip">Kalika / Rajuri</span></div>
+            <div class="specs-mob-slider-track">
+              <!-- Slide 0: Basic -->
+              <div class="specs-tier-slide slide-basic">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-basic">🥉 Basic Package</span>
+                  <span class="slide-tier-subtitle">Civil &amp; Structure</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Fe 500/550 &mdash; <span class="chip">JSW Neo / Jindal Panther</span></div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Reinforcement Steel (TMT)</div>
+                  <div class="slide-spec-val">Fe 500/550 &mdash; <span class="chip">Kalika / Rajuri</span> or equivalent</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Fe 500/550 &mdash; <span class="chip">Tata Tiscon / JSW Steel</span></div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Cement Brands &amp; Grade</div>
+                  <div class="slide-spec-val">53 &amp; 43 Grade &mdash; <span class="chip">Dalmia / Chettinad</span> or equivalent</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Concrete &amp; Masonry</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; M20/M25 design mix RMC concrete</span>
+                    <span class="line">&bull; 9&Prime; &amp; 4.5&Prime; red brick masonry (20mm &amp; 40mm aggregates)</span>
+                    <span class="line">&bull; M-Sand for blockwork &amp; P-Sand for plastering</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Plinth, Sump &amp; Waterproofing</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Standard plinth &amp; 6&Prime; solid block water sump</span>
+                    <span class="line">&bull; 10.0 ft floor-to-floor clear ceiling height</span>
+                    <span class="line">&bull; Dr. Fixit brick-bat waterproofing screed + LW+</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Cement Brands &amp; Grade</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">53 &amp; 43 Grade &mdash; <span class="chip">Dalmia / Chettinad</span> or equivalent</div>
-                <div class="tier-content-premium" style="display:block;">53 &amp; 43 Grade &mdash; <span class="chip">Dalmia / Chettinad</span> or equivalent</div>
-                <div class="tier-content-royale" style="display:none;">53 &amp; 43 Grade &mdash; <span class="chip">UltraTech / Birla Super / ACC / Zuari</span></div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">53 &amp; 43 Grade &mdash; <span class="chip">Dalmia / Chettinad</span></div>
+              <!-- Slide 1: Premium (Default) -->
+              <div class="specs-tier-slide slide-premium">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-premium">⭐ Premium Package</span>
+                  <span class="slide-tier-subtitle">Most Popular</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">53 &amp; 43 Grade &mdash; <span class="chip">Dalmia / Chettinad</span></div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Reinforcement Steel (TMT)</div>
+                  <div class="slide-spec-val">Fe 500/550 &mdash; <span class="chip">JSW Neo / Jindal Panther</span> or equivalent</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">53 &amp; 43 Grade &mdash; <span class="chip">UltraTech / Birla Super / ACC</span></div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Cement Brands &amp; Grade</div>
+                  <div class="slide-spec-val">53 &amp; 43 Grade &mdash; <span class="chip">Dalmia / Chettinad</span> or equivalent</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Concrete &amp; Masonry</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; M20/M25 design mix RMC certified concrete</span>
+                    <span class="line">&bull; 9&Prime; &amp; 4.5&Prime; red brick masonry (20mm &amp; 40mm aggregates)</span>
+                    <span class="line">&bull; M-Sand for blockwork &amp; P-Sand for plastering</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Substructure &amp; Sump</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; 2-course size stone masonry (SSM) substructure</span>
+                    <span class="line">&bull; 6&Prime; solid block water sump with waterproof plaster</span>
+                    <span class="line">&bull; 10.0 ft clear ceiling height &amp; Dr. Fixit chemical waterproofing</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Ready-Mix Concrete (RMC)</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">M20/M25 grade, per structural designer recommendation</div>
-                <div class="tier-content-premium" style="display:block;">M20/M25 grade, per structural designer recommendation</div>
-                <div class="tier-content-royale" style="display:none;">M20/M25 grade, per structural designer recommendation</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic / Premium / Royale</div>
-                  <div class="specs-mob-comp-val">M20/M25 grade certified mix, designed per structural engineer's load calculation.</div>
+              <!-- Slide 2: Royale -->
+              <div class="specs-tier-slide slide-royale">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-royale">👑 Royale Luxury</span>
+                  <span class="slide-tier-subtitle">Top Tier Civil</span>
                 </div>
-              </div>
-            </div>
-
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Masonry &amp; Aggregates</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">9&Prime; &amp; 4.5&Prime; red brick masonry; aggregates 20mm &amp; 40mm</div>
-                <div class="tier-content-premium" style="display:block;">9&Prime; &amp; 4.5&Prime; red brick masonry; aggregates 20mm &amp; 40mm</div>
-                <div class="tier-content-royale" style="display:none;">Premium quality 9&Prime; &amp; 4.5&Prime; red brick masonry; aggregates 20mm &amp; 40mm</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">9&Prime; &amp; 4.5&Prime; red brick masonry; 20mm &amp; 40mm aggregates</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Reinforcement Steel (TMT)</div>
+                  <div class="slide-spec-val">Fe 500/550 &mdash; <span class="chip">Tata Tiscon / JSW Steel</span> or equivalent</div>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">9&Prime; &amp; 4.5&Prime; red brick masonry; 20mm &amp; 40mm aggregates</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Cement Brands &amp; Grade</div>
+                  <div class="slide-spec-val">53 &amp; 43 Grade &mdash; <span class="chip">UltraTech / Birla Super / ACC / Zuari</span></div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Premium sorted 9&Prime; &amp; 4.5&Prime; red brick masonry; 20mm &amp; 40mm aggregates</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Concrete &amp; Masonry</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; M20/M25 design mix RMC certified concrete</span>
+                    <span class="line">&bull; Premium sorted 9&Prime; &amp; 4.5&Prime; red brick masonry</span>
+                    <span class="line">&bull; High-grade aggregates, M-Sand &amp; P-Sand</span>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Underground Water Sump</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">6&Prime; solid block with waterproof plaster</div>
-                <div class="tier-content-premium" style="display:block;">6&Prime; solid block with waterproof plaster</div>
-                <div class="tier-content-royale" style="display:none;">Reinforced RCC sump with waterproof plaster</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">6&Prime; solid block with waterproof plaster</div>
-                </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">6&Prime; solid block with waterproof plaster</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Reinforced cast RCC sump with multi-layer waterproof plaster</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Substructure &amp; Ceiling Height</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">
-                  <span class="line">&bull; Standard plinth (no SSM)</span>
-                  <span class="line">&bull; Clear ceiling height: 10.0 feet</span>
-                  <span class="line">&bull; Dr. Fixit chemical / screed + LW+ waterproofing</span>
-                </div>
-                <div class="tier-content-premium" style="display:block;">
-                  <span class="line">&bull; 2-course size stone masonry (SSM)</span>
-                  <span class="line">&bull; Clear ceiling height: 10.0 feet</span>
-                  <span class="line">&bull; Dr. Fixit chemical / screed + LW+ waterproofing</span>
-                </div>
-                <div class="tier-content-royale" style="display:none;">
-                  <span class="line">&bull; 2-course size stone masonry (SSM)</span>
-                  <span class="line">&bull; Clear ceiling height: 10.0 feet</span>
-                  <span class="line">&bull; Dr. Fixit chemical / screed + LW+ waterproofing</span>
-                </div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Standard plinth &middot; 10.0 ft height &middot; Dr. Fixit waterproofing</div>
-                </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">2-course Size Stone Masonry (SSM) &middot; 10.0 ft height &middot; Dr. Fixit waterproofing</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">2-course Size Stone Masonry (SSM) &middot; 10.0 ft height &middot; Dr. Fixit waterproofing</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Reinforced Sump &amp; Substructure</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; 2-course size stone masonry (SSM) substructure</span>
+                    <span class="line">&bull; Reinforced cast RCC sump with multi-layer waterproof plaster</span>
+                    <span class="line">&bull; 10.0 ft clear ceiling height &amp; Dr. Fixit chemical waterproofing</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2494,132 +2567,94 @@
 
           <!-- Mobile Panel C: Flooring & Stone -->
           <div class="specs-mob-panel" id="mob-panel-C">
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Living, Dining, Kitchen &amp; Bedrooms</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">Premium vitrified tiles</div>
-                <div class="tier-content-premium" style="display:block;">High-grade premium vitrified tiles</div>
-                <div class="tier-content-royale" style="display:none;">Imported luxury vitrified / designer stone</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Premium vitrified tiles</div>
+            <div class="specs-mob-slider-track">
+              <!-- Slide 0: Basic -->
+              <div class="specs-tier-slide slide-basic">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-basic">🥉 Basic Package</span>
+                  <span class="slide-tier-subtitle">Flooring Specs</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">High-grade premium vitrified tiles</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Living, Bed &amp; Dining</div>
+                  <div class="slide-spec-val">Premium vitrified floor tiles throughout</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Imported luxury vitrified / designer natural stone</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Staircase &amp; Balconies</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Polished granite steps for staircase</span>
+                    <span class="line">&bull; Anti-skid designer tiles for balconies &amp; utility</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Bathroom &amp; Kitchen</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Anti-skid bathroom floor tiles; wall dado to 7 ft</span>
+                    <span class="line">&bull; Polished black granite kitchen counter; wall dado to 2 ft</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Parking &amp; Terrace</div>
+                  <div class="slide-spec-val">Heavy-duty paver tiles in parking area; brick-bat waterproofing on terrace</div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Staircase Flooring</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">Polished granite steps</div>
-                <div class="tier-content-premium" style="display:block;">Fine-edge polished granite</div>
-                <div class="tier-content-royale" style="display:none;">Premium flame-treated / polished granite</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Polished granite steps</div>
+              <!-- Slide 1: Premium (Default) -->
+              <div class="specs-tier-slide slide-premium">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-premium">⭐ Premium Package</span>
+                  <span class="slide-tier-subtitle">Most Popular</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Fine-edge polished granite</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Living, Bed &amp; Dining</div>
+                  <div class="slide-spec-val">High-grade premium vitrified tiles across all living areas</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Premium flame-treated / polished granite</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Staircase &amp; Balconies</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Fine-edge polished granite for internal staircase</span>
+                    <span class="line">&bull; Heavy-duty anti-skid vitrified tiles for balconies</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Bathroom &amp; Kitchen</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Premium vitrified bathroom wall dadoing up to 7 ft</span>
+                    <span class="line">&bull; Premium bevelled granite slab; digital wall tiles to 2 ft</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Parking &amp; Terrace</div>
+                  <div class="slide-spec-val">Anti-skid parking vitrified tiles; brick-bat terrace waterproofing</div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Bathroom Wall &amp; Floor Tiling</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">Anti-skid tiles; wall dado to 7 ft</div>
-                <div class="tier-content-premium" style="display:block;">Premium vitrified tiles; dado to 7 ft</div>
-                <div class="tier-content-royale" style="display:none;">Luxury full-height ceiling wall dadoing</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Anti-skid tiles; wall dado up to 7 ft</div>
+              <!-- Slide 2: Royale -->
+              <div class="specs-tier-slide slide-royale">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-royale">👑 Royale Luxury</span>
+                  <span class="slide-tier-subtitle">Luxury Stone</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Premium vitrified tiles; dado up to 7 ft</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Living, Bed &amp; Dining</div>
+                  <div class="slide-spec-val">Imported luxury vitrified / designer composite stone</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Luxury full-height ceiling wall dadoing</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Staircase &amp; Balconies</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Premium flame-treated / polished luxury granite</span>
+                    <span class="line">&bull; Luxury textured anti-skid tiles for sit-outs</span>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Kitchen Countertop &amp; Wall Dado</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">Polished black granite counter &middot; Glazed tiles up to 2 ft</div>
-                <div class="tier-content-premium" style="display:block;">Premium bevelled granite slab &middot; Digital tiles up to 2 ft</div>
-                <div class="tier-content-royale" style="display:none;">Exotic high-thickness polished granite &middot; Designer vitrified dado up to 2 ft</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Polished black granite counter &middot; Glazed wall tiles up to 2 ft</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Bathroom &amp; Kitchen</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Full-height ceiling wall dadoing in all bathrooms</span>
+                    <span class="line">&bull; Exotic high-thickness polished granite; designer dado</span>
+                  </div>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Premium bevelled granite slab &middot; Digital wall tiles up to 2 ft</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Exotic high-thickness granite &middot; Designer vitrified wall dado up to 2 ft</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Parking, Balcony &amp; Terrace</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">Heavy-duty paver tiles in parking &middot; Anti-skid designer balcony tiles</div>
-                <div class="tier-content-premium" style="display:block;">Anti-skid parking vitrified tiles &middot; Heavy-duty anti-skid balcony tiles</div>
-                <div class="tier-content-royale" style="display:none;">Heavy-load textured vitrified stone finish &middot; Luxury textured anti-skid tiles</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Heavy-duty paver tiles &middot; Anti-skid designer tiles</div>
-                </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Anti-skid parking tiles &middot; Heavy-duty balcony tiles</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Heavy-load textured vitrified stone &middot; Luxury textured balcony tiles</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Parking &amp; Terrace</div>
+                  <div class="slide-spec-val">Heavy-load textured vitrified stone finish; complete brick-bat waterproofing</div>
                 </div>
               </div>
             </div>
@@ -2627,213 +2662,176 @@
 
           <!-- Mobile Panel D: Doors & Windows -->
           <div class="specs-mob-panel" id="mob-panel-D">
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Main Entrance Door (1/unit)</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">Teak wood frame (5&Prime;x3&Prime;) + solid teak shutter</div>
-                <div class="tier-content-premium" style="display:block;">Teak wood frame (6&Prime;x4&Prime;) + premium teak shutter</div>
-                <div class="tier-content-royale" style="display:none;">Grand carved teak frame (6&Prime;x4&Prime;) + luxury teak shutter</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Teak wood frame (5&Prime;x3&Prime;) + solid teak shutter</div>
+            <div class="specs-mob-slider-track">
+              <!-- Slide 0: Basic -->
+              <div class="specs-tier-slide slide-basic">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-basic">🥉 Basic Package</span>
+                  <span class="slide-tier-subtitle">Doors &amp; Windows</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Teak wood frame (6&Prime;x4&Prime;) + premium teak shutter</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Main Entrance Door</div>
+                  <div class="slide-spec-val">Teak wood frame (5&Prime;x3&Prime;) + solid teak shutter with standard brass fittings</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Grand carved teak frame (6&Prime;x4&Prime;) + luxury teak shutter</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Internal Doors</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Bedrooms: WPC/Sal frame (4&Prime;x3&Prime;) + flush membrane shutter</span>
+                    <span class="line">&bull; Bathrooms: Granite frame + waterproof PVC shutter</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Windows &amp; Glazing</div>
+                  <div class="slide-spec-val">3-track UPVC/aluminium, 5mm plain glass (10% carpet area)</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Railing &amp; Gates</div>
+                  <div class="slide-spec-val">MS staircase railing &amp; MS standard entry gate</div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Internal Bedroom &amp; Bath Doors</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">WPC/Sal frame (4&Prime;x3&Prime;) + flush membrane shutter &middot; Granite frame + PVC bath shutter</div>
-                <div class="tier-content-premium" style="display:block;">WPC/Sal frame (4&Prime;x3&Prime;) + membrane shutter &middot; Granite frame + WPC waterproof bath shutter</div>
-                <div class="tier-content-royale" style="display:none;">WPC/Sal frame (5&Prime;x3&Prime;) + designer laminate shutter &middot; Granite frame + premium WPC shutter</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">WPC/Sal (4&Prime;x3&Prime;) flush membrane &middot; PVC bath shutter</div>
+              <!-- Slide 1: Premium (Default) -->
+              <div class="specs-tier-slide slide-premium">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-premium">⭐ Premium Package</span>
+                  <span class="slide-tier-subtitle">Most Popular</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">WPC/Sal (4&Prime;x3&Prime;) membrane shutter &middot; WPC waterproof bath shutter</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Main Entrance Door</div>
+                  <div class="slide-spec-val">Teak wood frame (6&Prime;x4&Prime;) + premium teak shutter with designer hardware</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">WPC/Sal (5&Prime;x3&Prime;) designer laminate &middot; Premium WPC bath shutter</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Internal &amp; Pooja Doors</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Pooja: Frame (5&Prime;x3&Prime;) + readymade decorative shutter</span>
+                    <span class="line">&bull; Bedrooms: WPC/Sal frame + membrane shutter</span>
+                    <span class="line">&bull; Bathrooms: Granite frame + WPC waterproof shutter</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Windows &amp; Safety Grills</div>
+                  <div class="slide-spec-val">3-track UPVC/aluminium, 5mm glass + MS safety grill (15% area)</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Railing &amp; Gates</div>
+                  <div class="slide-spec-val">MS designer staircase railing &amp; heavy-gauge MS entry gate</div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Windows &amp; Glazing</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">3-track UPVC/aluminium, 5mm plain glass (10% area)</div>
-                <div class="tier-content-premium" style="display:block;">3-track UPVC/aluminium, 5mm glass + MS safety grill (15% area)</div>
-                <div class="tier-content-royale" style="display:none;">3-track luxury acoustic UPVC/aluminium, 5mm glass + MS grill (15% area)</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">3-track UPVC/aluminium, 5mm plain glass (10% area)</div>
+              <!-- Slide 2: Royale -->
+              <div class="specs-tier-slide slide-royale">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-royale">👑 Royale Luxury</span>
+                  <span class="slide-tier-subtitle">Architectural Joinery</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">3-track UPVC/aluminium, 5mm glass + MS safety grill (15% area)</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Main Entrance Door</div>
+                  <div class="slide-spec-val">Grand carved teak frame (6&Prime;x4&Prime;) + luxury teak shutter with premium brass locks</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">3-track luxury acoustic UPVC/aluminium + MS grill (15% area)</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Pooja &amp; Bedroom Doors</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Pooja: Teak frame (5&Prime;x3&Prime;) + intricately carved teak shutter</span>
+                    <span class="line">&bull; Bedrooms: WPC/Sal frame (5&Prime;x3&Prime;) + designer laminate shutter</span>
+                    <span class="line">&bull; Bathrooms: Granite frame + premium WPC waterproof shutter</span>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Staircase Railing &amp; Main Gate</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">MS staircase railing &amp; MS standard gate</div>
-                <div class="tier-content-premium" style="display:block;">MS staircase railing &amp; MS standard gate</div>
-                <div class="tier-content-royale" style="display:none;">Stainless steel (SS 304) railing &amp; designer architectural gate</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">MS staircase railing &middot; MS standard gate</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Acoustic Glazing Windows</div>
+                  <div class="slide-spec-val">3-track luxury acoustic UPVC/aluminium, 5mm glass + MS grill (15% area)</div>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">MS staircase railing &middot; MS standard gate</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Stainless steel (SS 304) railing &middot; Designer architectural gate</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">SS Railings &amp; Luxury Gate</div>
+                  <div class="slide-spec-val">Stainless steel (SS 304) railing &amp; designer architectural compound gate</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Mobile Panel E: Plumbing & Kitchen -->
+          <!-- Mobile Panel E: Plumbing & Sanitary -->
           <div class="specs-mob-panel" id="mob-panel-E">
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Sanitary Ware &amp; CP Fittings</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;"><span class="chip">Parryware / Cera / Hindware</span> standard line</div>
-                <div class="tier-content-premium" style="display:block;"><span class="chip">Hindware / Jaquar / Cera</span> premium range</div>
-                <div class="tier-content-royale" style="display:none;"><span class="chip">Jaquar / Grohe / Toto</span> luxury series</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val"><span class="chip">Parryware / Cera / Hindware</span></div>
+            <div class="specs-mob-slider-track">
+              <!-- Slide 0: Basic -->
+              <div class="specs-tier-slide slide-basic">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-basic">🥉 Basic Package</span>
+                  <span class="slide-tier-subtitle">Plumbing &amp; Sanitary</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val"><span class="chip">Hindware / Jaquar / Cera</span></div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Sanitary Ware &amp; CP Fittings</div>
+                  <div class="slide-spec-val"><span class="chip">Parryware / Cera / Hindware</span> standard series</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val"><span class="chip">Jaquar / Grohe / Toto</span></div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Bathroom Fixtures</div>
+                  <div class="slide-spec-val">EWC, health faucet, wash basin, wall mixer &amp; overhead shower</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Kitchen Sink &amp; Piping</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Stainless steel sink + chrome faucet</span>
+                    <span class="line">&bull; CPVC pipes (<span class="chip">Ashirwad / Supreme / Astral</span>)</span>
+                    <span class="line">&bull; 1,500L Ekon water tank on 6ft MS stand</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Solar &amp; Geyser Lines</div>
+                  <div class="slide-spec-val">Lines to diverters/mixers only; PVC chamber covers inside plot</div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Bathroom Accessories &amp; Layout</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">EWC, health faucet, wash basin, wall mixer &amp; overhead shower</div>
-                <div class="tier-content-premium" style="display:block;">EWC, health faucet, wash basin, concealed diverter &amp; overhead shower</div>
-                <div class="tier-content-royale" style="display:none;">Premium wall-hung EWC, health faucet, counter basin, concealed diverter &amp; shower</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">EWC &middot; Wall mixer &middot; Overhead shower &middot; Standard basin</div>
+              <!-- Slide 1: Premium (Default) -->
+              <div class="specs-tier-slide slide-premium">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-premium">⭐ Premium Package</span>
+                  <span class="slide-tier-subtitle">Most Popular</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">EWC &middot; Concealed diverter &middot; Overhead shower &middot; Wash basin</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Sanitary Ware &amp; CP Fittings</div>
+                  <div class="slide-spec-val"><span class="chip">Hindware / Jaquar / Cera</span> premium range</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Wall-hung EWC &middot; Concealed diverter &middot; Luxury counter basin &middot; Rain shower</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Bathroom Fixtures</div>
+                  <div class="slide-spec-val">EWC, health faucet, wash basin, concealed diverter &amp; overhead shower</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Kitchen Sink &amp; Water Tank</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; Heavy-gauge SS sink + premium swan-neck faucet</span>
+                    <span class="line">&bull; CPVC pipes (<span class="chip">Ashirwad / Supreme / Astral</span>)</span>
+                    <span class="line">&bull; 1,500L Supreme water tank on 6ft MS stand</span>
+                  </div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Solar &amp; Rainwater Harvesting</div>
+                  <div class="slide-spec-val">Full solar &amp; geyser lines to all bathrooms + sustainable RWH system</div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Kitchen Sink &amp; Tap</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">Stainless steel sink + chrome faucet</div>
-                <div class="tier-content-premium" style="display:block;">Heavy-gauge SS sink + premium swan-neck faucet</div>
-                <div class="tier-content-royale" style="display:none;">SS / Carysil quartz composite sink + luxury mixer tap</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Stainless steel sink + chrome faucet</div>
+              <!-- Slide 2: Royale -->
+              <div class="specs-tier-slide slide-royale">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-royale">👑 Royale Luxury</span>
+                  <span class="slide-tier-subtitle">Luxury Plumbing</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Heavy-gauge SS sink + premium swan-neck faucet</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Sanitary Ware &amp; CP Fittings</div>
+                  <div class="slide-spec-val"><span class="chip">Jaquar / Grohe / Toto</span> luxury series</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">SS / Carysil quartz composite sink + luxury mixer tap</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Bathroom Fixtures</div>
+                  <div class="slide-spec-val">Premium wall-hung EWC, health faucet, counter basin, concealed diverter &amp; shower</div>
                 </div>
-              </div>
-            </div>
-
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Piping, Overhead Tank &amp; Solar</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">CPVC (Ashirwad/Supreme/Astral); 1,500L Ekon tank (6ft MS stand); Diverter lines</div>
-                <div class="tier-content-premium" style="display:block;">CPVC (Ashirwad/Supreme/Astral); 1,500L Supreme tank (6ft MS stand); Full solar &amp; geyser + RWH</div>
-                <div class="tier-content-royale" style="display:none;">CPVC (Ashirwad/Supreme/Astral); 2,000L Sintex Black tank (6ft MS stand); Full solar &amp; geyser to all baths + complete RWH</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">CPVC pipes &middot; 1,500L Ekon tank &middot; Basic solar lines</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Carysil Sink &amp; Large Tank</div>
+                  <div class="slide-spec-val">
+                    <span class="line">&bull; SS / Carysil quartz composite sink + luxury mixer tap</span>
+                    <span class="line">&bull; CPVC (<span class="chip">Ashirwad / Supreme / Astral</span>)</span>
+                    <span class="line">&bull; 2,000L Sintex Black tank on 6ft MS stand</span>
+                  </div>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">CPVC pipes &middot; 1,500L Supreme tank &middot; Solar + geyser + RWH</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">CPVC pipes &middot; 2,000L Sintex Black tank &middot; Full solar/geyser all baths + complete RWH</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Complete Solar &amp; GI Covers</div>
+                  <div class="slide-spec-val">Full solar &amp; geyser lines + complete RWH + Heavy-duty GI/FRP chamber covers</div>
                 </div>
               </div>
             </div>
@@ -2841,171 +2839,153 @@
 
           <!-- Mobile Panel F: Electrical & Paint -->
           <div class="specs-mob-panel" id="mob-panel-F">
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Wiring, DB/MCB &amp; Switches</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">
-                  <span class="line">&bull; Wiring: <span class="chip">Polycab / Finolex</span> or equivalent</span>
-                  <span class="line">&bull; Switches: <span class="chip">Anchor Ziva</span></span>
-                  <span class="line">&bull; 1 UPS point per unit</span>
+            <div class="specs-mob-slider-track">
+              <!-- Slide 0: Basic -->
+              <div class="specs-tier-slide slide-basic">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-basic">🥉 Basic Package</span>
+                  <span class="slide-tier-subtitle">Electrical &amp; Paint</span>
                 </div>
-                <div class="tier-content-premium" style="display:block;">
-                  <span class="line">&bull; Wiring: <span class="chip">Polycab / Finolex</span> or equivalent</span>
-                  <span class="line">&bull; Switches: <span class="chip">Legrand</span></span>
-                  <span class="line">&bull; 1 UPS point + EV charging point in parking</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Wiring, DBs &amp; MCBs</div>
+                  <div class="slide-spec-val"><span class="chip">Polycab / Finolex</span> or equivalent, DBs &amp; MCBs incl.</div>
                 </div>
-                <div class="tier-content-royale" style="display:none;">
-                  <span class="line">&bull; Wiring: <span class="chip">Polycab / Finolex</span> or equivalent</span>
-                  <span class="line">&bull; Switches: <span class="chip">Legrand</span></span>
-                  <span class="line">&bull; 1 UPS point + dedicated EV charging infrastructure</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Modular Switches &amp; UPS</div>
+                  <div class="slide-spec-val"><span class="chip">Anchor Ziva</span> switches &middot; 1 UPS point per unit</div>
                 </div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Polycab/Finolex &middot; Anchor Ziva &middot; 1 UPS point</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Interior Paint</div>
+                  <div class="slide-spec-val">2 coats putty + 1 primer + 2 coats Asian Tractor Emulsion</div>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Polycab/Finolex &middot; Legrand &middot; 1 UPS point + EV charging</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Polycab/Finolex &middot; Legrand &middot; 1 UPS point + dedicated EV charging</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Exterior Paint &amp; Grill</div>
+                  <div class="slide-spec-val">1 primer + 2 coats Ace Emulsion; enamel paint on MS grill</div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Interior &amp; Exterior Painting</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">
-                  <span class="line">&bull; Interior: 2 putty + 1 primer + 2 coats Asian Tractor Emulsion</span>
-                  <span class="line">&bull; Exterior: 1 primer + 2 coats Ace Emulsion; enamel MS grill</span>
+              <!-- Slide 1: Premium (Default) -->
+              <div class="specs-tier-slide slide-premium">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-premium">⭐ Premium Package</span>
+                  <span class="slide-tier-subtitle">Most Popular</span>
                 </div>
-                <div class="tier-content-premium" style="display:block;">
-                  <span class="line">&bull; Interior: 2 putty + 1 primer + 2 coats Asian Premium Emulsion</span>
-                  <span class="line">&bull; Exterior: 1 primer + 2 coats Ace Emulsion; enamel MS grill</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Wiring, DBs &amp; MCBs</div>
+                  <div class="slide-spec-val"><span class="chip">Polycab / Finolex</span> or equivalent, DBs &amp; MCBs incl.</div>
                 </div>
-                <div class="tier-content-royale" style="display:none;">
-                  <span class="line">&bull; Interior: 2 putty + 1 primer + 2 coats Asian Royale Luxury Emulsion</span>
-                  <span class="line">&bull; Exterior: 1 primer + 2 coats Apex Weatherproof; enamel MS grill</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Modular Switches &amp; EV Point</div>
+                  <div class="slide-spec-val"><span class="chip">Legrand</span> switches &middot; 1 UPS point + EV charging point</div>
                 </div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Asian Tractor Emulsion &middot; Ace Exterior</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Interior Paint</div>
+                  <div class="slide-spec-val">2 coats putty + 1 primer + 2 coats Asian Premium Emulsion</div>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Asian Premium Emulsion &middot; Ace Exterior</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Asian Royale Luxury Emulsion &middot; Apex Weatherproof</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Exterior Paint &amp; Grill</div>
+                  <div class="slide-spec-val">1 primer + 2 coats Ace Emulsion; enamel paint on MS grill</div>
                 </div>
               </div>
-            </div>
 
-            <div class="callout" style="margin-top:0.75rem;">
-              <div class="cap">Approved paint brands</div>
-              <p>Asian Paints &middot; Berger &middot; Dulux &middot; Birla Opus &mdash; 2 coats of enamel on MS grillwork standard across all packages.</p>
+              <!-- Slide 2: Royale -->
+              <div class="specs-tier-slide slide-royale">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-royale">👑 Royale Luxury</span>
+                  <span class="slide-tier-subtitle">Luxury Finishes</span>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Wiring, DBs &amp; MCBs</div>
+                  <div class="slide-spec-val"><span class="chip">Polycab / Finolex</span> or equivalent, DBs &amp; MCBs incl.</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Modular Switches &amp; Dedicated EV</div>
+                  <div class="slide-spec-val"><span class="chip">Legrand</span> switches &middot; 1 UPS point + dedicated EV charging</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Interior Luxury Paint</div>
+                  <div class="slide-spec-val">2 coats putty + 1 primer + 2 coats Asian Royale Luxury Emulsion</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Exterior Apex Weatherproof</div>
+                  <div class="slide-spec-val">1 primer + 2 coats Apex Weatherproof; enamel paint on MS grill</div>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Mobile Panel G: Protection & Audits -->
           <div class="specs-mob-panel" id="mob-panel-G">
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Architectural Facade &amp; Elevation</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">Standard front 3D elevation</div>
-                <div class="tier-content-premium" style="display:block;">Enhanced contemporary 3D facade</div>
-                <div class="tier-content-royale" style="display:none;">Full 360&deg; luxury all-sides facade detailing</div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Standard front 3D elevation</div>
+            <div class="specs-mob-slider-track">
+              <!-- Slide 0: Basic -->
+              <div class="specs-tier-slide slide-basic">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-basic">🥉 Basic Package</span>
+                  <span class="slide-tier-subtitle">Protection &amp; Audits</span>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">Enhanced contemporary 3D facade</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">3D Elevation Design</div>
+                  <div class="slide-spec-val">Standard front 3D elevation</div>
                 </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">Full 360&deg; luxury all-sides facade detailing</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Soil Testing &amp; Site Visits</div>
+                  <div class="slide-spec-val">Soil testing available on request &middot; Dedicated full-time site staff</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Written Warranties</div>
+                  <div class="slide-spec-val">10 Years Structural Warranty &middot; 5 Years Waterproofing Warranty</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Agency Liaison Support</div>
+                  <div class="slide-spec-val">Complete agency liaison support for approvals, water &amp; electrical connections</div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Soil Testing &amp; Site Supervision</div>
-                <span class="specs-mob-badge badge-premium">PREMIUM SPEC</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">
-                  <span class="line">&bull; Soil testing: Available on request</span>
-                  <span class="line">&bull; Supervision: Dedicated full-time site staff</span>
+              <!-- Slide 1: Premium (Default) -->
+              <div class="specs-tier-slide slide-premium">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-premium">⭐ Premium Package</span>
+                  <span class="slide-tier-subtitle">Most Popular</span>
                 </div>
-                <div class="tier-content-premium" style="display:block;">
-                  <span class="line">&bull; Soil testing: Included (diagonally 2 points tested)</span>
-                  <span class="line">&bull; Supervision: Dedicated site staff + regular architect site visits</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">3D Facade Elevation</div>
+                  <div class="slide-spec-val">Enhanced contemporary 3D facade elevation</div>
                 </div>
-                <div class="tier-content-royale" style="display:none;">
-                  <span class="line">&bull; Soil testing: Included (diagonally 2 points tested)</span>
-                  <span class="line">&bull; Supervision: Dedicated site staff + regular architect site visits</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Soil Testing &amp; Architect Visits</div>
+                  <div class="slide-spec-val">Soil testing included (2 points tested) &middot; Dedicated site staff + regular architect visits</div>
                 </div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">Basic</div>
-                  <div class="specs-mob-comp-val">Soil testing on request &middot; Dedicated full-time site engineer</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Written Warranties</div>
+                  <div class="slide-spec-val">10 Years Structural Warranty &middot; 5 Years Waterproofing Warranty</div>
                 </div>
-                <div class="specs-mob-comp-row row-premium">
-                  <div class="specs-mob-comp-tag tag-premium">⭐ Premium</div>
-                  <div class="specs-mob-comp-val">2-point Soil Test included &middot; Dedicated staff + Architect site visits</div>
-                </div>
-                <div class="specs-mob-comp-row row-royale">
-                  <div class="specs-mob-comp-tag tag-royale">👑 Royale</div>
-                  <div class="specs-mob-comp-val">2-point Soil Test included &middot; Dedicated staff + Architect site visits</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Agency Liaison Support</div>
+                  <div class="slide-spec-val">Complete agency liaison support for approvals, water &amp; electrical connections</div>
                 </div>
               </div>
-            </div>
 
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">Warranty &amp; Sanctions Liaison</div>
-                <span class="specs-mob-badge badge-premium">ALL PACKAGES</span>
-              </div>
-              <div class="specs-mob-single-view">
-                <div class="tier-content-basic" style="display:none;">
-                  <span class="line">&bull; Comprehensive Warranty: 10 yrs structure, 5 yrs waterproofing</span>
-                  <span class="line">&bull; Complete agency liaison support for approvals, water &amp; electrical connections</span>
+              <!-- Slide 2: Royale -->
+              <div class="specs-tier-slide slide-royale">
+                <div class="slide-header">
+                  <span class="slide-tier-badge badge-royale">👑 Royale Luxury</span>
+                  <span class="slide-tier-subtitle">Comprehensive Scope</span>
                 </div>
-                <div class="tier-content-premium" style="display:block;">
-                  <span class="line">&bull; Comprehensive Warranty: 10 yrs structure, 5 yrs waterproofing</span>
-                  <span class="line">&bull; Complete agency liaison support for approvals, water &amp; electrical connections</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">360&deg; 3D Luxury Facade</div>
+                  <div class="slide-spec-val">Full 360&deg; luxury all-sides facade detailing &amp; architectural 3D rendering</div>
                 </div>
-                <div class="tier-content-royale" style="display:none;">
-                  <span class="line">&bull; Comprehensive Warranty: 10 yrs structure, 5 yrs waterproofing</span>
-                  <span class="line">&bull; Complete agency liaison support for approvals, water &amp; electrical connections</span>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Soil Testing &amp; Architect Visits</div>
+                  <div class="slide-spec-val">Soil testing included (2 points tested) &middot; Dedicated site staff + regular architect visits</div>
                 </div>
-              </div>
-              <div class="specs-mob-compare-view">
-                <div class="specs-mob-comp-row">
-                  <div class="specs-mob-comp-tag tag-basic">All Packages (Standard)</div>
-                  <div class="specs-mob-comp-val">10 Years Structural Warranty &middot; 5 Years Waterproofing Guarantee &middot; Complete sanction &amp; utility agency liaison included.</div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Written Warranties</div>
+                  <div class="slide-spec-val">10 Years Structural Warranty &middot; 5 Years Waterproofing Warranty</div>
+                </div>
+                <div class="slide-spec-item">
+                  <div class="slide-spec-title">Agency Liaison Support</div>
+                  <div class="slide-spec-val">Complete agency liaison support for approvals, water &amp; electrical connections</div>
                 </div>
               </div>
             </div>
@@ -3014,69 +2994,37 @@
           <!-- Mobile Panel H: Guidelines -->
           <div class="specs-mob-panel" id="mob-panel-H">
             <p class="spec-panel-sub" style="margin-bottom:0.9rem;">Read alongside every package for a complete, transparent scope.</p>
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">1. Compound Wall</div>
-              </div>
-              <div class="specs-mob-single-view">
-                Customized boundary enclosure per site perimeter &amp; height requirements.
-              </div>
+            <div class="slide-spec-item" style="margin-bottom:0.6rem;">
+              <div class="slide-spec-title">1. Compound Wall</div>
+              <div class="slide-spec-val">Customized boundary enclosure per site perimeter &amp; height requirements.</div>
             </div>
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">2. Plinth &amp; Sump</div>
-              </div>
-              <div class="specs-mob-single-view">
-                Standard floor height up to 18&Prime; from road level is included. Extra sump capacity custom engineered per occupancy.
-              </div>
+            <div class="slide-spec-item" style="margin-bottom:0.6rem;">
+              <div class="slide-spec-title">2. Plinth &amp; Sump</div>
+              <div class="slide-spec-val">Standard floor height up to 18&Prime; from road level is included. Extra sump capacity custom engineered per occupancy.</div>
             </div>
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">3. Soil Bearing Capacity</div>
-              </div>
-              <div class="specs-mob-single-view">
-                Standard engineering based on SBC &ge; 180 kN/m&sup2;. Specialized foundation engineering applied for loose soil conditions.
-              </div>
+            <div class="slide-spec-item" style="margin-bottom:0.6rem;">
+              <div class="slide-spec-title">3. Soil Bearing Capacity</div>
+              <div class="slide-spec-val">Standard engineering based on SBC &ge; 180 kN/m&sup2;. Specialized foundation engineering applied for loose soil conditions.</div>
             </div>
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">4. Bathroom Ratio</div>
-              </div>
-              <div class="specs-mob-single-view">
-                1 bathroom per 500 sq.ft included; additional en-suite bathrooms customized on requirement.
-              </div>
+            <div class="slide-spec-item" style="margin-bottom:0.6rem;">
+              <div class="slide-spec-title">4. Bathroom Ratio</div>
+              <div class="slide-spec-val">1 bathroom per 500 sq.ft included; additional en-suite bathrooms customized on requirement.</div>
             </div>
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">5. Rainwater Harvesting</div>
-              </div>
-              <div class="specs-mob-single-view">
-                Integrated recharge pits and filtration chambers included in Premium and Royale packages.
-              </div>
+            <div class="slide-spec-item" style="margin-bottom:0.6rem;">
+              <div class="slide-spec-title">5. Rainwater Harvesting</div>
+              <div class="slide-spec-val">Integrated recharge pits and filtration chambers included in Premium and Royale packages.</div>
             </div>
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">6. Turnkey Interiors</div>
-              </div>
-              <div class="specs-mob-single-view">
-                Modular kitchens, wardrobes and false ceilings fall under specialized turnkey interior contracts.
-              </div>
+            <div class="slide-spec-item" style="margin-bottom:0.6rem;">
+              <div class="slide-spec-title">6. Turnkey Interiors</div>
+              <div class="slide-spec-val">Modular kitchens, wardrobes and false ceilings fall under specialized turnkey interior contracts.</div>
             </div>
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">7. Elevation Extras &amp; Lighting</div>
-              </div>
-              <div class="specs-mob-single-view">
-                Specialized external wall cladding, dynamic facade lighting and landscaping customized on request.
-              </div>
+            <div class="slide-spec-item" style="margin-bottom:0.6rem;">
+              <div class="slide-spec-title">7. Elevation Extras &amp; Lighting</div>
+              <div class="slide-spec-val">Specialized external wall cladding, dynamic facade lighting and landscaping customized on request.</div>
             </div>
-            <div class="specs-mob-card">
-              <div class="specs-mob-card-head">
-                <div class="specs-mob-card-title">8. Electrical Fittings &amp; Logistics</div>
-              </div>
-              <div class="specs-mob-single-view">
-                End-user fittings (bulbs, fans, decorative lights) supplied by client. Material logistics planned with dedicated site storage.
-              </div>
+            <div class="slide-spec-item" style="margin-bottom:0.6rem;">
+              <div class="slide-spec-title">8. Electrical Fittings &amp; Logistics</div>
+              <div class="slide-spec-val">End-user fittings (bulbs, fans, decorative lights) supplied by client. Material logistics planned with dedicated site storage.</div>
             </div>
           </div>
         </div>
@@ -3975,9 +3923,8 @@
     }
   }
 
-  // Mobile Specification Sheet Tab & Tier Controller
-  var currentMobCategory = 'A';
-  var currentMobTier = 'premium';
+  // Mobile Specification Touch Slider Controller
+  var currentMobTierIndex = 1; // Default to Premium (Index 1)
 
   function setMobileSpecCategory(catKey, btn){
     currentMobCategory = catKey;
@@ -3997,47 +3944,89 @@
     var activePanel = document.getElementById('mob-panel-' + catKey);
     if(activePanel){
       activePanel.classList.add('active');
+      // Sync the newly active panel's slider to current selected tier
+      var track = activePanel.querySelector('.specs-mob-slider-track');
+      if(track){
+        var slides = track.querySelectorAll('.specs-tier-slide');
+        if(slides[currentMobTierIndex]){
+          var offset = slides[currentMobTierIndex].offsetLeft - track.offsetLeft;
+          track.scrollTo({ left: offset, behavior: 'auto' });
+        }
+      }
     }
 
     // Toggle tier bar for Guidelines (H)
     var tierBar = document.getElementById('specsMobTierBar');
-    if(tierBar){
-      tierBar.style.display = (catKey === 'H') ? 'none' : 'grid';
+    var hintBar = document.getElementById('specsSliderHint');
+    if(tierBar) tierBar.style.display = (catKey === 'H') ? 'none' : 'grid';
+    if(hintBar) hintBar.style.display = (catKey === 'H') ? 'none' : 'flex';
+  }
+
+  function slideToMobileSpecTier(tierIndex, btn){
+    currentMobTierIndex = tierIndex;
+    updateMobileSpecTierUI(tierIndex);
+
+    var activePanel = document.querySelector('.specs-mob-panel.active');
+    if(activePanel){
+      var track = activePanel.querySelector('.specs-mob-slider-track');
+      if(track){
+        var slides = track.querySelectorAll('.specs-tier-slide');
+        if(slides[tierIndex]){
+          var offset = slides[tierIndex].offsetLeft - track.offsetLeft;
+          track.scrollTo({ left: offset, behavior: 'smooth' });
+        }
+      }
     }
   }
 
-  function setMobileSpecTier(tierKey, btn){
-    currentMobTier = tierKey;
-    document.querySelectorAll('.specs-mob-tier-btn').forEach(function(b){
-      b.classList.remove('active');
+  function updateMobileSpecTierUI(tierIndex){
+    var tierBtns = document.querySelectorAll('.specs-mob-tier-btn');
+    var dots = document.querySelectorAll('.specs-slider-dot');
+    tierBtns.forEach(function(b, i){
+      b.classList.toggle('active', i === tierIndex);
     });
-    if(btn) btn.classList.add('active');
+    dots.forEach(function(d, i){
+      d.classList.toggle('active', i === tierIndex);
+    });
+  }
 
-    document.querySelectorAll('.specs-mob-card').forEach(function(card){
-      var singleWrap = card.querySelector('.specs-mob-single-view');
-      var compWrap = card.querySelector('.specs-mob-compare-view');
-      var basicContent = card.querySelector('.tier-content-basic');
-      var premiumContent = card.querySelector('.tier-content-premium');
-      var royaleContent = card.querySelector('.tier-content-royale');
-      var badge = card.querySelector('.specs-mob-badge');
+  // Setup scroll-sync on each panel's touch slider track
+  function initMobileSpecSliders(){
+    document.querySelectorAll('.specs-mob-slider-track').forEach(function(track){
+      var isScrolling;
+      track.addEventListener('scroll', function(){
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(function(){
+          var scrollPos = track.scrollLeft;
+          var width = track.offsetWidth;
+          var idx = Math.round(scrollPos / width);
+          if(idx >= 0 && idx <= 2 && idx !== currentMobTierIndex){
+            currentMobTierIndex = idx;
+            updateMobileSpecTierUI(idx);
+          }
+        }, 50);
+      });
+    });
 
-      if(tierKey === 'compare'){
-        if(singleWrap) singleWrap.style.display = 'none';
-        if(compWrap) compWrap.style.display = 'flex';
-        if(badge) badge.style.display = 'none';
-      } else {
-        if(compWrap) compWrap.style.display = 'none';
-        if(singleWrap) singleWrap.style.display = 'block';
-        if(badge){
-          badge.style.display = 'inline-flex';
-          badge.className = 'specs-mob-badge badge-' + tierKey;
-          badge.textContent = tierKey.toUpperCase() + ' SPEC';
+    // Default active panel scroll to Premium (Index 1) on mobile load
+    var activePanel = document.querySelector('.specs-mob-panel.active');
+    if(activePanel){
+      var track = activePanel.querySelector('.specs-mob-slider-track');
+      if(track){
+        var slides = track.querySelectorAll('.specs-tier-slide');
+        if(slides[1]){
+          var offset = slides[1].offsetLeft - track.offsetLeft;
+          track.scrollTo({ left: offset, behavior: 'auto' });
         }
-        if(basicContent) basicContent.style.display = (tierKey === 'basic') ? 'block' : 'none';
-        if(premiumContent) premiumContent.style.display = (tierKey === 'premium') ? 'block' : 'none';
-        if(royaleContent) royaleContent.style.display = (tierKey === 'royale') ? 'block' : 'none';
       }
-    });
+    }
+  }
+
+  // Initialize sliders on DOMContentLoaded and load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileSpecSliders);
+  } else {
+    initMobileSpecSliders();
   }
 </script>
 </body>
