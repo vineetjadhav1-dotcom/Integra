@@ -379,7 +379,7 @@
   }
   .brand{ display:flex; align-items:center; text-decoration:none; flex-shrink:0; }
   .brand-logo {
-    height: 52px !important;
+    height: 56px !important;
     width: auto !important;
     max-width: none !important;
     aspect-ratio: auto !important;
@@ -440,7 +440,7 @@
   @media (max-width:860px){
     nav.links{ display:none; }
     .nav-toggle{ display:inline-flex; }
-    .brand-logo{ height:40px !important; }
+    .brand-logo{ height:46px !important; }
     .nav-inner{ padding:0.5rem 1rem; gap:0.6rem; }
     .nav-cta{ padding:0.45rem 0.8rem; font-size:0.78rem; }
     .nav-quote-btn{ padding:0.45rem 0.8rem !important; font-size:0.75rem !important; }
@@ -456,7 +456,7 @@
 
   @media (max-width:480px){
     .nav-quote-btn{ display:none; }
-    .brand-logo{ height:36px !important; }
+    .brand-logo{ height:40px !important; }
     .nav-cta{ font-size:0.76rem; padding:0.4rem 0.65rem; }
   }
 
@@ -1182,23 +1182,17 @@
   .gov-table td.protect{ color:var(--good); font-weight:600; font-size:0.83rem; }
 
   /* ---------- materials ---------- */
-  .material-row{ display:grid; grid-template-columns:12rem 1fr 14rem; gap:1.2rem; padding:1.3rem 0; border-bottom:1px solid var(--line); align-items:start; }
-  @media (max-width:760px){
-    .material-row{ grid-template-columns:1fr; gap:0.6rem; padding:1rem 0; }
-    .material-chips{ display:grid !important; grid-template-columns:1fr 1fr; gap:0.5rem !important; }
-    .brand-chip-card{ padding:0.5rem 0.65rem !important; }
-    .brand-chip-card .brand-name{ font-size:0.76rem !important; }
-    .brand-chip-card .brand-sub{ font-size:0.62rem !important; }
+  .material-row{ display:grid; grid-template-columns:12rem 1fr 14rem; gap:1.2rem; padding:1.4rem 0; border-bottom:1px solid var(--line); align-items:center; }
+  @media (max-width:960px){
+    .material-row{ grid-template-columns:1fr; gap:0.8rem; padding:1.2rem 0; }
   }
-  @media (max-width:400px){
-    .material-chips{ grid-template-columns:1fr !important; }
+  @media (max-width:600px){
+    .material-chips{ display:grid !important; grid-template-columns:repeat(auto-fill, minmax(115px, 1fr)) !important; gap:0.6rem !important; }
+    .brand-chip-card{ width:100% !important; height:54px !important; padding:0.45rem 0.65rem !important; }
+    .brand-chip-card img{ max-height:40px !important; }
   }
-  .material-row b{ font-size:0.92rem; }
-  .material-chips{ display:flex; flex-wrap:wrap; gap:0.5rem; }
-  .material-chip{
-    padding:0.35rem 0.8rem; border-radius:3px; font-size:0.78rem; font-weight:600;
-    background:var(--paper-2); border:1px solid var(--line-strong);
-  }
+  .material-row b{ font-size:0.95rem; }
+  .material-chips{ display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center; }
   .material-row .assure{ font-size:0.8rem; color:var(--ink-faint); }
 
   /* ---------- vs table & mobile matrix ---------- */
@@ -1475,69 +1469,40 @@
   }
   .brand-chip-card{
     background:#ffffff;
-    border:1px solid #e2e8f0;
-    border-radius:6px;
-    padding:0.6rem 0.85rem;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    padding:0.6rem 0.9rem;
+    height:64px;
+    width:142px;
     display:inline-flex;
     align-items:center;
-    gap:0.6rem;
-    box-shadow:0 2px 6px rgba(0,0,0,0.03);
+    justify-content:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.04);
     transition:all 0.25s cubic-bezier(0.16,1,0.3,1);
     cursor:default;
+    box-sizing:border-box;
   }
   .brand-chip-card:hover{
-    transform:translateY(-2px);
-    box-shadow:0 6px 16px rgba(0,0,0,0.08);
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
     border-color:var(--accent);
   }
-  .brand-logo-icon{
-    width: 36px;
-    height: 30px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f8fafc;
-    border-radius: 4px;
-    padding: 2px 4px;
-    border: 1px solid #e2e8f0;
-  }
-  .brand-logo-icon img{
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-  }
-  .partner-logo-pill img{
-    height: 18px;
-    max-width: 34px;
-    width: auto;
-    object-fit: contain;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .brand-chip-card .brand-name{
-    font-size:0.82rem;
-    font-weight:700;
-    color:#1e293b;
-    letter-spacing:0.01em;
-    white-space:nowrap;
-  }
-  .brand-chip-card .brand-sub{
-    font-size:0.65rem;
-    color:#64748b;
+  .brand-chip-card img, .brand-chip-logo{
+    width:100%;
+    height:100%;
+    max-height:48px;
+    max-width:100%;
+    object-fit:contain;
     display:block;
   }
 
   /* ---------- Marquee Partner Strip ---------- */
   .brand-marquee-strip{
-    margin:2.5rem 0 1rem;
-    padding:1.25rem 1.5rem;
+    margin:2.5rem 0 1.25rem;
+    padding:1.4rem 1.6rem;
     background:linear-gradient(90deg, #f8fafc, #f1f5f9, #f8fafc);
     border:1px solid #e2e8f0;
-    border-radius:8px;
+    border-radius:10px;
     display:flex;
     flex-wrap:wrap;
     align-items:center;
@@ -1545,7 +1510,7 @@
     gap:1.5rem;
   }
   .brand-marquee-title{
-    font-size:0.78rem;
+    font-size:0.8rem;
     font-weight:700;
     text-transform:uppercase;
     letter-spacing:0.12em;
@@ -1555,20 +1520,34 @@
     display:flex;
     flex-wrap:wrap;
     align-items:center;
-    gap:1.25rem;
+    gap:0.9rem;
   }
   .partner-logo-pill{
     display:inline-flex;
     align-items:center;
-    gap:0.4rem;
-    padding:0.35rem 0.75rem;
+    justify-content:center;
+    height:52px;
+    width:125px;
+    padding:0.4rem 0.75rem;
     background:#ffffff;
     border:1px solid #cbd5e1;
-    border-radius:20px;
-    font-size:0.75rem;
-    font-weight:700;
-    color:#0f172a;
-    box-shadow:0 1px 3px rgba(0,0,0,0.05);
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.04);
+    transition:all 0.2s ease;
+    box-sizing:border-box;
+  }
+  .partner-logo-pill:hover{
+    transform:translateY(-2px);
+    border-color:var(--accent);
+    box-shadow:0 6px 14px rgba(0,0,0,0.08);
+  }
+  .partner-logo-pill img{
+    height:100%;
+    width:100%;
+    max-height:40px;
+    max-width:100%;
+    object-fit:contain;
+    display:block;
   }
 
   /* ---------- Consultation Modal Popup ---------- */
@@ -3235,93 +3214,71 @@
       <div class="brand-marquee-strip reveal">
         <div class="brand-marquee-title">Verified Tier-1 Partner Brands</div>
         <div class="marquee-logos">
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Tata Tiscon">
             <img src="assets/brands/tata-tiscon.png" alt="Tata Tiscon" />
-            TATA TISCON
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="JSW Neosteel">
             <img src="assets/brands/jsw-neosteel.png" alt="JSW Neosteel" />
-            JSW NEOSTEEL
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Jindal Panther">
             <img src="assets/brands/jindal-panther.png" alt="Jindal Panther" />
-            JINDAL PANTHER
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Rajuri Steel">
             <img src="assets/brands/rajuri-steel.png" alt="Rajuri Steel" />
-            RAJURI STEEL
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Kalika Steel">
             <img src="assets/brands/kalika-steel.png" alt="Kalika Steel" />
-            KALIKA STEEL
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="UltraTech Cement">
             <img src="assets/brands/ultratech-cement.png" alt="UltraTech Cement" />
-            UltraTech
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="ACC Cement">
             <img src="assets/brands/acc-cement.png" alt="ACC Cement" />
-            ACC CEMENT
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Birla Super">
             <img src="assets/brands/birla-super.png" alt="Birla Super" />
-            BIRLA SUPER
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Dalmia Cement">
             <img src="assets/brands/dalmia-cement.png" alt="Dalmia Cement" />
-            DALMIA
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Asian Paints">
             <img src="assets/brands/asian-paints.png" alt="Asian Paints" />
-            asianpaints
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Berger Paints">
             <img src="assets/brands/berger-paints.png" alt="Berger Paints" />
-            BERGER
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Astral Pipes">
             <img src="assets/brands/astral-pipes.png" alt="Astral Pipes" />
-            ASTRAL
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Ashirwad Pipes">
             <img src="assets/brands/ashirwad-pipes.png" alt="Ashirwad Pipes" />
-            ASHIRWAD
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Supreme Pipes">
             <img src="assets/brands/supreme-pipes.png" alt="Supreme Pipes" />
-            SUPREME
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Havells">
             <img src="assets/brands/havells.png" alt="Havells" />
-            HAVELLS
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Legrand">
             <img src="assets/brands/legrand.png" alt="Legrand" />
-            LEGRAND
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Schneider Electric">
             <img src="assets/brands/schneider-electric.png" alt="Schneider Electric" />
-            SCHNEIDER
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Jaquar">
             <img src="assets/brands/jaquar.png" alt="Jaquar" />
-            Jaquar
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Grohe">
             <img src="assets/brands/grohe.png" alt="Grohe" />
-            GROHE
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Kohler">
             <img src="assets/brands/kohler.png" alt="Kohler" />
-            KOHLER
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Toto">
             <img src="assets/brands/toto.png" alt="Toto" />
-            TOTO
           </div>
-          <div class="partner-logo-pill">
+          <div class="partner-logo-pill" title="Cera">
             <img src="assets/brands/cera.png" alt="Cera" />
-            CERA
           </div>
         </div>
       </div>
@@ -3330,35 +3287,20 @@
         <div class="material-row">
           <b>Reinforcement steel</b>
           <div class="material-chips">
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/tata-tiscon.png" alt="Tata Tiscon" />
-              </div>
-              <div><span class="brand-name">Tata Tiscon</span><span class="brand-sub">Fe550D Super Ductile</span></div>
+            <div class="brand-chip-card" title="Tata Tiscon">
+              <img src="assets/brands/tata-tiscon.png" alt="Tata Tiscon" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/jsw-neosteel.png" alt="JSW Neosteel" />
-              </div>
-              <div><span class="brand-name">JSW Neosteel</span><span class="brand-sub">Pure TMT Bars</span></div>
+            <div class="brand-chip-card" title="JSW Neosteel">
+              <img src="assets/brands/jsw-neosteel.png" alt="JSW Neosteel" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/jindal-panther.png" alt="Jindal Panther" />
-              </div>
-              <div><span class="brand-name">Jindal Panther</span><span class="brand-sub">Fe550 TMT Rebars</span></div>
+            <div class="brand-chip-card" title="Jindal Panther">
+              <img src="assets/brands/jindal-panther.png" alt="Jindal Panther" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/rajuri-steel.png" alt="Rajuri Steel" />
-              </div>
-              <div><span class="brand-name">Rajuri Steel</span><span class="brand-sub">500D / 550D TMT</span></div>
+            <div class="brand-chip-card" title="Rajuri Steel">
+              <img src="assets/brands/rajuri-steel.png" alt="Rajuri Steel" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/kalika-steel.png" alt="Kalika Steel" />
-              </div>
-              <div><span class="brand-name">Kalika Steel</span><span class="brand-sub">Certified ISI Fe550D</span></div>
+            <div class="brand-chip-card" title="Kalika Steel">
+              <img src="assets/brands/kalika-steel.png" alt="Kalika Steel" class="brand-chip-logo" />
             </div>
           </div>
           <span class="assure">Fe500D/550D TMT with batch test certificates</span>
@@ -3367,35 +3309,20 @@
         <div class="material-row">
           <b>Cement &amp; RMC</b>
           <div class="material-chips">
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/ultratech-cement.png" alt="UltraTech Cement" />
-              </div>
-              <div><span class="brand-name">UltraTech</span><span class="brand-sub">53G OPC / Super PPC</span></div>
+            <div class="brand-chip-card" title="UltraTech Cement">
+              <img src="assets/brands/ultratech-cement.png" alt="UltraTech Cement" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/acc-cement.png" alt="ACC Cement" />
-              </div>
-              <div><span class="brand-name">ACC Cement</span><span class="brand-sub">Concrete Plus Gold</span></div>
+            <div class="brand-chip-card" title="ACC Cement">
+              <img src="assets/brands/acc-cement.png" alt="ACC Cement" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/birla-super.png" alt="Birla Super" />
-              </div>
-              <div><span class="brand-name">Birla Super</span><span class="brand-sub">Premium 53 Grade</span></div>
+            <div class="brand-chip-card" title="Birla Super">
+              <img src="assets/brands/birla-super.png" alt="Birla Super" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/dalmia-cement.png" alt="Dalmia Cement" />
-              </div>
-              <div><span class="brand-name">Dalmia Cement</span><span class="brand-sub">High Sulfate Resist</span></div>
+            <div class="brand-chip-card" title="Dalmia Cement">
+              <img src="assets/brands/dalmia-cement.png" alt="Dalmia Cement" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/chettinad-cement.png" alt="Chettinad Cement" />
-              </div>
-              <div><span class="brand-name">Chettinad Cement</span><span class="brand-sub">High Strength PPC</span></div>
+            <div class="brand-chip-card" title="Chettinad Cement">
+              <img src="assets/brands/chettinad-cement.png" alt="Chettinad Cement" class="brand-chip-logo" />
             </div>
           </div>
           <span class="assure">53 &amp; 43 grade, fresh tamper-proof bags</span>
@@ -3404,29 +3331,17 @@
         <div class="material-row">
           <b>Concealed pipes</b>
           <div class="material-chips">
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/astral-pipes.png" alt="Astral Pipes" />
-              </div>
-              <div><span class="brand-name">Astral Pipes</span><span class="brand-sub">CPVC Pro Lead-Free</span></div>
+            <div class="brand-chip-card" title="Astral Pipes">
+              <img src="assets/brands/astral-pipes.png" alt="Astral Pipes" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/ashirwad-pipes.png" alt="Ashirwad CPVC" />
-              </div>
-              <div><span class="brand-name">Ashirwad CPVC</span><span class="brand-sub">FlowGuard Plus SDR 11</span></div>
+            <div class="brand-chip-card" title="Ashirwad CPVC">
+              <img src="assets/brands/ashirwad-pipes.png" alt="Ashirwad CPVC" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/supreme-pipes.png" alt="Supreme PVC" />
-              </div>
-              <div><span class="brand-name">Supreme PVC</span><span class="brand-sub">Heavy SWR Drainage</span></div>
+            <div class="brand-chip-card" title="Supreme PVC">
+              <img src="assets/brands/supreme-pipes.png" alt="Supreme PVC" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/finolex.png" alt="Finolex Pipes" />
-              </div>
-              <div><span class="brand-name">Finolex Pipes</span><span class="brand-sub">Plumbing &amp; Sanitation</span></div>
+            <div class="brand-chip-card" title="Finolex Pipes">
+              <img src="assets/brands/finolex.png" alt="Finolex Pipes" class="brand-chip-logo" />
             </div>
           </div>
           <span class="assure">Heavy-duty SDR 11 pressure-tested piping</span>
@@ -3435,35 +3350,20 @@
         <div class="material-row">
           <b>Cables &amp; switches</b>
           <div class="material-chips">
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/havells.png" alt="Havells" />
-              </div>
-              <div><span class="brand-name">Havells</span><span class="brand-sub">HRFR Flame Retardant</span></div>
+            <div class="brand-chip-card" title="Havells">
+              <img src="assets/brands/havells.png" alt="Havells" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/legrand.png" alt="Legrand" />
-              </div>
-              <div><span class="brand-name">Legrand</span><span class="brand-sub">Arteor / Mylinc Modular</span></div>
+            <div class="brand-chip-card" title="Legrand">
+              <img src="assets/brands/legrand.png" alt="Legrand" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/schneider-electric.png" alt="Schneider Electric" />
-              </div>
-              <div><span class="brand-name">Schneider Electric</span><span class="brand-sub">Modular Shock-Proof</span></div>
+            <div class="brand-chip-card" title="Schneider Electric">
+              <img src="assets/brands/schneider-electric.png" alt="Schneider Electric" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/anchor.png" alt="Anchor by Panasonic" />
-              </div>
-              <div><span class="brand-name">Anchor</span><span class="brand-sub">Roma Modular Switches</span></div>
+            <div class="brand-chip-card" title="Anchor by Panasonic">
+              <img src="assets/brands/anchor.png" alt="Anchor by Panasonic" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/finolex.png" alt="Finolex Cables" />
-              </div>
-              <div><span class="brand-name">Finolex</span><span class="brand-sub">100% Pure Electrolytic</span></div>
+            <div class="brand-chip-card" title="Finolex Cables">
+              <img src="assets/brands/finolex.png" alt="Finolex Cables" class="brand-chip-logo" />
             </div>
           </div>
           <span class="assure">100% copper wiring with zero alloy blends</span>
@@ -3472,47 +3372,26 @@
         <div class="material-row">
           <b>Sanitary ware &amp; CP</b>
           <div class="material-chips">
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/jaquar.png" alt="Jaquar" />
-              </div>
-              <div><span class="brand-name">Jaquar</span><span class="brand-sub">Florentine / Kubix Faucets</span></div>
+            <div class="brand-chip-card" title="Jaquar">
+              <img src="assets/brands/jaquar.png" alt="Jaquar" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/grohe.png" alt="Grohe" />
-              </div>
-              <div><span class="brand-name">Grohe</span><span class="brand-sub">German Precision CP</span></div>
+            <div class="brand-chip-card" title="Grohe">
+              <img src="assets/brands/grohe.png" alt="Grohe" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/kohler.png" alt="Kohler" />
-              </div>
-              <div><span class="brand-name">Kohler</span><span class="brand-sub">Luxury Wall-Hung</span></div>
+            <div class="brand-chip-card" title="Kohler">
+              <img src="assets/brands/kohler.png" alt="Kohler" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/toto.png" alt="Toto" />
-              </div>
-              <div><span class="brand-name">Toto</span><span class="brand-sub">Japanese Tech Sanitary</span></div>
+            <div class="brand-chip-card" title="Toto">
+              <img src="assets/brands/toto.png" alt="Toto" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/cera.png" alt="Cera" />
-              </div>
-              <div><span class="brand-name">Cera</span><span class="brand-sub">Rimless Water-Saving</span></div>
+            <div class="brand-chip-card" title="Cera">
+              <img src="assets/brands/cera.png" alt="Cera" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/hindware.png" alt="Hindware" />
-              </div>
-              <div><span class="brand-name">Hindware</span><span class="brand-sub">Italian Collection</span></div>
+            <div class="brand-chip-card" title="Hindware">
+              <img src="assets/brands/hindware.png" alt="Hindware" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/carysil.png" alt="Carysil" />
-              </div>
-              <div><span class="brand-name">Carysil</span><span class="brand-sub">Granite Quartz Sink</span></div>
+            <div class="brand-chip-card" title="Carysil">
+              <img src="assets/brands/carysil.png" alt="Carysil" class="brand-chip-logo" />
             </div>
           </div>
           <span class="assure">Brass diverters with official brand warranty</span>
@@ -3521,17 +3400,11 @@
         <div class="material-row">
           <b>Paints &amp; waterproofing</b>
           <div class="material-chips">
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/asian-paints.png" alt="Asian Paints" />
-              </div>
-              <div><span class="brand-name">Asian Paints</span><span class="brand-sub">Royale Luxury / Apex Ultima</span></div>
+            <div class="brand-chip-card" title="Asian Paints">
+              <img src="assets/brands/asian-paints.png" alt="Asian Paints" class="brand-chip-logo" />
             </div>
-            <div class="brand-chip-card">
-              <div class="brand-logo-icon">
-                <img src="assets/brands/berger-paints.png" alt="Berger Paints" />
-              </div>
-              <div><span class="brand-name">Berger Paints</span><span class="brand-sub">Silk Glamor / WeatherCoat</span></div>
+            <div class="brand-chip-card" title="Berger Paints">
+              <img src="assets/brands/berger-paints.png" alt="Berger Paints" class="brand-chip-logo" />
             </div>
           </div>
           <span class="assure">100% factory-sealed original tint containers</span>
