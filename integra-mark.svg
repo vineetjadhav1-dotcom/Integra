@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" width="100%" height="100%" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" fill="none">
   <defs>
     <linearGradient id="integraOrangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FF7547"/>
@@ -6,22 +6,24 @@
     </linearGradient>
   </defs>
 
-  <!-- 3 Vibrant Architectural Pillars (Flush baseline at y=360) -->
-  <rect x="25" y="175" width="18" height="185" rx="2" fill="url(#integraOrangeGradient)"/>
-  <rect x="53" y="130" width="18" height="230" rx="2" fill="url(#integraOrangeGradient)"/>
-  <rect x="81" y="85" width="18" height="275" rx="2" fill="url(#integraOrangeGradient)"/>
+  <g transform="translate(256, 256) scale(1.18) translate(-202.5, -187.5)">
+    <!-- 3 Vibrant Architectural Pillars -->
+    <rect x="25" y="175" width="18" height="185" rx="2" fill="url(#integraOrangeGradient)"/>
+    <rect x="53" y="130" width="18" height="230" rx="2" fill="url(#integraOrangeGradient)"/>
+    <rect x="81" y="85" width="18" height="275" rx="2" fill="url(#integraOrangeGradient)"/>
 
-  <!-- Architectural House Gable Roof Outline (Navy #07274C) -->
-  <path d="M108 95 L245 15 L380 95 L380 115" stroke="#07274C" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Architectural House Gable Roof Outline -->
+    <path d="M108 95 L245 15 L380 95 L380 115" stroke="#07274C" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- 4-Pane Square Window (2x2 Grid) in Accent Orange -->
-  <g fill="url(#integraOrangeGradient)">
-    <rect x="212" y="55" width="28" height="28" rx="2.5"/>
-    <rect x="250" y="55" width="28" height="28" rx="2.5"/>
-    <rect x="212" y="93" width="28" height="28" rx="2.5"/>
-    <rect x="250" y="93" width="28" height="28" rx="2.5"/>
+    <!-- 4-Pane Square Window -->
+    <g fill="url(#integraOrangeGradient)">
+      <rect x="212" y="55" width="28" height="28" rx="2.5"/>
+      <rect x="250" y="55" width="28" height="28" rx="2.5"/>
+      <rect x="212" y="93" width="28" height="28" rx="2.5"/>
+      <rect x="250" y="93" width="28" height="28" rx="2.5"/>
+    </g>
+
+    <!-- Stem of i -->
+    <path d="M118 105 V360" stroke="#07274C" stroke-width="21" stroke-linecap="square"/>
   </g>
-
-  <!-- Left Wall / Stem of i (Navy #07274C) -->
-  <path d="M118 105 V360" stroke="#07274C" stroke-width="20" stroke-linecap="square"/>
 </svg>
